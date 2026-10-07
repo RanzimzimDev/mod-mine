@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "ember_ingot",
+  "ingredient": "wingsofthewild:raw_ember",
+  "result": {
+    "id": "wingsofthewild:ember_ingot"
+  }
+}

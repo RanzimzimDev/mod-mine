@@ -1,0 +1,2992 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wings of the Wild — Painel de Desenvolvimento</title>
+  <style>
+    :root {
+      --bg-main: #0d0f12;
+      --bg-card: #161a22;
+      --bg-card-hover: #1c212c;
+      --border-color: #262c3a;
+      --primary: #ff5722;
+      --primary-glow: rgba(255, 87, 34, 0.35);
+      --accent: #ff9800;
+      --text-main: #f0f4f8;
+      --text-muted: #8b949e;
+      --success: #2ea043;
+      --warning: #e3b341;
+      --info: #58a6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1b1010 0%, #161a22 100%);
+      border: 1px solid #3d231d;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .header-info h1 {
+      font-size: 2.2rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-shadow: 0 0 20px var(--primary-glow);
+    }
+
+    .header-info p {
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-size: 1.05rem;
+    }
+
+    .badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .badge {
+      background-color: #21262d;
+      border: 1px solid var(--border-color);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c9d1d9;
+    }
+
+    .badge.hot {
+      background: rgba(255, 87, 34, 0.15);
+      border-color: var(--primary);
+      color: #ff784e;
+    }
+
+    .badge.green {
+      background: rgba(46, 160, 67, 0.15);
+      border-color: var(--success);
+      color: #3fb950;
+    }
+
+    /* KPI Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+    }
+
+    .kpi-title {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .kpi-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 8px 0;
+    }
+
+    .kpi-sub {
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 12px;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 12px 18px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: #fff;
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Step Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .step-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .step-item.active {
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(255, 87, 34, 0.15);
+    }
+
+    .step-item.done {
+      border-color: var(--success);
+    }
+
+    .step-status-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .step-item.done .step-status-icon {
+      background: rgba(46, 160, 67, 0.2);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .step-item.active .step-status-icon {
+      background: rgba(255, 87, 34, 0.2);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      animation: pulse 1.5s infinite;
+    }
+
+    .step-item.pending .step-status-icon {
+      background: #21262d;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.5); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 87, 34, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+    }
+
+    .step-details h3 {
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+    }
+
+    .step-details p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* Table */
+    .table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: #12151c;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    tr:hover td {
+      background: var(--bg-card-hover);
+    }
+
+    .status-tag {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .status-pending { background: rgba(139, 148, 158, 0.15); color: #8b949e; }
+    .status-wip { background: rgba(227, 179, 65, 0.2); color: var(--warning); }
+    .status-done { background: rgba(46, 160, 67, 0.2); color: var(--success); }
+
+    /* Search & Filter */
+    .filter-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    /* Blockbench MCP Box */
+    .instruction-card {
+      background: #12151c;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .instruction-card h3 {
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .code-box {
+      background: #090b0e;
+      border: 1px solid #21262d;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #38ef7d;
+      margin: 10px 0;
+      word-break: break-all;
+    }
+  
+    /* Enciclopédia de Itens */
+    .encyclo-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .encyclo-search-bar {
+      display: flex;
+      gap: 12px;
+    }
+    .encyclo-search-bar input {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .encyclo-search-bar input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 12px rgba(255, 87, 34, 0.25);
+    }
+    .encyclo-cats {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .cat-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cat-btn:hover {
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .cat-btn.active {
+      background: rgba(255, 87, 34, 0.2);
+      border-color: var(--primary);
+      color: #ff784e;
+      box-shadow: 0 0 10px rgba(255, 87, 34, 0.2);
+    }
+    .encyclo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 18px;
+    }
+    .item-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .item-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: 0 6px 24px rgba(255, 87, 34, 0.15);
+    }
+    .item-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .item-card-icon {
+      width: 52px;
+      height: 52px;
+      background: #11141a;
+      border: 1px solid #2a313f;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+    }
+    .item-card-icon img {
+      width: 36px;
+      height: 36px;
+      image-rendering: pixelated;
+      object-fit: contain;
+    }
+    .item-card-title {
+      flex: 1;
+    }
+    .item-card-title h3 {
+      font-size: 1.05rem;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+    .item-card-title code {
+      font-size: 0.78rem;
+      color: #ff9800;
+      background: rgba(255, 152, 0, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    .item-card-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .item-card-body {
+      color: #c9d1d9;
+      font-size: 0.90rem;
+      line-height: 1.55;
+      background: #12151c;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #1f2532;
+      flex-grow: 1;
+    }
+    .item-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border-top: 1px solid #1f2532;
+      padding-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Header -->
+    <header>
+      <div class="header-info">
+        <h1>🐉 Wings of the Wild</h1>
+        <p>Painel de Desenvolvimento & Acompanhamento de Progresso</p>
+        <div class="badges">
+          <span class="badge hot">Minecraft 26.3</span>
+          <span class="badge hot">NeoForge 26.3.0.48-beta</span>
+          <span class="badge green">Java 25 (LTS)</span>
+          <span class="badge">Capítulo 1: O Despertar das Brasas</span>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <span class="status-tag status-wip" style="font-size: 0.95rem; padding: 8px 16px;">⚡ FASE DE INICIALIZAÇÃO</span>
+      </div>
+    </header>
+
+    <!-- KPI Metrics -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-title">Itens da Versão 1.0</div>
+        <div class="kpi-value">116</div>
+        <div class="kpi-sub">116 Itens + 3 GUIs + 65 Receitas</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Meta Geral do Mod</div>
+        <div class="kpi-value">~200</div>
+        <div class="kpi-sub">Distribuído em 4 Capítulos</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Progresso Concluído</div>
+        <div class="kpi-value" id="kpiProgress" style="color: #3fb950;">100.0%</div>
+        <div class="kpi-sub" id="kpiDone">116 Itens, 3 GUIs & 65 Receitas JEI Compiladas</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Armazenamento</div>
+        <div class="kpi-value" style="color: #3fb950;">1.5 TB</div>
+        <div class="kpi-sub">Disco D:\Mine (Livre & Seguro)</div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('enciclopedia')">📖 O Que Cada Item Faz (Enciclopédia Completa)</button>
+      <button class="tab-btn" onclick="switchTab('timeline')">🚀 O Que Estamos Fazendo Agora</button>
+      <button class="tab-btn" onclick="switchTab('equipe')">🤖 Equipe de Agentes (5 Especialistas)</button>
+      <button class="tab-btn" onclick="switchTab('auditoria')">🛡️ Auditoria & QA (100% Conforme)</button>
+      <button class="tab-btn" onclick="switchTab('itens')">📦 Catálogo Completo (116 Itens & Blocos)</button>
+      <button class="tab-btn" onclick="switchTab('galeria')">🎨 Galeria 2D & Nano Banana</button>
+      <button class="tab-btn" onclick="switchTab('blockbench')">🐉 Blockbench & Criaturas 3D</button>
+      <button class="tab-btn" onclick="switchTab('ideias')">💡 Cofre de Ideias (v1.1+)</button>
+    </div>
+
+    
+    <!-- Tab Enciclopédia: O Que Cada Item Faz -->
+    <div id="tab-enciclopedia" class="tab-content active">
+      <div style="background: linear-gradient(135deg, rgba(255,87,34,0.12) 0%, rgba(22,26,34,0.8) 100%); border: 1px solid rgba(255,87,34,0.3); border-radius: 14px; padding: 22px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="color: #fff; font-size: 1.45rem; display: flex; align-items: center; gap: 10px;">
+              📖 Enciclopédia Oficial dos 116 Itens & Blocos da Versão 1.0
+            </h2>
+            <p style="color: var(--text-muted); margin-top: 4px;">
+              Consulte aqui exatamente <b>o que cada item faz no jogo</b>, suas funções práticas, estatísticas, atributos térmicos e utilidade com o Flamefang.
+            </p>
+          </div>
+          <div>
+            <span class="badge green" style="font-size: 0.95rem; padding: 6px 14px;">✅ 116 / 116 Aprovados & Auditados</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="encyclo-controls">
+        <div class="encyclo-search-bar">
+          <input type="text" id="encycloSearch" placeholder="🔍 Buscar por nome, ID ou função do item (ex: ovo, sela, picareta, calda, fogo, armadura)..." onkeyup="filterEncyclo()">
+        </div>
+        <div class="encyclo-cats">
+          <button class="cat-btn active" onclick="filterEncycloCat('Todos')">Todos</button><button class="cat-btn " onclick="filterEncycloCat('Blocos Utilitários')">Blocos Utilitários</button><button class="cat-btn " onclick="filterEncycloCat('Minérios & Recursos')">Minérios & Recursos</button><button class="cat-btn " onclick="filterEncycloCat('Ciclo de Vida & Cuidados')">Ciclo de Vida & Cuidados</button><button class="cat-btn " onclick="filterEncycloCat('Culinária & Nutrição Dracônica')">Culinária & Nutrição Dracônica</button><button class="cat-btn " onclick="filterEncycloCat('Selaria & Equipamentos de Voo')">Selaria & Equipamentos de Voo</button><button class="cat-btn " onclick="filterEncycloCat('Armas, Ferramentas & Guia')">Armas, Ferramentas & Guia</button><button class="cat-btn " onclick="filterEncycloCat('Construção, Ninhos & Decoração')">Construção, Ninhos & Decoração</button><button class="cat-btn " onclick="filterEncycloCat('Armadura de Escamas & Vestimentas')">Armadura de Escamas & Vestimentas</button><button class="cat-btn " onclick="filterEncycloCat('Equipamentos Táticos & Voo Avançado')">Equipamentos Táticos & Voo Avançado</button><button class="cat-btn " onclick="filterEncycloCat('Culinária Especializada & Alquimia')">Culinária Especializada & Alquimia</button><button class="cat-btn " onclick="filterEncycloCat('Materiais de Progressão & Relíquias')">Materiais de Progressão & Relíquias</button><button class="cat-btn " onclick="filterEncycloCat('Metalurgia & Ligas Elementais')">Metalurgia & Ligas Elementais</button>
+        </div>
+      </div>
+
+      <div id="encycloGrid" class="encyclo-grid">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </div>
+
+    <!-- Tab Equipe -->
+    <div id="tab-equipe" class="tab-content">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin-bottom: 24px;">
+        
+        <div class="kpi-card" style="border-color: #2ea043;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: #2ea043;">🛠️ Agente 1: Itens & Sistemas</h3>
+            <span class="status-tag status-done">GUIS, TELAS & 65 RECEITAS (RODADA 7)</span>
+          </div>
+          <p style="color: var(--text-muted); margin: 10px 0; font-size: 0.92rem;">
+            Responsável pelos blocos funcionais, comidas, selaria, armaduras, ferramentas, GUIs, menus e lógica Java NeoForge.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9d1d9;">
+            📁 <b>Memória:</b> <code>D:\Mine\MEMORIA_AGENTE_ITENS.md</code><br>
+            📦 <b>Progresso Atual:</b> 116 Itens/Blocos + 3 GUIs + 65 Receitas Concluídas (100.0%)<br>
+            🏆 <b>Status Final:</b> Rodadas 1 a 7 100% finalizadas! Telas e Menus interativos implementados para Forja de Ligas, Fornalha Culinária e Bancada de Selaria, integrados a blocos no mundo com texturas 256x256 customizadas e 65 receitas oficiais completas de smelting/crafting compatíveis com JEI/EMI em <code>wingsofthewild-1.0.0.jar</code>.
+          </div>
+        </div>
+
+        <div class="kpi-card" style="border-color: #ff5722;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: #ff5722;">🐉 Agente 2: Criaturas & 3D</h3>
+            <span class="status-tag status-done">ENTIDADE JAVA & GECKOLIB REGISTRADA NO JOGO</span>
+          </div>
+          <p style="color: var(--text-muted); margin: 10px 0; font-size: 0.92rem;">
+            Responsável pelos modelos 3D Blockbench, esqueleto GeckoLib, animações fluidas e modelo 3D do ovo.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9d1d9;">
+            📁 <b>Memória:</b> <code>D:\Mine\MEMORIA_AGENTE_CRIATURAS.md</code><br>
+            📂 <b>Arquivos Alvo:</b> <code>flamefang_{adult, Juvenil, hatchling, egg}_geckolib.bbmodel</code><br>
+            🎬 <b>Nova Suíte Completa de Animações (10 no Adulto, 8 no Juvenil, 8 no Filhote):</b>
+            <br>• <b>Voo Fluido e Potente (fly_flap):</b> Upstroke arqueado gracioso com asas dobrando suavemente contra o vento, downstroke vigoroso com abertura total de 284 unidades de envergadura, oscilação corporal em Y/Z com empuxo aerodinâmico, 4 patas digitígradas recolhidas sob o ventre e cauda de 7 estágios ondulando em chicote senoidal contínuo.
+            <br>• <b>Planeio Majestoso (glide):</b> Asas estendidas flutuando em correntes térmicas com diedro positivo suave, micro-oscilações de alta velocidade nas pontas e cauda atuando como leme.
+            <br>• <b>Alimentação Voraz (eating):</b> Cabeça e pescoço curvam-se até o solo, 3 mordidas ritmadas com mandíbula estalando e engolir com contração muscular.
+            <br>• <b>Sono Profundo Aninhado (sleep):</b> Deitado no ninho (Y=-22), patas dobradas, asas coladas ao dorso, cauda abraçando o flanco e cabeça aninhada com respiração lenta de 6 segundos.
+            <br>• <b>Despertar e Alerta (wake_up):</b> Abre os olhos, bocejo escancarando a mandíbula a 62°, espreguiçada com patas dianteiras no solo, levanta e postura alerta a 88 unidades de altura.
+            <br>• <b>Rugido Titânico de Intimidação (roar):</b> Estufamento do peitoral de 60 unidades, abertura de intimidação das asas de 284 unidades, pescoço erguido e mandíbula aberta a 65° com tremor sonoro.
+            <br>• <b>Invocação no Jogo (/summon wingsofthewild:flamefang):</b> Entidade Java registrada em <code>ModEntities.java</code>, classe <code>FlamefangEntity.java</code> com GeoEntity, atributos épicos (120 HP, 12 Dano, 8 Armadura, 0.6 Voo), modelo <code>FlamefangModel.java</code>, renderizador <code>FlamefangRenderer.java</code> e registro no mod principal <code>WingsOfTheWild.java</code>. Compilado e pronto no JAR!
+          </div>
+        </div>
+
+        <div class="kpi-card" style="border-color: #a371f7;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: #a371f7;">🎨 Agente 3: Artista Pixel & 2D (Nano Banana)</h3>
+            <span class="status-tag status-done">127 TEXTURAS & GUIs CONCLUÍDAS</span>
+          </div>
+          <p style="color: var(--text-muted); margin: 10px 0; font-size: 0.92rem;">
+            Responsável pelo visual 2D dos itens que aparecem no inventário, blocos funcionais, interfaces de usuário (GUIs 256x256), texturas de armaduras corporais humanoides (EquipmentAsset 64x32) e refinamento pixel-art.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9d1d9;">
+            📁 <b>Memória:</b> <code>D:\Mine\MEMORIA_AGENTE_ARTE.md</code><br>
+            📦 <b>Total Concluído:</b> 127 Ativos (80 v1.0 + 39 Metalurgia + 4 GUIs 256x256 + 2 Texturas Humanoid Armor 64x32 + 2 Correções de Bloco/Item)<br>
+            🔥 <b>Novidades:</b> Armadura de Flamefang no corpo do jogador renderizada perfeitamente (EquipmentAsset 64x32), lingote Frostburn sólido e eliminação de frestas no Braseiro de Incubação!
+          </div>
+        </div>
+
+
+        <div class="kpi-card" style="border-color: #58a6ff;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: #58a6ff;">🛡️ Agente 4: Auditor de Qualidade & Inspetor Técnico</h3>
+            <span class="status-tag status-done">100% CERTIFICADO (116/116)</span>
+          </div>
+          <p style="color: var(--text-muted); margin: 10px 0; font-size: 0.92rem;">
+            Responsável pela auditoria estrita, validação de sintaxe JSON, definições de itens (MC 26.3), integridade de texturas PNG, localização I18N, aba criativa e empacotamento no JAR.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9d1d9;">
+            📁 <b>Memória:</b> <code>D:\Mine\MEMORIA_AGENTE_AUDITORIA.md</code><br>
+            🔍 <b>Script Validador:</b> <code>D:\Mine\audit_validator.py</code><br>
+            📦 <b>Certificação Técnica:</b> 116 / 116 Itens e Blocos Aprovados em 7 Dimensões (Taxa de Sucesso: 100.0%)<br>
+            ⚙️ <b>Compilação NeoForge:</b> <code>./gradlew build</code> BUILD SUCCESSFUL (Jar de 308.075 bytes com 478 arquivos).
+          </div>
+        </div>
+        <div class="kpi-card" style="border-color: #ff9800;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="color: #ff9800;">🏛️ Agente 5: Arquiteto 3D de Blocos & Estações de Trabalho</h3>
+            <span class="status-tag status-done">7 WORKSTATIONS 100% MODELADAS (3D)</span>
+          </div>
+          <p style="color: var(--text-muted); margin: 10px 0; font-size: 0.92rem;">
+            Responsável pelos modelos cúbicos 3D imersivos, arquivos Blockbench (.bbmodel), modelos JSON de bloco/item e mapeamento UV das estações de trabalho e blocos interativos.
+          </p>
+          <div style="font-size: 0.85rem; color: #c9d1d9;">
+            📁 <b>Memória:</b> <code>D:\Mine\MEMORIA_AGENTE_ESTACOES.md</code><br>
+            📐 <b>Modelos Blockbench:</b> <code>D:\Mine\modelslocks\*.bbmodel</code> (7 arquivos com texturas base64 embutidas)<br>
+            📦 <b>Modelos JSON:</b> <code>src/main/resources/assets/wingsofthewild/models/block/*.json</code><br>
+            🏛️ <b>Estações Entregues:</b>
+            <br>• <b>dragon_nest:</b> 28 elementos 3D, diâmetro externo 26x26, leito côncavo rebaixado em palha chamuscada para acomodar o ovo de Flamefang, 8 pedras basálticas de ancoragem e galhos entrelaçados.
+            <br>• <b>draconic_foundry:</b> 24 elementos 3D, cadinho refratário superior com bacia oca de liga fundida, calha lateral saliente de vazamento de metal líquido, fornalha com abertura em arco e brasas ardentes.
+            <br>• <b>draconic_hearth:</b> 20 elementos 3D, compartimento inferior de cinzas com puxador, grelha com caldeirão volumétrico suspenso e chaminé rústica com respiradouros.
+            <br>• <b>tack_workbench:</b> 22 elementos 3D, pernas chanfradas de carvalho escuro, tampo de couro cru esticado, gaveta funcional com puxador de osso, ferramentas de entalhe penduradas e carretel lateral de tendões.
+            <br>• <b>incubation_brazier:</b> 19 elementos 3D, pedestal e coluna esculpida em ardósia, taça com magma perpétuo e 4 garras de ferro mantendo o fogo concentrado.
+            <br>• <b>draconic_anvil:</b> 17 elementos 3D, bigorna maciça de obsidiana e magma com runas incandescentes entalhadas, chifres frontais curvos de dragão e talão reforçado.
+            <br>• <b>dragon_perch:</b> 16 elementos 3D, mastro de madeira resistente com reforços e cintas de ferro, trave transversal chanfrada de 26 unidades com ranhuras de garra e ponteiras com olhais.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- Tab Auditoria & QA -->
+    <div id="tab-auditoria" class="tab-content">
+      <div style="background: linear-gradient(135deg, rgba(88,166,255,0.12) 0%, rgba(22,26,34,0.8) 100%); border: 1px solid rgba(88,166,255,0.3); border-radius: 14px; padding: 22px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="color: #fff; font-size: 1.45rem; display: flex; align-items: center; gap: 10px;">
+              🛡️ Auditoria Técnica & Certificação de Qualidade (QA Pass)
+            </h2>
+            <p style="color: var(--text-muted); margin-top: 4px;">
+              Inspeção técnica automatizada de todos os 116 itens e blocos do mod <b>Wings of the Wild</b> (incluindo o novo sistema de definições <code>assets/wingsofthewild/items/</code> do Minecraft 26.3).
+            </p>
+          </div>
+          <div>
+            <span class="badge green" style="font-size: 0.95rem; padding: 6px 14px;">✅ 100% CONFORME (116 / 116 ITENS & BLOCOS)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- QA KPI Cards -->
+      <div class="kpi-grid" style="margin-bottom: 24px;">
+        <div class="kpi-card" style="border-color: #2ea043;">
+          <div class="kpi-title">Itens Auditados & Aprovados</div>
+          <div class="kpi-value" style="color: #3fb950;">116 / 116</div>
+          <div class="kpi-sub">100.0% de Conformidade Técnica</div>
+        </div>
+        <div class="kpi-card" style="border-color: #58a6ff;">
+          <div class="kpi-title">Modelos & Definições JSON</div>
+          <div class="kpi-value" style="color: #58a6ff;">286 Arquivos</div>
+          <div class="kpi-sub">27 Blockstates + 27 Blocos + 116 Itens + 116 Defs</div>
+        </div>
+        <div class="kpi-card" style="border-color: #a371f7;">
+          <div class="kpi-title">Texturas 16x16 PNG RGBA</div>
+          <div class="kpi-value" style="color: #a371f7;">145+ Válidas</div>
+          <div class="kpi-sub">Testadas via Pillow (Zero Corrupção)</div>
+        </div>
+        <div class="kpi-card" style="border-color: #ff9800;">
+          <div class="kpi-title">Compilação NeoForge</div>
+          <div class="kpi-value" style="color: #ff9800;">BUILD PASS</div>
+          <div class="kpi-sub">308 KB JAR / 478 Arquivos Empacotados</div>
+        </div>
+      </div>
+
+      <!-- Tabela dos 7 Critérios Auditados -->
+      <div class="kpi-card" style="margin-bottom: 24px;">
+        <h3 style="color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+          📋 Matriz das 7 Dimensões de Qualidade Inspecionadas
+        </h3>
+        <table class="item-table" style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-color); text-align: left;">
+              <th style="padding: 10px; color: var(--text-muted);">Dimensão Auditada</th>
+              <th style="padding: 10px; color: var(--text-muted);">Escopo Avaliado</th>
+              <th style="padding: 10px; color: var(--text-muted);">Critérios de Rigor</th>
+              <th style="padding: 10px; color: var(--text-muted);">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #1f2532;">
+              <td style="padding: 12px 10px; font-weight: 600; color: #fff;">1. Registro Java NeoForge</td>
+              <td style="padding: 12px 10px;"><code>ModBlocks.java</code> & <code>ModItems.java</code></td>
+              <td style="padding: 12px 10px; color: var(--text-muted);">IDs únicos, DeferredRegister, food properties, armor/tool materials, dureza e luz.</td>
+              <td style="padding: 12px 10px;"><span class="badge green">116 / 116 Aprovados (100%)</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #1f2532;">
+              <td style="padding: 12px 10px; font-weight: 600; color: #fff;">2. Sintaxe & Modelos JSON</td>
+              <td style="padding: 12px 10px;"><code>blockstates/</code>, <code>models/block/</code>, <code>models/item/</code></td>
+              <td style="padding: 12px 10px; color: var(--text-muted);">JSON válido, referências a parents válidos (cube, cube_all, generated, handheld).</td>
+              <td style="padding: 12px 10px;"><span class="badge green">170 / 170 Aprovados (100%)</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #1f2532;">
+              <td style="padding: 12px 10px; font-weight: 600; color: #fff;">3. Definições de Item JSON (MC 26.3)</td>
+              <td style="padding: 12px 10px;"><code>assets/wingsofthewild/items/</code></td>
+              <td style="padding: 12px 10px; color: var(--text-muted);">Mapeamento <code>minecraft:model</code> para o modelo de item correspondente (corrige texturas no inventário).</td>
+              <td style="padding: 12px 10px;"><span class="badge green">116 / 116 Aprovados (100%)</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #1f2532;">
+              <td style="padding: 12px 10px; font-weight: 600; color: #fff;">4. Texturas 2D PNG</td>
+              <td style="padding: 12px 10px;"><code>textures/block/</code>, <code>textures/item/</code></td>
+              <td style="padding: 12px 10px; color: var(--text-muted);">Validadas via Pillow: formato PNG autêntico, 16x16 pixels, canal alfa RGBA sem perdas.</td>
+              <td style="padding: 12px 10px;"><span class="badge green">145+ Texturas Aprovadas</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #1f2532;">
+              <td style="padding: 12px 10px; font-weight: 600; color: #fff;">5. Localização Bilíngue (I18N)</td>
+              <td style="padding: 12px 10px;"><code>lang/en_us.json</code> & <code>lang/pt_br.json</code></td>
+              <td style="padding: 12px 10px; color: var(--text-muted);">Chaves <code>block.*</code> e <code>item.*</code> completas, sem strings vazias ou desbalanceadas.</td>
+              <td style="padding: 12px 10px;"><span class="badge green">232 / 232 Chaves Aprovadas</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #1f2532;">
+              <td style="padding: 12px 10px; font-weight: 600; color: #fff;">6. Aba Criativa Oficial</td>
+              <td style="padding: 12px 10px;"><code>ModCreativeTabs.java</code></td>
+              <td style="padding: 12px 10px; color: var(--text-muted);">Chamada explícita <code>output.accept(...)</code> para todos os itens e blocos do mod.</td>
+              <td style="padding: 12px 10px;"><span class="badge green">116 / 116 Aprovados (100%)</span></td>
+            </tr>
+            <tr>
+              <td style="padding: 12px 10px; font-weight: 600; color: #fff;">7. Empacotamento JAR</td>
+              <td style="padding: 12px 10px;"><code>wingsofthewild-1.0.0.jar</code></td>
+              <td style="padding: 12px 10px; color: var(--text-muted);">Inspeção física do arquivo ZIP: 478 arquivos compactados incluindo classes, assets, items e lang.</td>
+              <td style="padding: 12px 10px;"><span class="badge green">478 Arquivos Integrados</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Parecer Técnico Oficial -->
+      <div style="background: #11141a; border: 1px solid #2ea043; border-radius: 12px; padding: 20px;">
+        <h4 style="color: #3fb950; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+          🏆 Parecer Técnico Conclusivo do Agente Auditor
+        </h4>
+        <p style="color: #c9d1d9; font-size: 0.95rem; line-height: 1.6;">
+          Todos os 116 itens e blocos do mod <b>Wings of the Wild</b> (incluindo o novo sistema de definição em <code>assets/wingsofthewild/items/</code> para correção de texturas no inventário do Minecraft 26.3 NeoForge) cumprem com 100% de rigor técnico as normas da engine. O mod compila limpo sem advertências e sem texturas roxas/pretas no inventário.
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 10px;">
+          📄 Relatório completo detalhado disponível em: <code>D:\Mine\MEMORIA_AGENTE_AUDITORIA.md</code> | Scripts: <code>D:\Mine\audit_validator.py</code> e <code>D:\Mine\audit_item_definitions.py</code>
+        </p>
+      </div>
+    </div>
+
+    <!-- Tab Galeria 2D -->
+    <div id="tab-galeria" class="tab-content">
+      <div style="margin-bottom: 24px;">
+        <h2>🎨 Conceitos Visuais de Itens & Ovo (Nano Banana)</h2>
+        <p style="color: var(--text-muted);">Diretrizes de arte oficial para sincronia perfeita entre os ícones de inventário 2D e modelos 3D.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 36px;">
+        
+        <div class="kpi-card" style="text-align: center;">
+          <img src="assets_art/flamefang_egg_concept.jpg" style="width: 100%; max-width: 240px; border-radius: 12px; border: 2px solid #ff5722; margin-bottom: 12px;" alt="Ovo de Flamefang">
+          <h4 style="color: #ff9800;">🥚 Ovo de Flamefang</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Casca de obsidiana com fendas de lava incandescente. Base para o modelo 3D e ícone de inventário.
+          </p>
+        </div>
+
+        <div class="kpi-card" style="text-align: center;">
+          <img src="assets_art/dragon_saddle_concept_1791282963558.jpg" style="width: 100%; max-width: 240px; border-radius: 12px; border: 2px solid #ff9800; margin-bottom: 12px;" alt="Sela Rústica">
+          <h4 style="color: #ff9800;">🏇 Sela Dracônica Rústica</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Couro dracônico curtido, costuras reforçadas e fivelas de ferro para montaria estável.
+          </p>
+        </div>
+
+        <div class="kpi-card" style="text-align: center;">
+          <img src="assets_art/flame_saddle_concept_1791283000835.jpg" style="width: 100%; max-width: 240px; border-radius: 12px; border: 2px solid #ff5722; margin-bottom: 12px;" alt="Sela Reforçada de Brasas">
+          <h4 style="color: #ff5722;">🔥 Sela Reforçada de Brasas</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Estribos forjados em lingote de brasa e acabamento em placas vulcânicas para alta velocidade.
+          </p>
+        </div>
+
+        <div class="kpi-card" style="text-align: center;">
+          <img src="assets_art/dragon_armor_concept_1791283019908.jpg" style="width: 100%; max-width: 240px; border-radius: 12px; border: 2px solid #a371f7; margin-bottom: 12px;" alt="Armadura de Escamas">
+          <h4 style="color: #a371f7;">🛡️ Armadura de Escamas de Flamefang</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Barda dracônica peitoral de obsidiana com bordas douradas e veios de fogo vivo.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Vitrine Pixel Art 16x16 Oficial (Nano Banana) -->
+      <div style="background: linear-gradient(135deg, rgba(163,113,247,0.12) 0%, rgba(22,26,34,0.8) 100%); border: 1px solid rgba(163,113,247,0.3); border-radius: 14px; padding: 22px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="color: #fff; font-size: 1.45rem; display: flex; align-items: center; gap: 10px;">
+              💎 Vitrine Oficial de Pixel Art 16x16 — Entregas Finais do Agente 3
+            </h2>
+            <p style="color: var(--text-muted); margin-top: 4px;">
+              Todas as 22 novas texturas em alta resolução pixelada (RGBA sem artefatos), produzidas com silhuetas marcantes e paleta dracônica rústica.
+            </p>
+          </div>
+          <div>
+            <span class="badge" style="background: rgba(163,113,247,0.2); border-color: #a371f7; color: #d2a8ff; font-size: 0.95rem; padding: 6px 14px;">🎨 100% dos Itens Cobriam a Versão 1.0</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; margin-bottom: 28px;">
+        
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/flamefang_helmet.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Elmo de Flamefang">
+          <h5 style="color: #fff; font-size: 0.9rem;">Elmo de Flamefang</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#59 flamefang_helmet</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/flamefang_chestplate.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Peitoral de Flamefang">
+          <h5 style="color: #fff; font-size: 0.9rem;">Peitoral Flamefang</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#60 chestplate</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/flamefang_leggings.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Calças de Flamefang">
+          <h5 style="color: #fff; font-size: 0.9rem;">Calças Flamefang</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#61 leggings</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/flamefang_boots.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Botas de Flamefang">
+          <h5 style="color: #fff; font-size: 0.9rem;">Botas Flamefang</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#62 boots</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/dragon_handler_gloves.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Luvas de Domador">
+          <h5 style="color: #fff; font-size: 0.9rem;">Luvas de Domador</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#63 handler_gloves</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/dragon_riders_cloak.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Capa do Cavaleiro">
+          <h5 style="color: #fff; font-size: 0.9rem;">Capa do Cavaleiro</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#64 riders_cloak</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/dragon_horn.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Berrante de Batalha">
+          <h5 style="color: #fff; font-size: 0.9rem;">Berrante de Batalha</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#65 dragon_horn</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/reinforced_reins.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Rédeas de Tendão">
+          <h5 style="color: #fff; font-size: 0.9rem;">Rédeas Reforçadas</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#66 reinforced_reins</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/tail_flame_guard.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Protetor de Cauda">
+          <h5 style="color: #fff; font-size: 0.9rem;">Protetor de Cauda</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#67 tail_flame_guard</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/flight_map_case.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Estojo de Voo">
+          <h5 style="color: #fff; font-size: 0.9rem;">Estojo de Cartografia</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#68 flight_map_case</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/dragon_beacon_fire.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Sinalizador">
+          <h5 style="color: #fff; font-size: 0.9rem;">Fogo de Sinalização</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#69 beacon_fire</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/saddle_chest_upgrade.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Expansão de Alforje">
+          <h5 style="color: #fff; font-size: 0.9rem;">Expansão de Alforje</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#70 chest_upgrade</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/fire_crystal_candy.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Doce de Cristal">
+          <h5 style="color: #fff; font-size: 0.9rem;">Doce de Cristal</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#71 crystal_candy</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/smoke_infused_broth.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Caldo Defumado">
+          <h5 style="color: #fff; font-size: 0.9rem;">Caldo Defumado</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#72 infused_broth</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/molten_berry_tart.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Torta Vulcânica">
+          <h5 style="color: #fff; font-size: 0.9rem;">Torta de Bagas</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#73 berry_tart</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/bonding_honeycomb.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Favo de Mel">
+          <h5 style="color: #fff; font-size: 0.9rem;">Favo de Mel Dracônico</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#74 honeycomb</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/vitality_essence.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Essência de Vitalidade">
+          <h5 style="color: #fff; font-size: 0.9rem;">Essência de Vitalidade</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#75 vitality_essence</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/flamefang_shed_tooth.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Dente Descartado">
+          <h5 style="color: #fff; font-size: 0.9rem;">Dente Descartado</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#76 shed_tooth</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/refined_ember_core.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Núcleo Refinado">
+          <h5 style="color: #fff; font-size: 0.9rem;">Núcleo Purificado</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#77 ember_core</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/charred_bone_needle.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Agulha de Osso">
+          <h5 style="color: #fff; font-size: 0.9rem;">Agulha de Osso</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#78 bone_needle</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/hardened_scale_plate.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Placa de Escamas">
+          <h5 style="color: #fff; font-size: 0.9rem;">Placa Prensada</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#79 scale_plate</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/ancient_dragon_relic.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Relíquia Antiga">
+          <h5 style="color: #fff; font-size: 0.9rem;">Relíquia Antiga</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">#80 ancient_relic</code>
+        </div>
+
+      </div>
+
+      <!-- Vitrine Metalurgia & Ligas Elementais (Tinkers' Style - 39 Texturas) -->
+      <div style="background: linear-gradient(135deg, rgba(255,87,34,0.15) 0%, rgba(22,26,34,0.9) 100%); border: 1px solid rgba(255,87,34,0.35); border-radius: 14px; padding: 22px; margin-bottom: 24px; margin-top: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="color: #fff; font-size: 1.45rem; display: flex; align-items: center; gap: 10px;">
+              🔥 Sistema de Metalurgia & Ligas Elementais (Tinkers' Style)
+            </h2>
+            <p style="color: var(--text-muted); margin-top: 4px;">
+              39 novas texturas 16x16 RGBA para a Forja Dracônica de Fusão, 10 minérios elementais com pedras personalizadas, formas brutas, lingotes puros e ligas especiais bipolares.
+            </p>
+          </div>
+          <div>
+            <span class="badge hot" style="font-size: 0.95rem; padding: 6px 14px;">⚡ 39 / 39 Texturas Ativas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. Forja Dracônica (4 Blocos) -->
+      <h3 style="color: #ff9800; margin-bottom: 14px; font-size: 1.15rem;">🏛️ Forja Dracônica de Fusão (Bloco Multidirecional)</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px;">
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/block/draconic_foundry_front.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Frente da Forja">
+          <h5 style="color: #fff; font-size: 0.9rem;">Frente da Forja</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">draconic_foundry_front</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/block/draconic_foundry_side.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Lateral da Forja">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lateral Reforçada</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">draconic_foundry_side</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/block/draconic_foundry_top.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Topo do Cadinho">
+          <h5 style="color: #fff; font-size: 0.9rem;">Topo com Cadinho</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">draconic_foundry_top</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/block/draconic_foundry_bottom.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Base Basáltica">
+          <h5 style="color: #fff; font-size: 0.9rem;">Base de Basalto</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">draconic_foundry_bottom</code>
+        </div>
+      </div>
+
+      <!-- 2. Minérios Elementais (10 Tiers) -->
+      <h3 style="color: #58a6ff; margin-bottom: 14px; font-size: 1.15rem;">⛏️ 10 Minérios Elementais em Bloco & Formas Brutas (Tiers 1 a 10)</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px;">
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/terraslate_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_terraslate.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Terraslate (T1)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">terraslate_ore / raw</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/abyssal_tide_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_abyssal_tide.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Abyssal Tide (T2)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">abyssal_tide_ore / raw</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/tempest_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_tempest.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Tempest (T3)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">tempest_ore / raw</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/frostbite_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_frostbite.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Frostbite (T4)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">frostbite_ore / raw</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/miasma_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_miasma.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Miasma (T5)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">miasma_ore / raw</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/fulgurite_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_fulgurite.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Fulgurite (T6)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">fulgurite_ore / raw</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/solarium_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_solarium.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Solarium (T7)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">solarium_ore / raw</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/void_shadow_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_void_shadow.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Void Shadow (T8)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">void_shadow_ore / raw</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/astralite_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_astralite.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Astralite (T9)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">astralite_ore / raw</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 8px;">
+            <img src="src/main/resources/assets/wingsofthewild/textures/block/chronium_ore.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bloco">
+            <img src="src/main/resources/assets/wingsofthewild/textures/item/raw_chronium.png" style="width: 48px; height: 48px; image-rendering: pixelated;" alt="Bruto">
+          </div>
+          <h5 style="color: #fff; font-size: 0.9rem;">Chronium (T10)</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">chronium_ore / raw</code>
+        </div>
+      </div>
+
+      <!-- 3. Lingotes Elementais & Ligas Especiais -->
+      <h3 style="color: #2ea043; margin-bottom: 14px; font-size: 1.15rem;">✨ 10 Lingotes Elementais Puros & 5 Ligas Especiais Bipolares</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; margin-bottom: 28px;">
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/terraslate_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Terraslate">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Terraslate</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">terraslate_ingot</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/abyssal_tide_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Abyssal Tide">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Abyssal Tide</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">abyssal_tide_ingot</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/tempest_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Tempest">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Tempest</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">tempest_ingot</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/frostbite_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Frostbite">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Frostbite</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">frostbite_ingot</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/miasma_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Miasma">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Miasma</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">miasma_ingot</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/fulgurite_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Fulgurite">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Fulgurite</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">fulgurite_ingot</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/solarium_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Solarium">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Solarium</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">solarium_ingot</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/void_shadow_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Void Shadow">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Void Shadow</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">void_shadow_ingot</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/astralite_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Astralite">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Astralite</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">astralite_ingot</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/chronium_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Chronium">
+          <h5 style="color: #fff; font-size: 0.9rem;">Lingote Chronium</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">chronium_ingot</code>
+        </div>
+
+        <!-- 5 Ligas Especiais com destaque visual de borda -->
+        <div class="kpi-card" style="text-align: center; padding: 14px; border-color: #ff5722;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/frostburn_alloy_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Frostburn Alloy">
+          <h5 style="color: #ff9800; font-size: 0.9rem;">🔥❄️ Frostburn Alloy</h5>
+          <code style="font-size: 0.72rem; color: #ff5722;">frostburn_alloy</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px; border-color: #ff9800;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/plasma_alloy_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Plasma Alloy">
+          <h5 style="color: #ffeb3b; font-size: 0.9rem;">⚡ Plasma Alloy</h5>
+          <code style="font-size: 0.72rem; color: #ff9800;">plasma_alloy</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px; border-color: #8b949e;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/volcanic_titanium_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Volcanic Titanium">
+          <h5 style="color: #c9d1d9; font-size: 0.9rem;">🛡️ Titânio Vulcânico</h5>
+          <code style="font-size: 0.72rem; color: #ff5722;">volcanic_titanium</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px; border-color: #00bcd4;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/scalding_alloy_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Scalding Alloy">
+          <h5 style="color: #80deea; font-size: 0.9rem;">🌊💨 Scalding Alloy</h5>
+          <code style="font-size: 0.72rem; color: #00bcd4;">scalding_alloy</code>
+        </div>
+        <div class="kpi-card" style="text-align: center; padding: 14px; border-color: #a371f7;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/shadowflame_alloy_ingot.png" style="width: 56px; height: 56px; image-rendering: pixelated; margin-bottom: 8px;" alt="Shadowflame Alloy">
+          <h5 style="color: #d2a8ff; font-size: 0.9rem;">🔮 Shadowflame Alloy</h5>
+          <code style="font-size: 0.72rem; color: #a371f7;">shadowflame_alloy</code>
+        </div>
+      </div>
+
+      <!-- Vitrine de Janelas de Interface (GUIs 256x256) -->
+      <div style="background: linear-gradient(135deg, rgba(88,166,255,0.15) 0%, rgba(22,26,34,0.9) 100%); border: 1px solid rgba(88,166,255,0.35); border-radius: 14px; padding: 22px; margin-bottom: 24px; margin-top: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="color: #fff; font-size: 1.45rem; display: flex; align-items: center; gap: 10px;">
+              🖼️ Janelas de Interface Oficiais (GUIs 256x256 — Padrão NeoForge Container)
+            </h2>
+            <p style="color: var(--text-muted); margin-top: 4px;">
+              Telas de contêiner autênticas desenhadas em 256x256 pixels com molduras temáticas (basalto, cinzas, couro e obsidiana), grade 9x3 de inventário, hotbar 9x1 e suporte a spritesheets animados.
+            </p>
+          </div>
+          <div>
+            <span class="badge" style="background: rgba(88,166,255,0.2); border-color: #58a6ff; color: #79c0ff; font-size: 0.95rem; padding: 6px 14px;">⚡ 4 / 4 GUIs Concluídas</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 28px;">
+        
+        <div class="kpi-card" style="text-align: center; padding: 18px; border-color: #ff5722;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/gui/container/draconic_foundry.png" style="width: 100%; max-width: 256px; image-rendering: pixelated; border: 2px solid #332222; border-radius: 8px; margin-bottom: 12px;" alt="GUI Forja Dracônica">
+          <h4 style="color: #ff5722;">🌋 Forja Dracônica de Fusão</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Moldura de basalto escuro com rebites de bronze. 2 entradas para minérios, combustível inferior, indicador de fusão de magma e saída ampliada (26x26).
+          </p>
+          <code style="font-size: 0.72rem; color: #ff9800; display: block; margin-top: 8px;">gui/container/draconic_foundry.png</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 18px; border-color: #ff9800;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/gui/container/draconic_hearth.png" style="width: 100%; max-width: 256px; image-rendering: pixelated; border: 2px solid #3d2b1f; border-radius: 8px; margin-bottom: 12px;" alt="GUI Fornalha Culinária">
+          <h4 style="color: #ff9800;">🍲 Fornalha Culinária Dracônica</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Pedra refratária de cinzas. 3 slots de cocção (carne, vegetal, cinzas/temperos), chama de calor ativa, seta culinária e saída de ensopados.
+          </p>
+          <code style="font-size: 0.72rem; color: #ff9800; display: block; margin-top: 8px;">gui/container/draconic_hearth.png</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 18px; border-color: #d2a8ff;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/gui/container/tack_workbench.png" style="width: 100%; max-width: 256px; image-rendering: pixelated; border: 2px solid #3d2516; border-radius: 8px; margin-bottom: 12px;" alt="GUI Bancada de Selas">
+          <h4 style="color: #d2a8ff;">🏇 Bancada de Selaria Dracônica</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Couro conhaque nobre com pesponto artesanal duplo e cantoneiras de latão. 4 slots de alfaiataria (base, escamas, tendão, alforje) e saída de arreios.
+          </p>
+          <code style="font-size: 0.72rem; color: #ff9800; display: block; margin-top: 8px;">gui/container/tack_workbench.png</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 18px; border-color: #58a6ff;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/gui/container/dragon_inventory.png" style="width: 100%; max-width: 256px; image-rendering: pixelated; border: 2px solid #252838; border-radius: 8px; margin-bottom: 12px;" alt="GUI Inventário do Dragão">
+          <h4 style="color: #58a6ff;">🐉 Inventário & Montaria do Dragão</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Slots com silhuetas de Sela, Armadura Barda e Cabresto. Viewport central para render 3D do Flamefang e grade de 15 slots de alforjes acoplados.
+          </p>
+          <code style="font-size: 0.72rem; color: #ff9800; display: block; margin-top: 8px;">gui/container/dragon_inventory.png</code>
+        </div>
+
+      </div>
+
+      <!-- Vitrine de Armadura Humanoide 3D & Refinamentos Visuais Pós-Teste -->
+      <div style="background: linear-gradient(135deg, rgba(255,107,0,0.15) 0%, rgba(22,26,34,0.9) 100%); border: 1px solid rgba(255,107,0,0.35); border-radius: 14px; padding: 22px; margin-bottom: 24px; margin-top: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="color: #fff; font-size: 1.45rem; display: flex; align-items: center; gap: 10px;">
+              🛡️ Armadura Dracônica no Jogador & Correções Visuais (EquipmentAsset MC 26.3)
+            </h2>
+            <p style="color: var(--text-muted); margin-top: 4px;">
+              Texturas de armadura humana 64x32 mapeadas no novo sistema de camadas de equipamento do Minecraft 26.3, além do lingote Frostburn sólido e eliminação de frestas no Braseiro de Incubação.
+            </p>
+          </div>
+          <div>
+            <span class="badge" style="background: rgba(255,107,0,0.2); border-color: #ff6b00; color: #ffaa5e; font-size: 0.95rem; padding: 6px 14px;">🔥 100% Validado in-game</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 28px;">
+        
+        <div class="kpi-card" style="text-align: center; padding: 18px; border-color: #ff6b00;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/entity/equipment/humanoid/flamefang.png" style="width: 100%; max-width: 256px; image-rendering: pixelated; border: 2px solid #4a2608; border-radius: 8px; margin-bottom: 12px; background: rgba(0,0,0,0.4);" alt="Armadura Flamefang Humanoid">
+          <h4 style="color: #ff6b00;">👑 Armadura de Flamefang (Camada 1)</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Mapeamento 64x32 para Elmo com chifres de dragão, Peitoral com placas sobrepostas de escamas de fogo e Botas reforçadas com garras no calcanhar.
+          </p>
+          <code style="font-size: 0.72rem; color: #ff9800; display: block; margin-top: 8px;">entity/equipment/humanoid/flamefang.png</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 18px; border-color: #ff9800;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/entity/equipment/humanoid_leggings/flamefang.png" style="width: 100%; max-width: 256px; image-rendering: pixelated; border: 2px solid #4a2608; border-radius: 8px; margin-bottom: 12px; background: rgba(0,0,0,0.4);" alt="Calças Flamefang Leggings">
+          <h4 style="color: #ff9800;">👖 Calças de Flamefang (Camada 2)</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Mapeamento 64x32 para a cintura e pernas. Joelheiras reforçadas com lâminas de queratina e faixas de couro ignífugo articuladas.
+          </p>
+          <code style="font-size: 0.72rem; color: #ff9800; display: block; margin-top: 8px;">entity/equipment/humanoid_leggings/flamefang.png</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 18px; border-color: #00e5ff;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/item/frostburn_alloy_ingot.png" style="width: 64px; height: 64px; image-rendering: pixelated; margin: 0 auto 12px; display: block;" alt="Frostburn Alloy Ingot Sólido">
+          <h4 style="color: #00e5ff;">❄️🔥 Lingote Frostburn Sólido</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Redesenhado com 126 pixels 100% opacos sólidos (sem semitransparência que sumia no jogo). Borda de gelo ciano e núcleo incandescente vívido.
+          </p>
+          <code style="font-size: 0.72rem; color: #00e5ff; display: block; margin-top: 8px;">item/frostburn_alloy_ingot.png</code>
+        </div>
+
+        <div class="kpi-card" style="text-align: center; padding: 18px; border-color: #8bc34a;">
+          <img src="src/main/resources/assets/wingsofthewild/textures/block/incubation_brazier.png" style="width: 64px; height: 64px; image-rendering: pixelated; margin: 0 auto 12px; display: block;" alt="Braseiro de Incubação Selado">
+          <h4 style="color: #8bc34a;">🪨 Braseiro de Incubação (Chão Selado)</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">
+            Linha de base (y=15) preenchida com ardósia sólida em <code>incubation_brazier.png</code> e <code>side</code>. Fresta transparente com o solo eliminada!
+          </p>
+          <code style="font-size: 0.72rem; color: #8bc34a; display: block; margin-top: 8px;">block/incubation_brazier.png</code>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tab 1: Timeline -->
+    <div id="tab-timeline" class="tab-content">
+      <div class="timeline">
+        
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>1. Planejamento no Papel (GDD) Completo</h3>
+            <p>Definição das mecânicas de voo (Isle of Berk), quests térmicas de ovo, personalidade do Flamefang e Fornalhas personalizadas. Documentos: <code>GDD.md</code>, <code>ITENS.md</code>, <code>IDEIAS.md</code>.</p>
+          </div>
+        </div>
+
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>2. Otimização de Armazenamento no Disco D:</h3>
+            <p>Migração das pastas <code>.minecraft</code>, <code>.tlauncher</code>, <code>.gradle</code> e <code>Mine</code> para o Disco D: com mais de 1.500 GB livres, usando junções transparentes no Windows.</p>
+          </div>
+        </div>
+
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>3. Detecção e Automação do Java 25 & NeoForge</h3>
+            <p>O teste no TLauncher baixou o OpenJDK 25 da Microsoft e o NeoForge 26.3.0.48-beta oficial direto para o seu computador. Nenhum instalador externo extra foi necessário!</p>
+          </div>
+        </div>
+
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>4. Plugin MCP do Blockbench Ativado</h3>
+            <p>Arquivo <code>D:\Mine\mcp.js</code> instalado com sucesso no Blockbench. O servidor local MCP está pronto para conectar a IA na modelagem 3D.</p>
+          </div>
+        </div>
+
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>5. Estrutura NeoForge 26.3 & Java 25 Configurada</h3>
+            <p>Template configurado com <code>mod_id=wingsofthewild</code>, conectado ao Microsoft OpenJDK 25 e apontado para a versão NeoForge <code>26.3.0.48-beta</code>.</p>
+          </div>
+        </div>
+
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>6. Primeiro Lote de Itens e Texturas Compilado</h3>
+            <p>7 Itens e Blocos criados com texturas 16x16 pixel-art e modelos JSON. O arquivo <code>wingsofthewild-1.0.0.jar</code> foi gerado com sucesso!</p>
+          </div>
+        </div>
+
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>7. Mod Instalado no seu TLauncher (Pronto para Abrir!)</h3>
+            <p>O mod já foi copiado para <code>D:\Minecraft\.minecraft\versions\Mod\mods</code>. Você já pode abrir o jogo pelo TLauncher para ver os itens na mão!</p>
+          </div>
+        </div>
+
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>8. Catálogo Base dos 80 Itens & Blocos Finalizado</h3>
+            <p>Todas as 5 rodadas de desenvolvimento concluídas pelo Agente 1 com 80 itens e blocos funcionais, armaduras, culinária e ferramentas.</p>
+          </div>
+        </div>
+
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>9. Expansão de Metalurgia & Ligas Elementais (Tinkers' Style) Entregue (116/116 Total)</h3>
+            <p>Adicionados Forja Dracônica, 10 Minérios em Bloco (Tier 1 a 10), 10 Minérios Brutos, 10 Lingotes Elementais, 5 Super Ligas Metálicas e 10 tiers de materiais em <code>ModToolMaterials.java</code>. Total de 116 itens e blocos compilados e prontos em <code>wingsofthewild-1.0.0.jar</code> no jogo!</p>
+          </div>
+        </div>
+
+        <div class="step-item done">
+          <div class="step-status-icon">✓</div>
+          <div class="step-details">
+            <h3>10. GUIs, Menus de Estações & 65 Receitas de Crafting/Smelting Integradas (JEI/EMI)</h3>
+            <p>Desenvolvidas as telas e menus de interface para a Forja de Ligas (<code>DraconicFoundryScreen</code>), Fornalha Culinária (<code>DraconicHearthScreen</code>) e Bancada de Selaria (<code>TackWorkbenchScreen</code>), com dados térmicos sincronizados e texturas 256x256 customizadas. Implementadas 65 receitas oficiais completas no formato Minecraft 26.3 cobrindo minérios elementais, super ligas, armaduras, ferramentas, selaria e estações de trabalho.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tab 2: Itens -->
+    <div id="tab-itens" class="tab-content">
+      <div class="filter-bar">
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome ou ID..." onkeyup="filterItems()">
+      </div>
+      <div class="table-container">
+        <table id="itemsTable">
+          <thead>
+            <tr>
+              <th style="width: 50px;">#</th>
+              <th>ID Interno</th>
+              <th>Nome em Português</th>
+              <th>Categoria</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="itemsBody">
+            <!-- Renderizado via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tab 3: Blockbench -->
+    <div id="tab-blockbench" class="tab-content">
+      <div class="instruction-card" style="margin-bottom: 20px; border-color: #ff5722;">
+        <h3 style="color: #ff5722;">🐉 Modelos Oficiais Reconstruídos (Prontos em D:\Mine\models\flamefang\)</h3>
+        <p>Os modelos antigos foram removidos. Restam exclusivamente os 4 modelos oficiais com suporte nativo ao GeckoLib:</p>
+        <br>
+        <ul style="margin-left: 20px; line-height: 2;">
+          <li><b>👑 <code>flamefang_adult_geckolib.bbmodel</code>:</b> <b>Dragão Adulto Colossal Harmônico & Suíte de 10 Animações:</b> 5.5 blocos de altura (88 unidades), 17.8 blocos de envergadura alar (284 unidades), 143 elementos anatômicos, 36 ossos, textura Ultra-HD 512x512 vulcânica sem xadrez. <b>10 Animações Blockbench & GeckoLib:</b> <code>idle</code> (postura nobre), <code>walk</code> (passo quadrúpede), <code>fly_flap</code> (bater de asas fluido cinematográfico com empuxo e patas recolhidas), <code>glide</code> (planeio termal com asas abertas), <code>eating</code> (alimentação com 3 mordidas ritmadas e engolir), <code>sleep</code> (sono aninhado no ninho com respiração profunda de 6.0s), <code>wake_up</code> (despertar com bocejo de 62° e espreguiçada), <code>roar</code> (rugido com peitoral de 60 unidades e envergadura de 284 unidades), <code>attack_bite</code> (mordida de combate) e <code>attack_fireball</code> (baforada devastadora).</li>
+          <li><b>⚡ <code>flamefang_Juvenil_geckolib.bbmodel</code>:</b> <b>Dragão Juvenil Atlético (Padrão Hexápode & Asas Amplas):</b> 2.5 blocos de altura, 150 unidades de envergadura (~9.4 blocos). <b>Anatomia Hexápode:</b> 4 patas completas plantadas no solo (Y=0) com ombros musculosos e garras predadoras (eliminando braços suspensos de T-Rex), peito atlético com quilha peitoral desenvolvida, asas aerodinâmicas amplas estendidas para trás no plano horizontal com membranas carmesins ao longo dos flancos (Isle of Berk), cauda orgânica articulada de 4 segmentos com leque de magma de 20 unidades de largura (sem cubos toscos), e textura HD 256x256 de obsidiana e magma ativo sem xadrez. 74 elementos, 29 ossos, 8 animações GeckoLib sincronizadas (idle, walk, fly_flap fluido, glide, eating, sleep, wake_up, roar).</li>
+          <li><b>🐣 <code>flamefang_hatchling_geckolib.bbmodel</code>:</b> <b>Filhote Chibi (Quadrúpede Fofo & Broto Orgânico de Fogo):</b> 1.0 bloco de altura. <b>Anatomia Quadrúpede Fofa:</b> 4 patinhas firmemente apoiadas no solo (Y=0), barriguinha roliça e peito cheinho de bebê aquecido, asinhas aerodinâmicas proporcionais estendidas para trás, cauda orgânica com broto arredondado de fogo em pétalas/gota (eliminando cubos toscos), olhos grandes dourados com brilho e pupila viva, e textura 128x128 detalhada de filhote. 21 elementos, 14 ossos, 8 animações GeckoLib sincronizadas (idle, walk, fly_flap fofo, glide, eating, sleep, wake_up, roar).</li>
+          <li><b>🥚 <code>flamefang_egg_geckolib.bbmodel</code>:</b> Modelo 3D do Ovo de Magma com relevo de obsidiana e veios de lava (com animação de pulsação e balanço de pré-eclosão).</li>
+        </ul>
+      </div>
+
+            <div class="instruction-card" style="margin-bottom: 20px; border-color: #ff9800;">
+        <h3 style="color: #ff9800;">🏛️ 9 Blocos & Estações de Trabalho Modeladas em 3D (Prontas em D:\Mine\models\blocks\)</h3>
+        <p>Modeladas pelo <b>Arquiteto 3D de Estações de Trabalho</b> em formato Blockbench nativo (<code>.bbmodel</code>) com texturas base64 embutidas e exportadas em JSON para Minecraft com elementos geométricos cúbicos avançados, iluminação e mapeamento UV milimétrico:</p>
+        <br>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
+          
+          <div class="kpi-card" style="background: #11141b; border: 1px solid #ff9800; padding: 14px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="src/main/resources/assets/wingsofthewild/textures/block/dragon_nest.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #ff9800;" alt="Ninho Dracônico">
+              <div>
+                <h4 style="color: #fff; font-size: 1.05rem;">1. Ninho Dracônico Artesanal</h4>
+                <code style="color: #ff9800; font-size: 0.75rem;">dragon_nest.bbmodel</code>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
+              <b>28 Elementos 3D:</b> Diâmetro externo expandido de 26x26 unidades, leito côncavo rebaixado forrado em palha chamuscada para aninhar o ovo de Flamefang, 8 pedras basálticas de ancoragem no solo e borda octogonal de galhos grossos e gravetos rústicos entrelaçados.
+            </p>
+          </div>
+
+          <div class="kpi-card" style="background: #11141b; border: 1px solid #ff5722; padding: 14px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="src/main/resources/assets/wingsofthewild/textures/block/draconic_foundry_front.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #ff5722;" alt="Forja Dracônica">
+              <div>
+                <h4 style="color: #fff; font-size: 1.05rem;">2. Forja de Ligas Dracônica</h4>
+                <code style="color: #ff5722; font-size: 0.75rem;">draconic_foundry.bbmodel</code>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
+              <b>24 Elementos 3D:</b> Cadinho refratário monumental no topo com bacia oca de retenção e poço de ligas em fusão, calha lateral saliente de vazamento de metal líquido, fornalha frontal com abertura em arco e brasas ardentes, sobre base escalonada de tijolos vulcânicos.
+            </p>
+          </div>
+
+          <div class="kpi-card" style="background: #11141b; border: 1px solid #e3b341; padding: 14px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="src/main/resources/assets/wingsofthewild/textures/block/draconic_hearth_front.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #e3b341;" alt="Fornalha Culinária">
+              <div>
+                <h4 style="color: #fff; font-size: 1.05rem;">3. Fornalha Culinária Dracônica</h4>
+                <code style="color: #e3b341; font-size: 0.75rem;">draconic_hearth.bbmodel</code>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
+              <b>20 Elementos 3D:</b> Compartimento inferior de cinzas com puxador, grelha com caldeirão volumétrico suspenso sobre leito de brasas ardentes, chaminé rústica posterior com 3 respiradouros para saída de vapor e cimalha chanfrada de proteção.
+            </p>
+          </div>
+
+          <div class="kpi-card" style="background: #11141b; border: 1px solid #2ea043; padding: 14px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="src/main/resources/assets/wingsofthewild/textures/block/tack_workbench_front.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #2ea043;" alt="Bancada de Selaria">
+              <div>
+                <h4 style="color: #fff; font-size: 1.05rem;">4. Bancada de Selaria Dracônica</h4>
+                <code style="color: #2ea043; font-size: 0.75rem;">tack_workbench.bbmodel</code>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
+              <b>22 Elementos 3D:</b> Estrutura robusta de carvalho escuro com pernas chanfradas e prateleira inferior, esteira de couro cru esticado, gaveta de marcenaria fina com puxador de osso, suporte frontal com ferramentas de entalhe e carretel lateral com tendão dracônico.
+            </p>
+          </div>
+
+          <div class="kpi-card" style="background: #11141b; border: 1px solid #58a6ff; padding: 14px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="src/main/resources/assets/wingsofthewild/textures/block/incubation_brazier_top.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #58a6ff;" alt="Braseiro de Incubação">
+              <div>
+                <h4 style="color: #fff; font-size: 1.05rem;">5. Braseiro de Incubação Térmica</h4>
+                <code style="color: #58a6ff; font-size: 0.75rem;">incubation_brazier.bbmodel</code>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
+              <b>19 Elementos 3D:</b> Pedestal e fuste central em ardósia esculpida, taça superior com bacia de magma eterno e núcleo de fogo concentrado até Y=17, envolto por 4 garras arqueadas de ferro forjado para direcionamento de calor radiante aos ninhos.
+            </p>
+          </div>
+
+          <div class="kpi-card" style="background: #11141b; border: 1px solid #a371f7; padding: 14px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="src/main/resources/assets/wingsofthewild/textures/block/draconic_anvil_top.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #a371f7;" alt="Bigorna Dracônica">
+              <div>
+                <h4 style="color: #fff; font-size: 1.05rem;">6. Bigorna Dracônica</h4>
+                <code style="color: #a371f7; font-size: 0.75rem;">draconic_anvil.bbmodel</code>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
+              <b>17 Elementos 3D:</b> Base maciça de obsidiana e cintura afunilada com magma ativo, runas mágicas incandescentes entalhadas nas laterais, mesa de choque rúnica plana, talão traseiro escalonado e chifres duplos curvos de dragão salientes na parte frontal.
+            </p>
+          </div>
+
+          <div class="kpi-card" style="background: #11141b; border: 1px solid #f0883e; padding: 14px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="src/main/resources/assets/wingsofthewild/textures/block/dragon_perch_side.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #f0883e;" alt="Poleiro Dracônico">
+              <div>
+                <h4 style="color: #fff; font-size: 1.05rem;">7. Poleiro Dracônico</h4>
+                <code style="color: #f0883e; font-size: 0.75rem;">dragon_perch.bbmodel</code>
+              </div>
+            </div>
+
+          <div class="kpi-card" style="background: #11141b; border: 1px solid #ff784e; padding: 14px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="src/main/resources/assets/wingsofthewild/textures/block/ember_lantern.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #ff784e;" alt="Lanterna de Brasas">
+              <div>
+                <h4 style="color: #fff; font-size: 1.05rem;">8. Lanterna de Brasas</h4>
+                <code style="color: #ff784e; font-size: 0.75rem;">ember_lantern.bbmodel</code>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
+              <b>18 Elementos 3D:</b> Base de metal chanfrada, 4 pilares de ferro nos cantos, 4 painéis de vidro translúcido, brasa ardendo no centro, cúpula de metal chanfrada em dois níveis e alça com argola de ferro forjado superior.
+            </p>
+          </div>
+
+          <div class="kpi-card" style="background: #11141b; border: 1px solid #ded7c5; padding: 14px; border-radius: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+              <img src="src/main/resources/assets/wingsofthewild/textures/block/flamefang_trophy_skull_front.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #ded7c5;" alt="Crânio de Troféu">
+              <div>
+                <h4 style="color: #fff; font-size: 1.05rem;">9. Crânio de Troféu Flamefang</h4>
+                <code style="color: #ded7c5; font-size: 0.75rem;">flamefang_trophy_skull.bbmodel</code>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
+              <b>25 Elementos 3D:</b> Cabeça dracônica volumétrica estilo mob head com focinho reptiliano saliente, órbitas oculares profundas, presas afiadas, crânio ósseo e par de chifres pontiagudos curvados para trás.
+            </p>
+          </div>
+
+            <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
+              <b>16 Elementos 3D:</b> Mastro vertical resistente em madeira nobre com sapatas e cintas de reforço em ferro forjado, escoras diagonais e trave transversal chanfrada de 26 unidades com ranhuras de pouso para garras e ponteiras com olhais de amarração.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+<div class="instruction-card">
+        <h3>🔌 Como carregar o Plugin MCP no seu Blockbench</h3>
+        <p>O arquivo do plugin já foi baixado e está salvo em: <code>D:\Mine\mcp.js</code></p>
+        <br>
+        <ol style="margin-left: 20px; line-height: 1.8;">
+          <li>Abra o seu <b>Blockbench</b> em <code>D:\Blockbench\Blockbench.exe</code>.</li>
+          <li>No menu superior, vá em <b>Arquivo (File) ➔ Plugins</b>.</li>
+          <li>Clique no ícone de engrenagem / menu de três pontinhos ou clique em <b>"Carregar do Arquivo" (Load from File)</b>.</li>
+          <li>Selecione o arquivo:
+            <div class="code-box">D:\Mine\mcp.js</div>
+          </li>
+          <li>Pronto! O Blockbench estará conectado e pronto para criar modelos 3D com assistência de IA!</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Tab 4: Ideias -->
+    <div id="tab-ideias" class="tab-content">
+      <div class="instruction-card">
+        <h3>💡 Cofre de Expansões (v1.1+)</h3>
+        <p>Qualquer sugestão ou ideia adicional dada durante a versão 1.0 é guardada com carinho para as próximas atualizações:</p>
+        <br>
+        <ul style="margin-left: 20px; line-height: 1.8;">
+          <li><b>v1.1 (O Espírito das Dunas):</b> Dragão das Areias inspirado em Flygon, ninhos de arenito e tempestades.</li>
+          <li><b>v1.2 (Ecos das Profundezas):</b> Dragão morcego inspirado em Noivern com ecolocalização e ataques sônicos.</li>
+          <li><b>v1.3 (Abismos Oceânicos):</b> Dragão anfíbio aquático com jatos pressurizados e mergulho rápido.</li>
+          <li><b>Mecânicas Avançadas:</b> Variantes Shiny raras ao chocar, genética entre dragões e chefes colossais.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+    const itemsData = [
+  {
+    "num": 1,
+    "tag": "dragon_nest",
+    "name": "Ninho Dracônico Artesanal",
+    "desc": "Bloco onde os ovos são depositados para manter temperatura e chocar.",
+    "category": "Blocos Utilitários",
+    "icon": "🏛️",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/dragon_nest.png",
+    "details": "Bloco com detecção térmica. Mantém ovos de Flamefang aquecidos contra o frio da noite. Ao receber calor adjacente, reduz em 40% o tempo necessário para o ovo eclodir."
+  },
+  {
+    "num": 2,
+    "tag": "draconic_hearth",
+    "name": "Fornalha Culinária Dracônica",
+    "desc": "Estação de cozinha com GUI exclusiva para preparar rações e ensopados.",
+    "category": "Blocos Utilitários",
+    "icon": "🏛️",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/draconic_hearth.png",
+    "details": "Fornalha culinária com grelha de cinzas vulcânicas. Permite preparar ensopados dracônicos, caldos de fôlego e bifes carbonizados impossíveis de fazer na fornalha comum."
+  },
+  {
+    "num": 3,
+    "tag": "tack_workbench",
+    "name": "Bancada de Selaria Dracônica",
+    "desc": "Mesa com GUI exclusiva para costurar selas, alforjes e armaduras do mod.",
+    "category": "Blocos Utilitários",
+    "icon": "🏛️",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/tack_workbench.png",
+    "details": "Bancada especializada de artesanato. Utilizada para costurar couro dracônico, reforçar rédeas com tendões e confeccionar selas e alforjes sob medida."
+  },
+  {
+    "num": 4,
+    "tag": "incubation_brazier",
+    "name": "Braseiro de Incubação",
+    "desc": "Bloco térmico que emite calor contínuo para acelerar ninhos próximos.",
+    "category": "Blocos Utilitários",
+    "icon": "🏛️",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/incubation_brazier.png",
+    "details": "Emite luz nível 15 e calor constante em um raio de 5 blocos. Essencial para incubar ovos em biomas frios ou em altitudes montanhosas elevadas."
+  },
+  {
+    "num": 5,
+    "tag": "draconic_anvil",
+    "name": "Bigorna Dracônica",
+    "desc": "Usada para forjar e reparar equipamentos pesados feitos de escamas.",
+    "category": "Blocos Utilitários",
+    "icon": "🏛️",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/draconic_anvil.png",
+    "details": "Bigorna maciça com 1200 de resistência a explosões. Permite forjar ferramentas pesadas de brasas e reparar armaduras de escama sem risco de quebrar."
+  },
+  {
+    "num": 6,
+    "tag": "ember_ore",
+    "name": "Minério de Brasas",
+    "desc": "Minério vulcânico natural encontrado em picos de montanhas.",
+    "category": "Blocos Utilitários",
+    "icon": "🏛️",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/ember_ore.png",
+    "details": "Gera naturalmente em montanhas e picos vulcânicos (camadas Y=90 a Y=256). Requer picareta de ferro ou superior para ser minerado."
+  },
+  {
+    "num": 7,
+    "tag": "deepslate_ember_ore",
+    "name": "Minério de Brasas de Ardósia",
+    "desc": "Variante profunda encontrada nas camadas inferiores do mundo.",
+    "category": "Blocos Utilitários",
+    "icon": "🏛️",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/deepslate_ember_ore.png",
+    "details": "Variante de ardósia profunda gerada entre Y=-64 e Y=0 próxima a bolsões de magma. Dropa fragmentos de brasa bruta."
+  },
+  {
+    "num": 8,
+    "tag": "raw_ember_block",
+    "name": "Bloco de Brasa Bruta",
+    "desc": "Bloco compacto para armazenamento de fragmentos minerais.",
+    "category": "Blocos Utilitários",
+    "icon": "🏛️",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/raw_ember_block.png",
+    "details": "Bloco decorativo e de armazenamento ultra-compacto. Fabricado com 9 Fragmentos de Brasa Bruta."
+  },
+  {
+    "num": 9,
+    "tag": "raw_ember",
+    "name": "Fragmento de Brasa Bruta",
+    "desc": "Drop bruto obtido ao minerar os minérios de brasa.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_ember.png",
+    "details": "Cristal piezo-térmico bruto obtido na mineração. Combustível que queima por 120 segundos ou fundido para gerar Lingotes de Brasa."
+  },
+  {
+    "num": 10,
+    "tag": "ember_ingot",
+    "name": "Lingote de Brasa",
+    "desc": "Barra metálica forjada usada na ferraria dracônica.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/ember_ingot.png",
+    "details": "Liga metálica resistente ao fogo e lava. Ingrediente indispensável para ferramentas, estribos de selas e armaduras pesadas do mod."
+  },
+  {
+    "num": 11,
+    "tag": "flamefang_scale",
+    "name": "Escama de Flamefang",
+    "desc": "Escama resistente trocada pelo dragão ao crescer ou escovado.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flamefang_scale.png",
+    "details": "Escama flexível e termorresistente. Coletada ao escovar dragões dóceis ou dropada naturalmente durante as mudas de pele da fase juvenil para adulta."
+  },
+  {
+    "num": 12,
+    "tag": "volcanic_ash",
+    "name": "Cinzas Vulcânicas",
+    "desc": "Poeira mineral coletada em ninhos; tempero para comidas de fogo.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/volcanic_ash.png",
+    "details": "Pó mineral coletado ao redor de braseiros e ninhos. Usado como tempero culinário e fertilizante especial para plantas vulcânicas."
+  },
+  {
+    "num": 13,
+    "tag": "sulfur_crystal",
+    "name": "Cristal de Enxofre",
+    "desc": "Mineral picante usado em receitas culinárias da fornalha.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/sulfur_crystal.png",
+    "details": "Depósito mineral picante. Ingrediente essencial para os Biscoitos de Enxofre e catalisador de poções dracônicas."
+  },
+  {
+    "num": 14,
+    "tag": "draconic_sinew",
+    "name": "Tendão Dracônico",
+    "desc": "Corda fibrosa ultra-resistente usada para costurar arreios e arcos.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/draconic_sinew.png",
+    "details": "Fibras elásticas ancestrais ultra-resistentes. Usadas para produzir rédeas de precisão, cordas de arco composto e costuras de alforjes."
+  },
+  {
+    "num": 15,
+    "tag": "raw_draconic_hide",
+    "name": "Couro Dracônico Bruto",
+    "desc": "Pele grossa obtida de criaturas répteis ancestrais.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_draconic_hide.png",
+    "details": "Couro grosso e resistente a perfurações. Drop de predadores répteis; deve ser limpo e curtido antes de ser utilizado."
+  },
+  {
+    "num": 16,
+    "tag": "tanned_draconic_leather",
+    "name": "Couro Dracônico Curtido",
+    "desc": "Couro tratado na fornalha, ingrediente base de todas as selas.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/tanned_draconic_leather.png",
+    "details": "Couro macio e impermeável ao calor. Material base de confecção de todas as selas dracônicas e luvas de proteção."
+  },
+  {
+    "num": 17,
+    "tag": "flame_core",
+    "name": "Núcleo de Chamas",
+    "desc": "Joia incandescente rara encontrada no coração de ninhos selvagens.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flame_core.png",
+    "details": "Núcleo ardente e pulsante encontrado raramente em covis selvagens. Componente central para criar o Protetor de Cauda e relíquias avançadas."
+  },
+  {
+    "num": 18,
+    "tag": "dragon_bone",
+    "name": "Osso Dracônico",
+    "desc": "Osso leve e rígido usado para cabos e estruturas de suporte.",
+    "category": "Minérios & Recursos",
+    "icon": "⛏️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_bone.png",
+    "details": "Estrutura óssea porosa porém ultrarresistente. Utilizada em cabos de ferramentas de brasas e na confecção da Flauta Dracônica."
+  },
+  {
+    "num": 19,
+    "tag": "flamefang_egg",
+    "name": "Ovo de Flamefang (Intacto)",
+    "desc": "Ovo que precisa de calor e atrai mobs à noite durante a incubação.",
+    "category": "Ciclo de Vida & Cuidados",
+    "icon": "🥚",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flamefang_egg.png",
+    "details": "Ovo de dragão intacto. Exige calor contínuo em um Ninho Dracônico ou perto de magma para iniciar a incubação. Atrai predadores selvagens à noite!"
+  },
+  {
+    "num": 20,
+    "tag": "cracked_flamefang_egg_1",
+    "name": "Ovo de Flamefang (Fissurado)",
+    "desc": "Estágio 2 com rachaduras visíveis e partículas de fumaça.",
+    "category": "Ciclo de Vida & Cuidados",
+    "icon": "🥚",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/cracked_flamefang_egg_1.png",
+    "details": "Estágio 2 de incubação. A casca de obsidiana começa a rachar, liberando tênues plumas de fumaça cinzenta e calor radiante."
+  },
+  {
+    "num": 21,
+    "tag": "cracked_flamefang_egg_2",
+    "name": "Ovo de Flamefang (Prestes a Eclodir)",
+    "desc": "Estágio 3 com faíscas brilhantes e sons de batidas internas.",
+    "category": "Ciclo de Vida & Cuidados",
+    "icon": "🥚",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/cracked_flamefang_egg_2.png",
+    "details": "Estágio 3 de incubação. Rachaduras incandescentes brilham no escuro e ouve-se o coração do filhote batendo. Eclosão iminente!"
+  },
+  {
+    "num": 22,
+    "tag": "dragon_brush",
+    "name": "Escova Dracônica",
+    "desc": "Ferramenta para escovar o filhote, aumentando carinho e escamas.",
+    "category": "Ciclo de Vida & Cuidados",
+    "icon": "🥚",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_brush.png",
+    "details": "Escova com cerdas de cerâmica térmica. Usar no filhote ou dragão jovem limpa escamas soltas, dropa Escamas de Flamefang e concede afeto."
+  },
+  {
+    "num": 23,
+    "tag": "dragon_flute",
+    "name": "Flauta Dracônica de Osso",
+    "desc": "Emite melodias para ordenar: Seguir, Ficar Sentado ou Proteger.",
+    "category": "Ciclo de Vida & Cuidados",
+    "icon": "🥚",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_flute.png",
+    "details": "Flauta de osso com 3 melodias: Seguir o Cavaleiro (tom agudo), Sentar/Guardar Posição (tom grave) ou Patrulhar a Área (tom duplo)."
+  },
+  {
+    "num": 24,
+    "tag": "dragon_staff",
+    "name": "Bastão de Comando Dracônico",
+    "desc": "Aponta alvos para ataque ou define o local de pouso do dragão.",
+    "category": "Ciclo de Vida & Cuidados",
+    "icon": "🥚",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_staff.png",
+    "details": "Bastão que canaliza o foco do dragão. Clique direito em um bloco para ordenar pouso preciso, ou em um mob hostil para comando de ataque focado."
+  },
+  {
+    "num": 25,
+    "tag": "bonding_collar",
+    "name": "Coleira de Vínculo",
+    "desc": "Mostra nome personalizado e indicador visual de afeto do dragão.",
+    "category": "Ciclo de Vida & Cuidados",
+    "icon": "🥚",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/bonding_collar.png",
+    "details": "Coleira encantada com placa de identificação. Permite renomear seu dragão e exibe o nível percentual de vínculo e lealdade na interface."
+  },
+  {
+    "num": 26,
+    "tag": "spicy_magma_berries",
+    "name": "Bagas Magmáticas Picantes",
+    "desc": "Planta selvagem colhida perto de lava; petisco amado por filhotes.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/spicy_magma_berries.png",
+    "details": "Bagas silvestres colhidas em solo quente. Nutrição 2, Saturação 0.3. Petisco predileto dos filhotes de Flamefang."
+  },
+  {
+    "num": 27,
+    "tag": "charred_meat",
+    "name": "Bife Carbonizado em Brasas",
+    "desc": "Carne selada com cinzas, comida básica para nutrir o Flamefang.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/charred_meat.png",
+    "details": "Carne bovina ou ovina selada com brasas. Nutrição 6, Saturação 0.8. Dieta diária de manutenção do dragão domesticado."
+  },
+  {
+    "num": 28,
+    "tag": "ash_stew",
+    "name": "Ensopado Nutritivo de Cinzas",
+    "desc": "Refeição forte de caldeirão que reduz o tempo de crescimento.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/ash_stew.png",
+    "details": "Tigela fumegante de ensopado. Nutrição 8, Saturação 0.8. Alimenta o dragão jovem e acelera seu crescimento em 1 estágio."
+  },
+  {
+    "num": 29,
+    "tag": "draconic_treat",
+    "name": "Petisco Dracônico Crocante",
+    "desc": "Biscoito crocante que aumenta o afeto e lealdade rapidamente.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/draconic_treat.png",
+    "details": "Biscoito crocante com sementes e mel. Nutrição 3, Saturação 0.4. Aumenta em +10% o vínculo imediato ao ser oferecido na mão."
+  },
+  {
+    "num": 30,
+    "tag": "sulfur_biscuit",
+    "name": "Biscoito de Enxofre",
+    "desc": "Fortalece a defesa e regenera a vida do dragão ferido.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/sulfur_biscuit.png",
+    "details": "Biscoito medicinal enriquecido com enxofre. Regenera 20 pontos de vida do Flamefang e concede Resistência II por 30 segundos."
+  },
+  {
+    "num": 31,
+    "tag": "fire_pepper",
+    "name": "Pimenta Vulcânica",
+    "desc": "Vegetal aromático picante usado em receitas avançadas.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/fire_pepper.png",
+    "details": "Pimenta vulcânica aromática. Nutrição 2, Saturação 0.2. Ingrediente de receitas avançadas que aumentam a cadência de fogo do dragão."
+  },
+  {
+    "num": 32,
+    "tag": "blazing_jerky",
+    "name": "Carne Seca Flamejante",
+    "desc": "Provisão portátil de longa duração para viagens de voo.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/blazing_jerky.png",
+    "details": "Carne seca curada com cinzas e sal de brasa. Nutrição 7, Saturação 0.9. Alimento de alta saturação que nunca estraga no inventário."
+  },
+  {
+    "num": 33,
+    "tag": "hearty_dragon_mash",
+    "name": "Papa Encorpada de Filhote",
+    "desc": "Alimento leve para as primeiras horas de vida do filhote.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/hearty_dragon_mash.png",
+    "details": "Papa morna e suave em tigela. Nutrição 5, Saturação 0.6. Alimento exclusivo para filhotes recém-eclodidos nos primeiros minutos de vida."
+  },
+  {
+    "num": 34,
+    "tag": "glow_kelp_roll",
+    "name": "Rolo de Algas Incandescentes",
+    "desc": "Alimento que melhora a respiração e fôlego subaquático.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/glow_kelp_roll.png",
+    "details": "Algas luminosas enroladas com peixe grelhado. Nutrição 4, Saturação 0.5. Concede visão noturna e fôlego subaquático ao jogador."
+  },
+  {
+    "num": 35,
+    "tag": "flame_draught",
+    "name": "Elixir de Brasas",
+    "desc": "Poção especial que recarrega instantaneamente o fôlego de fogo.",
+    "category": "Culinária & Nutrição Dracônica",
+    "icon": "🍖",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flame_draught.png",
+    "details": "Elixir borbulhante em frasco. Nutrição 1. Recarrega instantaneamente 100% da barra de sopro de fogo do Flamefang."
+  },
+  {
+    "num": 36,
+    "tag": "basic_dragon_saddle",
+    "name": "Sela Dracônica Rústica",
+    "desc": "Sela básica fabricada na bancada para montar no Flamefang adulto.",
+    "category": "Selaria & Equipamentos de Voo",
+    "icon": "🏇",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/basic_dragon_saddle.png",
+    "details": "Sela rústica com peitoral de couro dracônico. Permite montar no Flamefang Adulto e controlá-lo no solo e voo básico."
+  },
+  {
+    "num": 37,
+    "tag": "reinforced_flame_saddle",
+    "name": "Sela Reforçada de Brasas",
+    "desc": "Sela com estribos de lingote de brasa que reduz estamina de voo.",
+    "category": "Selaria & Equipamentos de Voo",
+    "icon": "🏇",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/reinforced_flame_saddle.png",
+    "details": "Sela avançada com estribos de liga de brasa. Reduz o consumo de estamina de voo em 35% e estabiliza voos de alta velocidade."
+  },
+  {
+    "num": 38,
+    "tag": "small_dragon_pouch",
+    "name": "Alforje Dracônico Pequeno",
+    "desc": "Bolsas acopladas que adicionam 9 slots de inventário ao dragão.",
+    "category": "Selaria & Equipamentos de Voo",
+    "icon": "🏇",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/small_dragon_pouch.png",
+    "details": "Alforje lateral de couro que adiciona 9 slots extras de baú portátil ao inventário acessível do Flamefang."
+  },
+  {
+    "num": 39,
+    "tag": "large_dragon_saddlebags",
+    "name": "Alforje Dracônico Grande",
+    "desc": "Conjunto duplo de baús que adiciona 27 slots de inventário móvel.",
+    "category": "Selaria & Equipamentos de Voo",
+    "icon": "🏇",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/large_dragon_saddlebags.png",
+    "details": "Par duplo de bolsas reforçadas. Concede 27 slots completos de inventário de carga (equivalente a um baú inteiro no dragão)."
+  },
+  {
+    "num": 40,
+    "tag": "flamefang_scale_armor",
+    "name": "Armadura de Escamas de Flamefang",
+    "desc": "Armadura leve que protege o peito e asas do dragão em batalha.",
+    "category": "Selaria & Equipamentos de Voo",
+    "icon": "🏇",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flamefang_scale_armor.png",
+    "details": "Barda leve de combate para o dragão. Concede +12 de Armadura sem penalizar a velocidade nem a manobrabilidade de voo."
+  },
+  {
+    "num": 41,
+    "tag": "ember_plated_armor",
+    "name": "Armadura Revestida de Brasa",
+    "desc": "Armadura pesada com máxima proteção contra projéteis e impacto.",
+    "category": "Selaria & Equipamentos de Voo",
+    "icon": "🏇",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/ember_plated_armor.png",
+    "details": "Blindagem pesada com placas de lingote de brasa. Concede +20 de Armadura e -50% de dano por flechas e projéteis."
+  },
+  {
+    "num": 42,
+    "tag": "dragon_headstall",
+    "name": "Cabresto Dracônico com Rédeas",
+    "desc": "Melhora a precisão de curva e manobra no ar durante mergulhos.",
+    "category": "Selaria & Equipamentos de Voo",
+    "icon": "🏇",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_headstall.png",
+    "details": "Cabresto ergonômico de tendão. Aumenta a velocidade de rotação no ar em 25%, permitindo manobras evasivas em mergulho."
+  },
+  {
+    "num": 43,
+    "tag": "flight_goggles",
+    "name": "Óculos de Voo do Cavaleiro",
+    "desc": "Equipamento para o jogador que elimina o embaçamento em alta velocidade.",
+    "category": "Selaria & Equipamentos de Voo",
+    "icon": "🏇",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flight_goggles.png",
+    "details": "Óculos de montaria para o cavaleiro. Equipado na cabeça, elimina a distorção e vento nos olhos durante mergulhos supersônicos."
+  },
+  {
+    "num": 44,
+    "tag": "ember_sword",
+    "name": "Espada de Brasas",
+    "desc": "Espada forjada com lingotes de brasa; incendeia alvos atingidos.",
+    "category": "Armas, Ferramentas & Guia",
+    "icon": "⚔️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/ember_sword.png",
+    "details": "Espada de combate forjada em brasa. Causa 7 de dano base e queima os alvos atingidos com chamas mágicas por 4 segundos."
+  },
+  {
+    "num": 45,
+    "tag": "ember_pickaxe",
+    "name": "Picareta de Brasas",
+    "desc": "Quebra rochas em alta velocidade e auto-funde minérios básicos.",
+    "category": "Armas, Ferramentas & Guia",
+    "icon": "⚔️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/ember_pickaxe.png",
+    "details": "Picareta de alta eficiência (Nível Brasa / Equivalente Diamante). Auto-funde minérios comuns de ferro e cobre ao quebrar."
+  },
+  {
+    "num": 46,
+    "tag": "ember_axe",
+    "name": "Machado de Brasas",
+    "desc": "Corta madeiras com rapidez e causa dano de corte flamejante.",
+    "category": "Armas, Ferramentas & Guia",
+    "icon": "⚔️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/ember_axe.png",
+    "details": "Machado de combate e corte florestal. Dano 9, derruba árvores e causa dano de queima secundário."
+  },
+  {
+    "num": 47,
+    "tag": "ember_shovel",
+    "name": "Pá de Brasas",
+    "desc": "Derrete neve instantaneamente e cava solos endurecidos.",
+    "category": "Armas, Ferramentas & Guia",
+    "icon": "⚔️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/ember_shovel.png",
+    "details": "Pá de brasa que dissolve neve e gelo instantaneamente ao redor e escava solos argilosos em alta velocidade."
+  },
+  {
+    "num": 48,
+    "tag": "flamefang_dagger",
+    "name": "Adaga de Dente de Flamefang",
+    "desc": "Lâmina curta e ágil forjada com dentes descartados do dragão.",
+    "category": "Armas, Ferramentas & Guia",
+    "icon": "⚔️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flamefang_dagger.png",
+    "details": "Adaga leve e veloz com 2.5 de dano. Permite golpes sucessivos rápidos ideais para defesa corpo-a-corpo montado."
+  },
+  {
+    "num": 49,
+    "tag": "dragon_whistle",
+    "name": "Apito de Resgate Dracônico",
+    "desc": "Chama seu dragão onde quer que ele esteja para te resgatar no ar.",
+    "category": "Armas, Ferramentas & Guia",
+    "icon": "⚔️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_whistle.png",
+    "details": "Apito de resgate sonoro. Quando usado, se o jogador estiver em queda livre, o dragão mais próximo corre para salvá-lo no ar!"
+  },
+  {
+    "num": 50,
+    "tag": "dragonologist_tome",
+    "name": "Tomo do Dragonologista",
+    "desc": "Livro guia rústico com ilustrações das espécies, ninhos e receitas.",
+    "category": "Armas, Ferramentas & Guia",
+    "icon": "⚔️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragonologist_tome.png",
+    "details": "Guia ilustrado de campo. Contém informações anatômicas do Flamefang, biomas de ninho e receitas de alimentação."
+  },
+  {
+    "num": 51,
+    "tag": "draconic_stone",
+    "name": "Pedra Dracônica",
+    "desc": "Rocha vulcânica polida resistente a explosões, gerada em covis.",
+    "category": "Construção, Ninhos & Decoração",
+    "icon": "🏰",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/draconic_stone.png",
+    "details": "Rocha vulcânica densa gerada em covis de dragões. Possui resistência altíssima a explosões (resistência 8.0F)."
+  },
+  {
+    "num": 52,
+    "tag": "draconic_stone_bricks",
+    "name": "Tijolos de Pedra Dracônica",
+    "desc": "Bloco de alvenaria estilizado para fortalezas e santuários.",
+    "category": "Construção, Ninhos & Decoração",
+    "icon": "🏰",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/draconic_stone_bricks.png",
+    "details": "Blocos de alvenaria refinada entalhada em pedra dracônica. Ideal para construir fortalezas e estábulos de dragão."
+  },
+  {
+    "num": 53,
+    "tag": "chiseled_draconic_bricks",
+    "name": "Tijolos Dracônicos Cinzelados",
+    "desc": "Bloco decorativo com entalhe em relevo da cabeça do Flamefang.",
+    "category": "Construção, Ninhos & Decoração",
+    "icon": "🏰",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/chiseled_draconic_bricks.png",
+    "details": "Bloco nobre com efígie esculpida da cabeça do Flamefang. Usado em portais e altares de invocação."
+  },
+  {
+    "num": 54,
+    "tag": "ember_lantern",
+    "name": "Lanterna de Brasas",
+    "desc": "Lanterna suspensa que emite iluminação quente e brasas flutuantes.",
+    "category": "Construção, Ninhos & Decoração",
+    "icon": "🏰",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/ember_lantern.png",
+    "details": "Lanterna suspensa com chama eterna de brasas. Iluminação nível 15, emite partículas quentes flutuantes."
+  },
+  {
+    "num": 55,
+    "tag": "draconic_brazier_standing",
+    "name": "Braseiro Cerimonial de Pedestal",
+    "desc": "Tocha alta de pedra e fogo eterno usada para marcar territórios.",
+    "category": "Construção, Ninhos & Decoração",
+    "icon": "🏰",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/draconic_brazier_standing.png",
+    "details": "Tocha monumental de pedestal em pedra vulcânica. Marcação visual de território e fonte de calor para ninhos."
+  },
+  {
+    "num": 56,
+    "tag": "flamefang_trophy_skull",
+    "name": "Crânio Esculpido de Flamefang",
+    "desc": "Troféu rústico decorativo para paredes ou altares.",
+    "category": "Construção, Ninhos & Decoração",
+    "icon": "🏰",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/flamefang_trophy_skull.png",
+    "details": "Troféu decorativo esculpido em osso dracônico. Pode ser fixado em paredes de salões de caça e fortalezas."
+  },
+  {
+    "num": 57,
+    "tag": "charred_nest_straw",
+    "name": "Palha Chamuscada de Ninho",
+    "desc": "Bloco macio inflamável usado para forrar ninhos artesanais.",
+    "category": "Construção, Ninhos & Decoração",
+    "icon": "🏰",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/charred_nest_straw.png",
+    "details": "Palha seca tratada com cinzas. Forração térmica essencial para construir ninhos confortáveis onde o ovo não perde calor."
+  },
+  {
+    "num": 58,
+    "tag": "dragon_perch",
+    "name": "Poleiro Dracônico",
+    "desc": "Bloco de pouso oficial onde dragões domesticados descansam.",
+    "category": "Construção, Ninhos & Decoração",
+    "icon": "🏰",
+    "is_block": true,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/block/dragon_perch.png",
+    "details": "Posto oficial de descanso. Dragões pousados em poleiros entram em modo de vigília e não saem da base sem comando."
+  },
+  {
+    "num": 59,
+    "tag": "flamefang_helmet",
+    "name": "Elmo de Escamas de Flamefang",
+    "desc": "Capacete dracônico com pequenos chifres; concede visão sob a lava.",
+    "category": "Armadura de Escamas & Vestimentas",
+    "icon": "🛡️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flamefang_helmet.png",
+    "details": "Elmo de escamas com chifres frontais. Concede +3 de Armadura, visão clara sob lagos de lava e imunidade a sufocamento em fumaça."
+  },
+  {
+    "num": 60,
+    "tag": "flamefang_chestplate",
+    "name": "Peitoral de Escamas de Flamefang",
+    "desc": "Armadura torácica com imunidade a queimaduras e alta defesa.",
+    "category": "Armadura de Escamas & Vestimentas",
+    "icon": "🛡️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flamefang_chestplate.png",
+    "details": "Peitoral completo de placas dracônicas. Concede +8 de Armadura e Imunidade Total a dano de fogo e lava (Fire Immunity)."
+  },
+  {
+    "num": 61,
+    "tag": "flamefang_leggings",
+    "name": "Calças de Escamas de Flamefang",
+    "desc": "Calças reforçadas com placas articulares de escamas.",
+    "category": "Armadura de Escamas & Vestimentas",
+    "icon": "🛡️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flamefang_leggings.png",
+    "details": "Calças articuladas com escamas flexíveis. Concede +6 de Armadura e reduz recuo de ataques inimigos."
+  },
+  {
+    "num": 62,
+    "tag": "flamefang_boots",
+    "name": "Botas de Escamas de Flamefang",
+    "desc": "Botas imunes ao dano de blocos incandescentes (magma/fogo).",
+    "category": "Armadura de Escamas & Vestimentas",
+    "icon": "🛡️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flamefang_boots.png",
+    "details": "Botas forradas com couro dracônico. Concede +3 de Armadura e imunidade a dano ao pisar em blocos de magma, fogueiras e brasas."
+  },
+  {
+    "num": 63,
+    "tag": "dragon_handler_gloves",
+    "name": "Luvas de Domador Reforçadas",
+    "desc": "Luvas isolantes para manusear ovos quentes sem se queimar.",
+    "category": "Armadura de Escamas & Vestimentas",
+    "icon": "🛡️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_handler_gloves.png",
+    "details": "Luvas isolantes de couro curtido. Permite segurar e carregar ovos quentes de dragão no inventário sem tomar dano térmico."
+  },
+  {
+    "num": 64,
+    "tag": "dragon_riders_cloak",
+    "name": "Capa do Cavaleiro de Dragão",
+    "desc": "Capa dorsal de viagem que ondula com física realista no voo.",
+    "category": "Armadura de Escamas & Vestimentas",
+    "icon": "🛡️",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_riders_cloak.png",
+    "details": "Capa com física de voo estilizada. Reduz o dano de impacto contra paredes durante voos em 50%."
+  },
+  {
+    "num": 65,
+    "tag": "dragon_horn",
+    "name": "Berrante de Batalha Dracônico",
+    "desc": "Toca um rugido ancestral que afugenta monstros e convoca o dragão.",
+    "category": "Equipamentos Táticos & Voo Avançado",
+    "icon": "🏹",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_horn.png",
+    "details": "Berrante de guerra antigo. Ao ser soprado, emite um rugido colossal que atordoa mobs hostis e chama dragões aliados a 200 blocos."
+  },
+  {
+    "num": 66,
+    "tag": "reinforced_reins",
+    "name": "Rédeas de Tendão Reforçadas",
+    "desc": "Componente de alta resistência usado na confecção de selas.",
+    "category": "Equipamentos Táticos & Voo Avançado",
+    "icon": "🏹",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/reinforced_reins.png",
+    "details": "Rédeas duplas tecidas em tendão dracônico. Aumentam a estabilidade e impedem que o dragão desmonte o jogador em turbulências."
+  },
+  {
+    "num": 67,
+    "tag": "tail_flame_guard",
+    "name": "Protetor de Cauda Metálico",
+    "desc": "Armadura para a cauda do Flamefang que protege a chama da chuva!",
+    "category": "Equipamentos Táticos & Voo Avançado",
+    "icon": "🏹",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/tail_flame_guard.png",
+    "details": "Blindagem metálica com calha de ventilação para a cauda do Flamefang. Protege a chama contra chuva e tempestades!"
+  },
+  {
+    "num": 68,
+    "tag": "flight_map_case",
+    "name": "Estojo de Cartografia de Voo",
+    "desc": "Permite consultar mapas no ar sem largar as rédeas do dragão.",
+    "category": "Equipamentos Táticos & Voo Avançado",
+    "icon": "🏹",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flight_map_case.png",
+    "details": "Estojo preso ao peito do jogador que exibe minimapas e bússolas sem precisar desocupar a mão principal durante o voo."
+  },
+  {
+    "num": 69,
+    "tag": "dragon_beacon_fire",
+    "name": "Fogo de Sinalização Dracônica",
+    "desc": "Emite uma coluna de fumaça colorida visível a 500 blocos de distância.",
+    "category": "Equipamentos Táticos & Voo Avançado",
+    "icon": "🏹",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/dragon_beacon_fire.png",
+    "details": "Fogo de sinalização que projeta uma coluna luminosa de fumaça alaranjada visível a mais de 500 blocos de distância."
+  },
+  {
+    "num": 70,
+    "tag": "saddle_chest_upgrade",
+    "name": "Expansão de Alforje Dracônico",
+    "desc": "Módulo de melhoria que adiciona abas extras ao inventário da sela.",
+    "category": "Equipamentos Táticos & Voo Avançado",
+    "icon": "🏹",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/saddle_chest_upgrade.png",
+    "details": "Kit de expansão de ferragens e cintas. Aumenta a capacidade de carga de qualquer sela acoplada ao dragão."
+  },
+  {
+    "num": 71,
+    "tag": "fire_crystal_candy",
+    "name": "Doce de Cristal de Fogo",
+    "desc": "Açúcar cristalizado com fogo que deixa o filhote alegre e dócil.",
+    "category": "Culinária Especializada & Alquimia",
+    "icon": "🍲",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/fire_crystal_candy.png",
+    "details": "Açúcar vulcânico cristalizado. Doce nutritivo e energético que recupera o ânimo do dragão e reduz a fome de voo."
+  },
+  {
+    "num": 72,
+    "tag": "smoke_infused_broth",
+    "name": "Caldo Defumado Revigorante",
+    "desc": "Sopa espessa que recupera a estamina do dragão após voos longos.",
+    "category": "Culinária Especializada & Alquimia",
+    "icon": "🍲",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/smoke_infused_broth.png",
+    "details": "Caldo espesso e revigorante servido em tigela. Restaura a estamina de voo do Flamefang 2x mais rápido por 2 minutos."
+  },
+  {
+    "num": 73,
+    "tag": "molten_berry_tart",
+    "name": "Torta de Bagas Vulcânicas",
+    "desc": "Refeição balanceada consumível tanto pelo jogador quanto pelo dragão.",
+    "category": "Culinária Especializada & Alquimia",
+    "icon": "🍲",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/molten_berry_tart.png",
+    "details": "Torta assada na fornalha dracônica. Nutrição 6, saturação 0.7. Pode ser consumida pelo cavaleiro e pelo dragão para cura."
+  },
+  {
+    "num": 74,
+    "tag": "bonding_honeycomb",
+    "name": "Favo de Mel Dracônico",
+    "desc": "Mel silvestre especial usado para acalmar dragões territoriais.",
+    "category": "Culinária Especializada & Alquimia",
+    "icon": "🍲",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/bonding_honeycomb.png",
+    "details": "Favo de mel colhido de abelhas termais. Acalma dragões agitados ou ariscos instantaneamente ao ser oferecido."
+  },
+  {
+    "num": 75,
+    "tag": "vitality_essence",
+    "name": "Essência de Vitalidade",
+    "desc": "Tônico medicinal de emergência que regenera 50% da vida do dragão.",
+    "category": "Culinária Especializada & Alquimia",
+    "icon": "🍲",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/vitality_essence.png",
+    "details": "Tônico medicinal concentrado em frasco de vidro. Uso de emergência: cura instantaneamente 50% dos pontos de vida máximos do dragão."
+  },
+  {
+    "num": 76,
+    "tag": "flamefang_shed_tooth",
+    "name": "Dente Descartado de Flamefang",
+    "desc": "Dente afiado obtido quando o filhote rói pedras; usado em lâminas.",
+    "category": "Materiais de Progressão & Relíquias",
+    "icon": "🧪",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/flamefang_shed_tooth.png",
+    "details": "Dente afiado e cônico descartado pelo filhote durante a dentição. Utilizado como lâmina penetrante em adagas e flechas."
+  },
+  {
+    "num": 77,
+    "tag": "refined_ember_core",
+    "name": "Núcleo de Brasa Purificado",
+    "desc": "Matéria-prima alquímica forjada na fornalha para itens mágicos.",
+    "category": "Materiais de Progressão & Relíquias",
+    "icon": "🧪",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/refined_ember_core.png",
+    "details": "Núcleo de brasa purificado alquimicamente em alta temperatura. Material base para relíquias e armas mágicas avançadas."
+  },
+  {
+    "num": 78,
+    "tag": "charred_bone_needle",
+    "name": "Agulha de Osso Carbonizado",
+    "desc": "Ferramenta fina de alfaiate usada nas receitas da Bancada de Selas.",
+    "category": "Materiais de Progressão & Relíquias",
+    "icon": "🧪",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/charred_bone_needle.png",
+    "details": "Agulha fina forjada em osso dracônico. Ferramenta precisa de alfaiate usada em receitas da Bancada de Selaria."
+  },
+  {
+    "num": 79,
+    "tag": "hardened_scale_plate",
+    "name": "Placa Prensada de Escamas",
+    "desc": "Placa de blindagem intermediária para armaduras pesadas.",
+    "category": "Materiais de Progressão & Relíquias",
+    "icon": "🧪",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/hardened_scale_plate.png",
+    "details": "Placa comprimida e temperada de escamas. Componente intermediário para montar conjuntos de armadura pesada do jogador."
+  },
+  {
+    "num": 80,
+    "tag": "ancient_dragon_relic",
+    "name": "Relíquia Dracônica Antiga",
+    "desc": "Artefato misterioso raro encontrado em ninhos nos picos montanhosos.",
+    "category": "Materiais de Progressão & Relíquias",
+    "icon": "🧪",
+    "is_block": false,
+    "tex": "src/main/resources/assets/wingsofthewild/textures/item/ancient_dragon_relic.png",
+    "details": "Artefato místico ancestral com runas dracônicas. Ativa altares antigos nos picos montanhosos e revela segredos dos dragões."
+  },
+{
+  "num": 81,
+  "tag": "draconic_foundry",
+  "name": "Forja de Ligas Dracônica",
+  "desc": "Estação de alta temperatura com luz nível 14 para fundir ligas metálicas elementais.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌋",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/draconic_foundry_front.png",
+  "details": "Estação térmica de forjaria avançada. Permite combinar minérios e lingotes elementais com combustíveis térmicos para produzir as 5 super ligas do mod."
+},
+{
+  "num": 82,
+  "tag": "terraslate_ore",
+  "name": "Minério de Terralita",
+  "desc": "Bloco de minério de terra (Tier 1, dureza 3.0F).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌍",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/terraslate_ore.png",
+  "details": "Minério básico de elemento Terra (Tier 1). Gera em biomas de montanha e savana entre Y=40 e Y=120. Dropa Terralita Bruta."
+},
+{
+  "num": 83,
+  "tag": "abyssal_tide_ore",
+  "name": "Minério da Maré Abissal",
+  "desc": "Bloco de minério oceânico (Tier 2, dureza 3.5F).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "💧",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/abyssal_tide_ore.png",
+  "details": "Minério elemental de Água (Tier 2). Gera no leito de oceanos profundos e monumentos aquáticos. Dropa Maré Abissal Bruta."
+},
+{
+  "num": 84,
+  "tag": "tempest_ore",
+  "name": "Minério da Tempestade",
+  "desc": "Bloco de minério eólico (Tier 3, dureza 4.0F).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌪️",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/tempest_ore.png",
+  "details": "Minério elemental de Vento (Tier 3). Gera nos picos mais elevados do relevo e platôs de vento. Dropa Tempestade Bruta."
+},
+{
+  "num": 85,
+  "tag": "frostbite_ore",
+  "name": "Minério do Congelamento",
+  "desc": "Bloco de minério de gelo glacial (Tier 4, dureza 4.5F).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "❄️",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/frostbite_ore.png",
+  "details": "Minério elemental de Gelo (Tier 4). Gera soterrado sob geleiras eternas e tundras congeladas. Dropa Congelamento Bruto."
+},
+{
+  "num": 86,
+  "tag": "miasma_ore",
+  "name": "Minério de Miasma",
+  "desc": "Bloco de minério tóxico venenoso (Tier 5, dureza 5.0F).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "☠️",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/miasma_ore.png",
+  "details": "Minério elemental de Veneno (Tier 5). Gera em pântanos profundos e bolsões úmidos de fendas subterrâneas. Dropa Miasma Bruto."
+},
+{
+  "num": 87,
+  "tag": "fulgurite_ore",
+  "name": "Minério de Fulgurita",
+  "desc": "Bloco de minério de trovão elétrico (Tier 6, dureza 5.5F).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "⚡",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/fulgurite_ore.png",
+  "details": "Minério elemental de Trovão (Tier 6). Formado pelo impacto de tempestades elétricas em montanhas e desertos. Dropa Fulgurita Bruta."
+},
+{
+  "num": 88,
+  "tag": "solarium_ore",
+  "name": "Minério de Solarium",
+  "desc": "Bloco de minério solar luminescente (Tier 7, dureza 6.5F, luz 10).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "☀️",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/solarium_ore.png",
+  "details": "Minério elemental de Luz (Tier 7). Emite luz nível 10 natural. Gera próximo ao topo do mundo exposto diretamente à luz do sol."
+},
+{
+  "num": 89,
+  "tag": "void_shadow_ore",
+  "name": "Minério da Sombra do Vazio",
+  "desc": "Bloco de minério do abismo negro (Tier 8, dureza 7.5F).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌑",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/void_shadow_ore.png",
+  "details": "Minério elemental de Trevas (Tier 8). Gera nas camadas mais escuras de ardósia profunda próximas ao Void (Y=-50 a Y=-64)."
+},
+{
+  "num": 90,
+  "tag": "astralite_ore",
+  "name": "Minério de Astralita",
+  "desc": "Bloco de minério estelar etéreo (Tier 9, dureza 9.0F, resistência 20.0F, luz 12).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "✨",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/astralite_ore.png",
+  "details": "Minério cósmico de Éter (Tier 9). Dureza 9.0F e luz nível 12. Gera em crateras raras de cometa e altares celestiais."
+},
+{
+  "num": 91,
+  "tag": "chronium_ore",
+  "name": "Minério de Cronita",
+  "desc": "Bloco de minério temporal primordial (Tier 10, dureza 11.0F, indestrutível a explosões, luz 15).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "⏳",
+  "is_block": true,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/block/chronium_ore.png",
+  "details": "Minério supremo do Tempo/Caos (Tier 10). Dureza 11.0F, resistência 1200.0F e luz 15. Indestrutível a explosões, dropa Cronita Bruta."
+},
+{
+  "num": 92,
+  "tag": "raw_terraslate",
+  "name": "Terralita Bruta",
+  "desc": "Fragmento bruto de terra compactada obtido da mineração.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌍",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_terraslate.png",
+  "details": "Nódulo de minério bruto de terra. Funde em Lingote de Terralita na fornalha ou forja dracônica."
+},
+{
+  "num": 93,
+  "tag": "raw_abyssal_tide",
+  "name": "Maré Abissal Bruta",
+  "desc": "Nódulo bruto aquático cristalizado de alta pressão.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "💧",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_abyssal_tide.png",
+  "details": "Cristal bruto marinho. Funde em Lingote da Maré Abissal."
+},
+{
+  "num": 94,
+  "tag": "raw_tempest",
+  "name": "Tempestade Bruta",
+  "desc": "Fragmento bruto giratório eólico de fenda atmosférica.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌪️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_tempest.png",
+  "details": "Fragmento eólico bruto. Funde em Lingote da Tempestade."
+},
+{
+  "num": 95,
+  "tag": "raw_frostbite",
+  "name": "Congelamento Bruto",
+  "desc": "Fragmento bruto de permafrost cristalino glacial.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "❄️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_frostbite.png",
+  "details": "Fragmento glacial que resfria recipientes. Funde em Lingote do Congelamento."
+},
+{
+  "num": 96,
+  "tag": "raw_miasma",
+  "name": "Miasma Bruto",
+  "desc": "Aglomerado bruto venenoso de emanações púrpura.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "☠️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_miasma.png",
+  "details": "Resina mineral tóxica. Funde em Lingote de Miasma."
+},
+{
+  "num": 97,
+  "tag": "raw_fulgurite",
+  "name": "Fulgurita Bruta",
+  "desc": "Vidro mineral elétrico petrificado por relâmpagos.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "⚡",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_fulgurite.png",
+  "details": "Vidro elétrico natural formado por descargas atmosféricas. Funde em Lingote de Fulgurita."
+},
+{
+  "num": 98,
+  "tag": "raw_solarium",
+  "name": "Solarium Bruto",
+  "desc": "Nódulo bruto solar incandescente de energia luminosa.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "☀️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_solarium.png",
+  "details": "Mineral bruto que brilha com a intensidade da luz solar. Funde em Lingote de Solarium."
+},
+{
+  "num": 99,
+  "tag": "raw_void_shadow",
+  "name": "Sombra do Vazio Bruta",
+  "desc": "Pedaço de matéria escura pura do vácuo primordial.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌑",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_void_shadow.png",
+  "details": "Pedaço compacto de matéria escura. Funde em Lingote da Sombra do Vazio."
+},
+{
+  "num": 100,
+  "tag": "raw_astralite",
+  "name": "Astralita Bruta",
+  "desc": "Fragmento bruto estelar de cometa cósmico.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "✨",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_astralite.png",
+  "details": "Fragmento estelar resistente ao fogo. Funde em Lingote de Astralita."
+},
+{
+  "num": 101,
+  "tag": "raw_chronium",
+  "name": "Cronita Bruta",
+  "desc": "Matéria temporal bruta pulsante que desafia o espaço-tempo.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "⏳",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/raw_chronium.png",
+  "details": "Fragmento quântico épico que pulsa fora da linha temporal padrão. Funde em Lingote de Cronita."
+},
+{
+  "num": 102,
+  "tag": "terraslate_ingot",
+  "name": "Lingote de Terralita",
+  "desc": "Lingote metálico de terra e bronze forjado (Tier 1).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌍",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/terraslate_ingot.png",
+  "details": "Barra metálica de terra densa (Tier 1). Durabilidade 450, velocidade de mineração 6.5F."
+},
+{
+  "num": 103,
+  "tag": "abyssal_tide_ingot",
+  "name": "Lingote da Maré Abissal",
+  "desc": "Lingote metálico azul-turquesa de fluxo aquático (Tier 2).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "💧",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/abyssal_tide_ingot.png",
+  "details": "Barra de liga oceânica (Tier 2). Durabilidade 650, velocidade 7.0F e dano 2.5F."
+},
+{
+  "num": 104,
+  "tag": "tempest_ingot",
+  "name": "Lingote da Tempestade",
+  "desc": "Liga aerodinâmica leve e veloz resistente a vento (Tier 3).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌪️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/tempest_ingot.png",
+  "details": "Metal ultraleve de alta velocidade (Tier 3). Durabilidade 900, velocidade de ataque e mineração 8.0F."
+},
+{
+  "num": 105,
+  "tag": "frostbite_ingot",
+  "name": "Lingote do Congelamento",
+  "desc": "Barra de gelo perpétuo fundido que nunca derrete (Tier 4).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "❄️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/frostbite_ingot.png",
+  "details": "Gelo metálico forjado sob zero absoluto (Tier 4). Durabilidade 1200, velocidade 8.5F."
+},
+{
+  "num": 106,
+  "tag": "miasma_ingot",
+  "name": "Lingote de Miasma",
+  "desc": "Barra de metal tóxico imbuído de toxinas dracônicas (Tier 5).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "☠️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/miasma_ingot.png",
+  "details": "Metal venenoso púrpura (Tier 5). Durabilidade 1500, velocidade 9.0F e dano 4.0F."
+},
+{
+  "num": 107,
+  "tag": "fulgurite_ingot",
+  "name": "Lingote de Fulgurita",
+  "desc": "Lingote crepitante de condutividade elétrica pura (Tier 6).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "⚡",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/fulgurite_ingot.png",
+  "details": "Metal elétrico de choque contínuo (Tier 6). Durabilidade 1900, velocidade 10.0F."
+},
+{
+  "num": 108,
+  "tag": "solarium_ingot",
+  "name": "Lingote de Solarium",
+  "desc": "Metal nobre solar com radiação luminosa constante (Tier 7).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "☀️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/solarium_ingot.png",
+  "details": "Ouro solar radiante (Tier 7). Durabilidade 2400, velocidade 11.5F e alta taxa de encantamento (20)."
+},
+{
+  "num": 109,
+  "tag": "void_shadow_ingot",
+  "name": "Lingote da Sombra do Vazio",
+  "desc": "Metal pesado sombrio que absorve feixes de luz (Tier 8).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌑",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/void_shadow_ingot.png",
+  "details": "Metal do abismo que dissipa impactos (Tier 8). Durabilidade 3000, velocidade 13.0F."
+},
+{
+  "num": 110,
+  "tag": "astralite_ingot",
+  "name": "Lingote de Astralita",
+  "desc": "Liga mística celestial de pureza estelar radiante (Tier 9).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "✨",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/astralite_ingot.png",
+  "details": "Metal cósmico de raridade Rara (Tier 9). Durabilidade 3800, velocidade 15.0F e bônus de dano 7.0F."
+},
+{
+  "num": 111,
+  "tag": "chronium_ingot",
+  "name": "Lingote de Cronita",
+  "desc": "Metal definitivo primordial que distorce a entropia temporal (Tier 10).",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "⏳",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/chronium_ingot.png",
+  "details": "Metal supremo de nível Épico (Tier 10). Durabilidade 5000, velocidade 18.0F e bônus de dano 8.5F."
+},
+{
+  "num": 112,
+  "tag": "frostburn_alloy_ingot",
+  "name": "Lingote de Queimadura Glacial",
+  "desc": "Liga especial bitemática combinando Fogo e Gelo eterno.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "❄️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/frostburn_alloy_ingot.png",
+  "details": "Super liga bitemática forjada na Forja Dracônica. Congela e queima alvos simultaneamente."
+},
+{
+  "num": 113,
+  "tag": "plasma_alloy_ingot",
+  "name": "Lingote de Liga de Plasma",
+  "desc": "Liga de alta energia fundindo Trovão e Luz Solar.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "⚡",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/plasma_alloy_ingot.png",
+  "details": "Super liga incandescente de plasma estelar. Causa explosões iônicas em alvos atingidos."
+},
+{
+  "num": 114,
+  "tag": "volcanic_titanium_ingot",
+  "name": "Lingote de Titânio Vulcânico",
+  "desc": "Titânio ultrarresistente enriquecido com veios de magma.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🌋",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/volcanic_titanium_ingot.png",
+  "details": "Titânio temperado em lava pura. Máxima blindagem contra impactos e projéteis pesados."
+},
+{
+  "num": 115,
+  "tag": "scalding_alloy_ingot",
+  "name": "Lingote de Liga Escaldante",
+  "desc": "Fusão hidrotérmica combinando água abissal pressurizada e brasas.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "♨️",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/scalding_alloy_ingot.png",
+  "details": "Liga de vapor superaquecido pressurizado. Libera jatos de vapor escaldante durante o manuseio."
+},
+{
+  "num": 116,
+  "tag": "shadowflame_alloy_ingot",
+  "name": "Lingote de Chama Sombria",
+  "desc": "Fusão proibida entre a sombra do vazio e chamas dracônicas.",
+  "category": "Metalurgia & Ligas Elementais",
+  "icon": "🔮",
+  "is_block": false,
+  "tex": "src/main/resources/assets/wingsofthewild/textures/item/shadowflame_alloy_ingot.png",
+  "details": "Liga proibida de raridade Rara. Chamas negras que queimam através de escudos e armaduras inimigas."
+}
+];
+
+    let activeCat = 'Todos';
+
+    function renderEncyclo() {
+      const grid = document.getElementById('encycloGrid');
+      if (!grid) return;
+      const term = (document.getElementById('encycloSearch')?.value || '').toLowerCase().trim();
+
+      const filtered = itemsData.filter(item => {
+        const matchesCat = activeCat === 'Todos' || item.category === activeCat;
+        const matchesTerm = !term || 
+          item.name.toLowerCase().includes(term) ||
+          item.tag.toLowerCase().includes(term) ||
+          item.category.toLowerCase().includes(term) ||
+          item.details.toLowerCase().includes(term);
+        return matchesCat && matchesTerm;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 48px; color: var(--text-muted); font-size: 1.1rem;">Nenhum item encontrado com os termos pesquisados.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="item-card">
+          <div class="item-card-header">
+            <div class="item-card-icon">
+              <img src="${item.tex}" alt="${item.name}" onerror="this.src='src/main/resources/assets/wingsofthewild/textures/item/raw_ember.png';">
+            </div>
+            <div class="item-card-title">
+              <h3>${item.name}</h3>
+              <code>wingsofthewild:${item.tag}</code>
+            </div>
+          </div>
+          <div class="item-card-badges">
+            <span class="badge" style="background: rgba(88, 166, 255, 0.15); border-color: #58a6ff; color: #58a6ff; font-size: 0.75rem;">${item.icon} ${item.category}</span>
+            <span class="badge green" style="font-size: 0.75rem;">✅ 100% Funcional</span>
+            <span class="badge" style="font-size: 0.75rem; color: #8b949e;">#${String(item.num).padStart(2, '0')}</span>
+          </div>
+          <div class="item-card-body">
+            <b style="color: #ff9800; display: block; margin-bottom: 4px; font-size: 0.85rem;">⚡ O Que Faz no Jogo:</b>
+            ${item.details}
+          </div>
+          <div class="item-card-footer">
+            <span>Tipo: ${item.is_block ? "Bloco Cúbico" : "Item de Inventário"}</span>
+            <span style="color: #3fb950;">✔ Auditado & Empacotado</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterEncycloCat(cat) {
+      activeCat = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.innerText.trim() === cat) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      renderEncyclo();
+    }
+
+    function filterEncyclo() {
+      renderEncyclo();
+    }
+
+    // Tabela legada da aba Catálogo
+    function renderItems(list) {
+      const tbody = document.getElementById('itemsBody');
+      if (!tbody) return;
+      tbody.innerHTML = list.map(item => `
+        <tr>
+          <td style="color: #8b949e; font-weight: bold;">${String(item.num).padStart(2, '0')}</td>
+          <td><code>${item.tag}</code></td>
+          <td style="font-weight: 600; color: #fff;">${item.name}</td>
+          <td><span style="color: #58a6ff;">${item.category}</span></td>
+          <td><span class="status-tag status-done">Concluído</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function filterItems() {
+      const term = (document.getElementById('searchInput')?.value || '').toLowerCase();
+      const filtered = itemsData.filter(i => 
+        i.name.toLowerCase().includes(term) || 
+        i.tag.toLowerCase().includes(term) ||
+        i.category.toLowerCase().includes(term)
+      );
+      renderItems(filtered);
+    }
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick')?.includes(tabName));
+      if (targetBtn) targetBtn.classList.add('active');
+      
+      const targetContent = document.getElementById('tab-' + tabName);
+      if (targetContent) targetContent.classList.add('active');
+
+      if (tabName === 'enciclopedia') {
+        renderEncyclo();
+      }
+    }
+
+    // Inicialização
+    renderItems(itemsData);
+    renderEncyclo();
+
+  </script>
+</body>
+</html>

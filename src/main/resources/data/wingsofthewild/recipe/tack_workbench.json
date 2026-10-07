@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "L": "wingsofthewild:cured_dragon_leather",
+    "I": "minecraft:iron_ingot",
+    "W": "minecraft:crafting_table"
+  },
+  "pattern": [
+    "LLL",
+    "IWI",
+    "W W"
+  ],
+  "result": {
+    "id": "wingsofthewild:tack_workbench"
+  }
+}

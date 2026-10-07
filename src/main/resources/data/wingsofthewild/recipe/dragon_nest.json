@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "H": "minecraft:hay_block"
+  },
+  "pattern": [
+    "H H",
+    "HHH"
+  ],
+  "result": {
+    "id": "wingsofthewild:dragon_nest"
+  }
+}

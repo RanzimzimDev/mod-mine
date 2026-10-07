@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "P": "wingsofthewild:hardened_scale_plate"
+  },
+  "pattern": [
+    "P P",
+    "PPP",
+    "P P"
+  ],
+  "result": {
+    "id": "wingsofthewild:dragon_scale_barding"
+  }
+}

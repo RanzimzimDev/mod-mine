@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "wingsofthewild:flamefang"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "wingsofthewild:flamefang"
+      }
+    ]
+  }
+}

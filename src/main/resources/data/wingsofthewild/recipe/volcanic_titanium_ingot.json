@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "wingsofthewild:ember_ingot",
+    "wingsofthewild:terraslate_ingot",
+    "minecraft:obsidian"
+  ],
+  "result": {
+    "count": 2,
+    "id": "wingsofthewild:volcanic_titanium_ingot"
+  }
+}

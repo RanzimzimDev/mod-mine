@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.2,
+  "group": "fulgurite_ingot",
+  "ingredient": "wingsofthewild:raw_fulgurite",
+  "result": {
+    "id": "wingsofthewild:fulgurite_ingot"
+  }
+}

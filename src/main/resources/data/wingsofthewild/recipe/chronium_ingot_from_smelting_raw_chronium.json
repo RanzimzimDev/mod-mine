@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 2.0,
+  "group": "chronium_ingot",
+  "ingredient": "wingsofthewild:raw_chronium",
+  "result": {
+    "id": "wingsofthewild:chronium_ingot"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "wingsofthewild:fulgurite_ingot",
+    "wingsofthewild:solarium_ingot",
+    "wingsofthewild:ember_ingot"
+  ],
+  "result": {
+    "count": 2,
+    "id": "wingsofthewild:plasma_alloy_ingot"
+  }
+}

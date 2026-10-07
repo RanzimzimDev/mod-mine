@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.6,
+  "group": "void_shadow_ingot",
+  "ingredient": "wingsofthewild:raw_void_shadow",
+  "result": {
+    "id": "wingsofthewild:void_shadow_ingot"
+  }
+}

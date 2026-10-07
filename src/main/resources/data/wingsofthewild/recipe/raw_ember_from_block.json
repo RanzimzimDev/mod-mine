@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "wingsofthewild:raw_ember_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "wingsofthewild:raw_ember"
+  }
+}

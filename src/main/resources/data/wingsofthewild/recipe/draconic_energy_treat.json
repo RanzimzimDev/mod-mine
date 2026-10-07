@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "wingsofthewild:bonding_honeycomb",
+    "wingsofthewild:molten_berries",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "count": 4,
+    "id": "wingsofthewild:draconic_energy_treat"
+  }
+}

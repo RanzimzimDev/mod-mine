@@ -1,0 +1,2118 @@
+{
+  "credit": "Made by Wings of the Wild 3D Workstation Architect with Blockbench",
+  "ambientocclusion": true,
+  "textures": {
+    "nest": "wingsofthewild:block/dragon_nest",
+    "straw": "wingsofthewild:block/charred_nest_straw",
+    "stone": "wingsofthewild:block/draconic_stone",
+    "particle": "wingsofthewild:block/dragon_nest"
+  },
+  "elements": [
+    {
+      "name": "basalt_anchor_sw",
+      "from": [
+        -5,
+        0,
+        -4
+      ],
+      "to": [
+        -1,
+        3.5,
+        1
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            4,
+            4
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "name": "basalt_anchor_se",
+      "from": [
+        17,
+        0,
+        -4
+      ],
+      "to": [
+        21,
+        3.5,
+        1
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "name": "basalt_anchor_nw",
+      "from": [
+        -5,
+        0,
+        15
+      ],
+      "to": [
+        -1,
+        3.5,
+        20
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            0,
+            4,
+            4,
+            8
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "name": "basalt_anchor_ne",
+      "from": [
+        17,
+        0,
+        15
+      ],
+      "to": [
+        21,
+        3.5,
+        20
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "name": "basalt_wedge_n",
+      "from": [
+        6,
+        0,
+        -5
+      ],
+      "to": [
+        10,
+        2.5,
+        -2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            2,
+            6,
+            5
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            2,
+            2,
+            6,
+            5
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            2,
+            2,
+            6,
+            5
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            2,
+            2,
+            6,
+            5
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            2,
+            2,
+            6,
+            5
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            2,
+            2,
+            6,
+            5
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "name": "basalt_wedge_s",
+      "from": [
+        6,
+        0,
+        18
+      ],
+      "to": [
+        10,
+        2.5,
+        21
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            5,
+            6,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            2,
+            5,
+            6,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            2,
+            5,
+            6,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            2,
+            5,
+            6,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            2,
+            5,
+            6,
+            8
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            2,
+            5,
+            6,
+            8
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "name": "basalt_wedge_w",
+      "from": [
+        -5,
+        0,
+        6
+      ],
+      "to": [
+        -2,
+        2.5,
+        10
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            2,
+            9,
+            6
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            6,
+            2,
+            9,
+            6
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            6,
+            2,
+            9,
+            6
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            6,
+            2,
+            9,
+            6
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            6,
+            2,
+            9,
+            6
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            6,
+            2,
+            9,
+            6
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "name": "basalt_wedge_e",
+      "from": [
+        18,
+        0,
+        6
+      ],
+      "to": [
+        21,
+        2.5,
+        10
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            6,
+            9,
+            10
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            6,
+            6,
+            9,
+            10
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            6,
+            6,
+            9,
+            10
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            6,
+            6,
+            9,
+            10
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            6,
+            6,
+            9,
+            10
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            6,
+            6,
+            9,
+            10
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "name": "nest_straw_foundation",
+      "from": [
+        -4,
+        0,
+        -4
+      ],
+      "to": [
+        20,
+        1.5,
+        20
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#straw"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#straw"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#straw"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#straw"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#straw"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#straw"
+        }
+      }
+    },
+    {
+      "name": "nest_sunken_bed_center",
+      "from": [
+        3,
+        0.5,
+        3
+      ],
+      "to": [
+        13,
+        1.5,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#straw"
+        },
+        "east": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#straw"
+        },
+        "south": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#straw"
+        },
+        "west": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#straw"
+        },
+        "up": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#straw"
+        },
+        "down": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#straw"
+        }
+      }
+    },
+    {
+      "name": "nest_inner_cushion_n",
+      "from": [
+        2,
+        1.5,
+        1
+      ],
+      "to": [
+        14,
+        3,
+        4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            12,
+            3
+          ],
+          "texture": "#straw"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            12,
+            3
+          ],
+          "texture": "#straw"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            12,
+            3
+          ],
+          "texture": "#straw"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            12,
+            3
+          ],
+          "texture": "#straw"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            12,
+            3
+          ],
+          "texture": "#straw"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            12,
+            3
+          ],
+          "texture": "#straw"
+        }
+      }
+    },
+    {
+      "name": "nest_inner_cushion_s",
+      "from": [
+        2,
+        1.5,
+        12
+      ],
+      "to": [
+        14,
+        3,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            12,
+            12,
+            15
+          ],
+          "texture": "#straw"
+        },
+        "east": {
+          "uv": [
+            0,
+            12,
+            12,
+            15
+          ],
+          "texture": "#straw"
+        },
+        "south": {
+          "uv": [
+            0,
+            12,
+            12,
+            15
+          ],
+          "texture": "#straw"
+        },
+        "west": {
+          "uv": [
+            0,
+            12,
+            12,
+            15
+          ],
+          "texture": "#straw"
+        },
+        "up": {
+          "uv": [
+            0,
+            12,
+            12,
+            15
+          ],
+          "texture": "#straw"
+        },
+        "down": {
+          "uv": [
+            0,
+            12,
+            12,
+            15
+          ],
+          "texture": "#straw"
+        }
+      }
+    },
+    {
+      "name": "nest_inner_cushion_w",
+      "from": [
+        1,
+        1.5,
+        3
+      ],
+      "to": [
+        4,
+        3,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            2,
+            3,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "east": {
+          "uv": [
+            0,
+            2,
+            3,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "south": {
+          "uv": [
+            0,
+            2,
+            3,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "west": {
+          "uv": [
+            0,
+            2,
+            3,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "up": {
+          "uv": [
+            0,
+            2,
+            3,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "down": {
+          "uv": [
+            0,
+            2,
+            3,
+            12
+          ],
+          "texture": "#straw"
+        }
+      }
+    },
+    {
+      "name": "nest_inner_cushion_e",
+      "from": [
+        12,
+        1.5,
+        3
+      ],
+      "to": [
+        15,
+        3,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            2,
+            15,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "east": {
+          "uv": [
+            12,
+            2,
+            15,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "south": {
+          "uv": [
+            12,
+            2,
+            15,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "west": {
+          "uv": [
+            12,
+            2,
+            15,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "up": {
+          "uv": [
+            12,
+            2,
+            15,
+            12
+          ],
+          "texture": "#straw"
+        },
+        "down": {
+          "uv": [
+            12,
+            2,
+            15,
+            12
+          ],
+          "texture": "#straw"
+        }
+      }
+    },
+    {
+      "name": "woven_rim_n",
+      "from": [
+        -2,
+        2,
+        -5
+      ],
+      "to": [
+        18,
+        5.5,
+        -1
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "woven_rim_s",
+      "from": [
+        -2,
+        2,
+        17
+      ],
+      "to": [
+        18,
+        5.5,
+        21
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "woven_rim_w",
+      "from": [
+        -5,
+        2,
+        -2
+      ],
+      "to": [
+        -1,
+        5.5,
+        18
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "woven_rim_e",
+      "from": [
+        17,
+        2,
+        -2
+      ],
+      "to": [
+        21,
+        5.5,
+        18
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            0,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            12,
+            0,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            12,
+            0,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            12,
+            0,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "woven_rim_corner_nw",
+      "from": [
+        -4,
+        2.5,
+        -4
+      ],
+      "to": [
+        0,
+        6,
+        0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            5,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            5,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            5,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            5,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            5,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            5,
+            5
+          ],
+          "texture": "#nest"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -2,
+          4,
+          -2
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "woven_rim_corner_ne",
+      "from": [
+        16,
+        2.5,
+        -4
+      ],
+      "to": [
+        20,
+        6,
+        0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            11,
+            0,
+            16,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            11,
+            0,
+            16,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            11,
+            0,
+            16,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            11,
+            0,
+            16,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            11,
+            0,
+            16,
+            5
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            11,
+            0,
+            16,
+            5
+          ],
+          "texture": "#nest"
+        }
+      },
+      "rotation": {
+        "origin": [
+          18,
+          4,
+          -2
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "name": "woven_rim_corner_sw",
+      "from": [
+        -4,
+        2.5,
+        16
+      ],
+      "to": [
+        0,
+        6,
+        20
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            11,
+            5,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            0,
+            11,
+            5,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            0,
+            11,
+            5,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            0,
+            11,
+            5,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            0,
+            11,
+            5,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            0,
+            11,
+            5,
+            16
+          ],
+          "texture": "#nest"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -2,
+          4,
+          18
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "name": "woven_rim_corner_se",
+      "from": [
+        16,
+        2.5,
+        16
+      ],
+      "to": [
+        20,
+        6,
+        20
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            11,
+            11,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            11,
+            11,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            11,
+            11,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            11,
+            11,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            11,
+            11,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            11,
+            11,
+            16,
+            16
+          ],
+          "texture": "#nest"
+        }
+      },
+      "rotation": {
+        "origin": [
+          18,
+          4,
+          18
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "interlaced_branch_upper_n",
+      "from": [
+        -1,
+        5,
+        -4
+      ],
+      "to": [
+        17,
+        6.5,
+        -2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "interlaced_branch_upper_s",
+      "from": [
+        -1,
+        5,
+        18
+      ],
+      "to": [
+        17,
+        6.5,
+        20
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            13,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            1,
+            13,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            1,
+            13,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            1,
+            13,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            1,
+            13,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            1,
+            13,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "interlaced_branch_upper_w",
+      "from": [
+        -4,
+        5,
+        -1
+      ],
+      "to": [
+        -2,
+        6.5,
+        17
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            1,
+            3,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            1,
+            1,
+            3,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            1,
+            1,
+            3,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            1,
+            1,
+            3,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            1,
+            1,
+            3,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            1,
+            1,
+            3,
+            15
+          ],
+          "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "interlaced_branch_upper_e",
+      "from": [
+        18,
+        5,
+        -1
+      ],
+      "to": [
+        20,
+        6.5,
+        17
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            13,
+            1,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            13,
+            1,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            13,
+            1,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            13,
+            1,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            13,
+            1,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            13,
+            1,
+            15,
+            15
+          ],
+          "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "twig_splint_n",
+      "from": [
+        4,
+        5.5,
+        -5.5
+      ],
+      "to": [
+        12,
+        7,
+        -3.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            2,
+            11,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            3,
+            2,
+            11,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            3,
+            2,
+            11,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            3,
+            2,
+            11,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            3,
+            2,
+            11,
+            4
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            3,
+            2,
+            11,
+            4
+          ],
+          "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "twig_splint_s",
+      "from": [
+        4,
+        5.5,
+        19.5
+      ],
+      "to": [
+        12,
+        7,
+        21.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            12,
+            11,
+            14
+          ],
+          "texture": "#nest"
+        },
+        "east": {
+          "uv": [
+            3,
+            12,
+            11,
+            14
+          ],
+          "texture": "#nest"
+        },
+        "south": {
+          "uv": [
+            3,
+            12,
+            11,
+            14
+          ],
+          "texture": "#nest"
+        },
+        "west": {
+          "uv": [
+            3,
+            12,
+            11,
+            14
+          ],
+          "texture": "#nest"
+        },
+        "up": {
+          "uv": [
+            3,
+            12,
+            11,
+            14
+          ],
+          "texture": "#nest"
+        },
+        "down": {
+          "uv": [
+            3,
+            12,
+            11,
+            14
+          ],
+          "texture": "#nest"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        75,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.375,
+        0.375,
+        0.375
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        75,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.375,
+        0.375,
+        0.375
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        225,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        0
+      ],
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    },
+    "head": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  }
+}

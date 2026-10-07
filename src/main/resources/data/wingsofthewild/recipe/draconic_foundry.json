@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "E": "wingsofthewild:ember_ingot",
+    "O": "minecraft:obsidian",
+    "B": "minecraft:blast_furnace"
+  },
+  "pattern": [
+    "EEE",
+    "OBO",
+    "OOO"
+  ],
+  "result": {
+    "id": "wingsofthewild:draconic_foundry"
+  }
+}

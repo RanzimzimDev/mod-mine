@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": "wingsofthewild:cured_dragon_leather",
+    "C": "minecraft:chest"
+  },
+  "pattern": [
+    "LCL",
+    "L L"
+  ],
+  "result": {
+    "id": "wingsofthewild:dragon_saddlebags"
+  }
+}

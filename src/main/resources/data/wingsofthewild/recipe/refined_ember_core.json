@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": "wingsofthewild:ember_ingot",
+    "D": "minecraft:diamond"
+  },
+  "pattern": [
+    "EEE",
+    "EDE",
+    "EEE"
+  ],
+  "result": {
+    "id": "wingsofthewild:refined_ember_core"
+  }
+}

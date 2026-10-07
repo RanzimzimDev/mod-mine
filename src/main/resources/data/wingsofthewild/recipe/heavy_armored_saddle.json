@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "P": "wingsofthewild:hardened_scale_plate",
+    "S": "wingsofthewild:ember_reinforced_saddle"
+  },
+  "pattern": [
+    "PPP",
+    "PSP"
+  ],
+  "result": {
+    "id": "wingsofthewild:heavy_armored_saddle"
+  }
+}

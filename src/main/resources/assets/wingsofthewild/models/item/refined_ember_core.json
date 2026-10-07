@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "wingsofthewild:item/refined_ember_core"
+  }
+}

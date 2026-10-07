@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "E": "wingsofthewild:ember_ingot",
+    "T": "minecraft:torch"
+  },
+  "pattern": [
+    " I ",
+    "IEI",
+    " T "
+  ],
+  "result": {
+    "id": "wingsofthewild:incubation_brazier"
+  }
+}

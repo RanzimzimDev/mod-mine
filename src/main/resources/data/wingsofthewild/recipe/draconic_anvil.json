@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "P": "wingsofthewild:hardened_scale_plate",
+    "I": "wingsofthewild:ember_ingot"
+  },
+  "pattern": [
+    "PPP",
+    " I ",
+    "III"
+  ],
+  "result": {
+    "id": "wingsofthewild:draconic_anvil"
+  }
+}

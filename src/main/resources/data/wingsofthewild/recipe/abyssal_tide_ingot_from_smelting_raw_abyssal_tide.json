@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.8,
+  "group": "abyssal_tide_ingot",
+  "ingredient": "wingsofthewild:raw_abyssal_tide",
+  "result": {
+    "id": "wingsofthewild:abyssal_tide_ingot"
+  }
+}

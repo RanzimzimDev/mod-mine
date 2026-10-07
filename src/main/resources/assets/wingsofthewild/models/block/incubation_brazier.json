@@ -1,0 +1,1462 @@
+{
+  "credit": "Made by Wings of the Wild 3D Workstation Architect with Blockbench",
+  "ambientocclusion": true,
+  "textures": {
+    "top": "wingsofthewild:block/incubation_brazier_top",
+    "side": "wingsofthewild:block/incubation_brazier_side",
+    "bottom": "wingsofthewild:block/incubation_brazier_bottom",
+    "particle": "wingsofthewild:block/incubation_brazier_top"
+  },
+  "elements": [
+    {
+      "name": "slate_pedestal_base",
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        2.5,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            13,
+            15,
+            16
+          ],
+          "texture": "#bottom"
+        },
+        "east": {
+          "uv": [
+            1,
+            13,
+            15,
+            16
+          ],
+          "texture": "#bottom"
+        },
+        "south": {
+          "uv": [
+            1,
+            13,
+            15,
+            16
+          ],
+          "texture": "#bottom"
+        },
+        "west": {
+          "uv": [
+            1,
+            13,
+            15,
+            16
+          ],
+          "texture": "#bottom"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#bottom"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#bottom",
+          "cullface": "down"
+        }
+      }
+    },
+    {
+      "name": "slate_stepped_collar",
+      "from": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "to": [
+        13.5,
+        4.5,
+        13.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            11,
+            14,
+            13
+          ],
+          "texture": "#bottom"
+        },
+        "east": {
+          "uv": [
+            2,
+            11,
+            14,
+            13
+          ],
+          "texture": "#bottom"
+        },
+        "south": {
+          "uv": [
+            2,
+            11,
+            14,
+            13
+          ],
+          "texture": "#bottom"
+        },
+        "west": {
+          "uv": [
+            2,
+            11,
+            14,
+            13
+          ],
+          "texture": "#bottom"
+        },
+        "up": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#bottom"
+        },
+        "down": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#bottom"
+        }
+      }
+    },
+    {
+      "name": "carved_column_shaft",
+      "from": [
+        5,
+        4.5,
+        5
+      ],
+      "to": [
+        11,
+        10.5,
+        11
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            4,
+            11,
+            10
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            5,
+            4,
+            11,
+            10
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            5,
+            4,
+            11,
+            10
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            5,
+            4,
+            11,
+            10
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "fluted_column_capital",
+      "from": [
+        4,
+        10.5,
+        4
+      ],
+      "to": [
+        12,
+        12,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            1,
+            12,
+            3
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            4,
+            1,
+            12,
+            3
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            4,
+            1,
+            12,
+            3
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            4,
+            1,
+            12,
+            3
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#bottom"
+        },
+        "down": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#bottom"
+        }
+      }
+    },
+    {
+      "name": "magma_brazier_bowl",
+      "from": [
+        2,
+        12,
+        2
+      ],
+      "to": [
+        14,
+        14.5,
+        14
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            1,
+            1,
+            15,
+            3
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "texture": "#bottom"
+        },
+        "down": {
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "texture": "#bottom"
+        }
+      }
+    },
+    {
+      "name": "eternal_magma_pool",
+      "from": [
+        3,
+        13.5,
+        3
+      ],
+      "to": [
+        13,
+        14.2,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "up": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "concentrated_flame_core",
+      "from": [
+        5,
+        14.2,
+        5
+      ],
+      "to": [
+        11,
+        17,
+        11
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            3,
+            11,
+            9
+          ],
+          "texture": "#top"
+        },
+        "east": {
+          "uv": [
+            5,
+            3,
+            11,
+            9
+          ],
+          "texture": "#top"
+        },
+        "south": {
+          "uv": [
+            5,
+            3,
+            11,
+            9
+          ],
+          "texture": "#top"
+        },
+        "west": {
+          "uv": [
+            5,
+            3,
+            11,
+            9
+          ],
+          "texture": "#top"
+        },
+        "up": {
+          "uv": [
+            5,
+            5,
+            11,
+            11
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_arm_n",
+      "from": [
+        7,
+        12,
+        1
+      ],
+      "to": [
+        9,
+        15.5,
+        3
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            0,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            1,
+            0,
+            3,
+            3
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "west": {
+          "uv": [
+            1,
+            0,
+            3,
+            3
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_mid_n",
+      "from": [
+        7,
+        15.5,
+        1.5
+      ],
+      "to": [
+        9,
+        17.5,
+        3.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            1,
+            0,
+            3,
+            2
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "west": {
+          "uv": [
+            1,
+            0,
+            3,
+            2
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_hook_n",
+      "from": [
+        7.2,
+        16.5,
+        3.5
+      ],
+      "to": [
+        8.8,
+        17.5,
+        5.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "south": {
+          "uv": [
+            7,
+            1,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "up": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#side"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_arm_s",
+      "from": [
+        7,
+        12,
+        13
+      ],
+      "to": [
+        9,
+        15.5,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "east": {
+          "uv": [
+            13,
+            0,
+            15,
+            3
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            7,
+            0,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            13,
+            0,
+            15,
+            3
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_mid_s",
+      "from": [
+        7,
+        15.5,
+        12.2
+      ],
+      "to": [
+        9,
+        17.5,
+        14.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "east": {
+          "uv": [
+            13,
+            0,
+            15,
+            2
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            13,
+            0,
+            15,
+            2
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_hook_s",
+      "from": [
+        7.2,
+        16.5,
+        10.5
+      ],
+      "to": [
+        8.8,
+        17.5,
+        12.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            1,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "up": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#side"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_arm_w",
+      "from": [
+        1,
+        12,
+        7
+      ],
+      "to": [
+        3,
+        15.5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            0,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "south": {
+          "uv": [
+            7,
+            0,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            7,
+            0,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_mid_w",
+      "from": [
+        1.5,
+        15.5,
+        7
+      ],
+      "to": [
+        3.8,
+        17.5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "south": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_hook_w",
+      "from": [
+        3.5,
+        16.5,
+        7.2
+      ],
+      "to": [
+        5.5,
+        17.5,
+        8.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "east": {
+          "uv": [
+            7,
+            1,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "up": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#side"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_arm_e",
+      "from": [
+        13,
+        12,
+        7
+      ],
+      "to": [
+        15,
+        15.5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            0,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            7,
+            0,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            7,
+            0,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_mid_e",
+      "from": [
+        12.2,
+        15.5,
+        7
+      ],
+      "to": [
+        14.5,
+        17.5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "up": {
+          "uv": [
+            7,
+            0,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        }
+      }
+    },
+    {
+      "name": "iron_claw_hook_e",
+      "from": [
+        10.5,
+        16.5,
+        7.2
+      ],
+      "to": [
+        12.5,
+        17.5,
+        8.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "west": {
+          "uv": [
+            7,
+            1,
+            9,
+            2
+          ],
+          "texture": "#side"
+        },
+        "up": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#side"
+        },
+        "down": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#side"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        75,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.375,
+        0.375,
+        0.375
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        75,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.375,
+        0.375,
+        0.375
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        225,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        0
+      ],
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    },
+    "head": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  }
+}

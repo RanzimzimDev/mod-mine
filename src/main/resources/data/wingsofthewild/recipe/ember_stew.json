@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "wingsofthewild:roasted_volcanic_meat",
+    "wingsofthewild:molten_berries",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "wingsofthewild:ember_stew"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "W": "minecraft:oak_wood",
+    "L": "minecraft:oak_log"
+  },
+  "pattern": [
+    "WWW",
+    " L ",
+    " L "
+  ],
+  "result": {
+    "id": "wingsofthewild:dragon_perch"
+  }
+}

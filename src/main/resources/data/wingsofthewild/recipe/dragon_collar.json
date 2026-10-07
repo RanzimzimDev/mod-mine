@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": "wingsofthewild:cured_dragon_leather",
+    "E": "wingsofthewild:ember_ingot"
+  },
+  "pattern": [
+    "LLL",
+    "L L",
+    " E "
+  ],
+  "result": {
+    "id": "wingsofthewild:dragon_collar"
+  }
+}

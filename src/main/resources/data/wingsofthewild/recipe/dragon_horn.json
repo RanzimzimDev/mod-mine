@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "minecraft:goat_horn",
+    "T": "wingsofthewild:flamefang_shed_tooth",
+    "E": "wingsofthewild:ember_ingot"
+  },
+  "pattern": [
+    "G G",
+    " T ",
+    " E "
+  ],
+  "result": {
+    "id": "wingsofthewild:dragon_horn"
+  }
+}

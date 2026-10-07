@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "E": "wingsofthewild:ember_ingot",
+    "S": "minecraft:smooth_stone",
+    "C": "minecraft:campfire"
+  },
+  "pattern": [
+    "EEE",
+    "SCS",
+    "SSS"
+  ],
+  "result": {
+    "id": "wingsofthewild:draconic_hearth"
+  }
+}

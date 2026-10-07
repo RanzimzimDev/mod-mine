@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "group": "roasted_volcanic_meat",
+  "ingredient": "wingsofthewild:raw_volcanic_meat",
+  "result": {
+    "id": "wingsofthewild:roasted_volcanic_meat"
+  }
+}
