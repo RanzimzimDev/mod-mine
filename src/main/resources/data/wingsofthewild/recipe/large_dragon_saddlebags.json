@@ -3,13 +3,13 @@
   "category": "equipment",
   "key": {
     "E": "wingsofthewild:ember_ingot",
-    "B": "wingsofthewild:dragon_saddlebags"
+    "B": "wingsofthewild:small_dragon_pouch"
   },
   "pattern": [
     "EBE",
     " E "
   ],
   "result": {
-    "id": "wingsofthewild:reinforced_dragon_saddlebags"
+    "id": "wingsofthewild:large_dragon_saddlebags"
   }
 }

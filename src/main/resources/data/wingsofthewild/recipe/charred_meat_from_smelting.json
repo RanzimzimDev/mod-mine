@@ -4,8 +4,8 @@
   "cookingtime": 200,
   "experience": 0.35,
   "group": "roasted_volcanic_meat",
-  "ingredient": "wingsofthewild:raw_volcanic_meat",
+  "ingredient": "minecraft:beef",
   "result": {
-    "id": "wingsofthewild:roasted_volcanic_meat"
+    "id": "wingsofthewild:charred_meat"
   }
 }

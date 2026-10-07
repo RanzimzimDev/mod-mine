@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "L": "wingsofthewild:cured_dragon_leather",
+    "L": "wingsofthewild:tanned_draconic_leather",
     "I": "minecraft:iron_ingot",
     "S": "minecraft:saddle"
   },
@@ -11,6 +11,6 @@
     "ISI"
   ],
   "result": {
-    "id": "wingsofthewild:rustic_dragon_saddle"
+    "id": "wingsofthewild:basic_dragon_saddle"
   }
 }

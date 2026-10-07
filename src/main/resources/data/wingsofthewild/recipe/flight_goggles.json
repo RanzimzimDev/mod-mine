@@ -4,13 +4,13 @@
   "key": {
     "F": "minecraft:feather",
     "T": "wingsofthewild:tempest_ingot",
-    "S": "wingsofthewild:rustic_dragon_saddle"
+    "S": "wingsofthewild:basic_dragon_saddle"
   },
   "pattern": [
     "FFF",
     "TST"
   ],
   "result": {
-    "id": "wingsofthewild:lightweight_flight_saddle"
+    "id": "wingsofthewild:flight_goggles"
   }
 }

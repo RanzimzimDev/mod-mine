@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "L": "wingsofthewild:cured_dragon_leather",
+    "L": "wingsofthewild:tanned_draconic_leather",
     "I": "minecraft:iron_ingot"
   },
   "pattern": [

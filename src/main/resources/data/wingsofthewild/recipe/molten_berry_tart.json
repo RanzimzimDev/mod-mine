@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "food",
   "key": {
-    "B": "wingsofthewild:molten_berries",
+    "B": "wingsofthewild:spicy_magma_berries",
     "W": "minecraft:wheat",
     "E": "minecraft:egg"
   },

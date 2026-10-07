@@ -3,11 +3,11 @@
   "category": "food",
   "ingredients": [
     "wingsofthewild:bonding_honeycomb",
-    "wingsofthewild:molten_berries",
+    "wingsofthewild:spicy_magma_berries",
     "minecraft:sugar"
   ],
   "result": {
     "count": 4,
-    "id": "wingsofthewild:draconic_energy_treat"
+    "id": "wingsofthewild:draconic_treat"
   }
 }

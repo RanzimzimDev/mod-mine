@@ -3,13 +3,13 @@
   "category": "equipment",
   "key": {
     "E": "wingsofthewild:ember_ingot",
-    "S": "wingsofthewild:rustic_dragon_saddle"
+    "S": "wingsofthewild:basic_dragon_saddle"
   },
   "pattern": [
     "EEE",
     "ESE"
   ],
   "result": {
-    "id": "wingsofthewild:ember_reinforced_saddle"
+    "id": "wingsofthewild:reinforced_flame_saddle"
   }
 }

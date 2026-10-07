@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "L": "wingsofthewild:cured_dragon_leather",
+    "L": "wingsofthewild:tanned_draconic_leather",
     "C": "minecraft:chest"
   },
   "pattern": [
@@ -10,6 +10,6 @@
     "L L"
   ],
   "result": {
-    "id": "wingsofthewild:dragon_saddlebags"
+    "id": "wingsofthewild:small_dragon_pouch"
   }
 }
