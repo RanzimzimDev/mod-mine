@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "wingsofthewild:ember_ore",
+    "wingsofthewild:deepslate_ember_ore",
+    "wingsofthewild:terraslate_ore",
+    "wingsofthewild:abyssal_tide_ore",
+    "wingsofthewild:tempest_ore",
+    "wingsofthewild:frostbite_ore",
+    "wingsofthewild:miasma_ore",
+    "wingsofthewild:fulgurite_ore",
+    "wingsofthewild:solarium_ore",
+    "wingsofthewild:void_shadow_ore",
+    "wingsofthewild:astralite_ore",
+    "wingsofthewild:chronium_ore",
+    "wingsofthewild:raw_ember_block",
+    "wingsofthewild:draconic_stone",
+    "wingsofthewild:draconic_stone_bricks",
+    "wingsofthewild:chiseled_draconic_bricks",
+    "wingsofthewild:ember_lantern",
+    "wingsofthewild:draconic_brazier_standing",
+    "wingsofthewild:draconic_hearth",
+    "wingsofthewild:draconic_anvil",
+    "wingsofthewild:incubation_brazier",
+    "wingsofthewild:dragon_perch",
+    "wingsofthewild:draconic_foundry"
+  ]
+}

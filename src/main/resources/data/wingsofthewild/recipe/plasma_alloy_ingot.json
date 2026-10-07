@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "wingsofthewild:fulgurite_ingot",
     "wingsofthewild:solarium_ingot",

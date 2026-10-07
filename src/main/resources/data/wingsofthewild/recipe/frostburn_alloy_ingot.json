@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "wingsofthewild:frostbite_ingot",
     "wingsofthewild:ember_ingot",

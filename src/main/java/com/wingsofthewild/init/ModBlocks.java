@@ -38,6 +38,7 @@ public class ModBlocks {
                     .mapColor(MapColor.COLOR_BROWN)
                     .strength(0.8F)
                     .sound(SoundType.GRASS)
+                    .noOcclusion()
             )
     );
 
@@ -48,6 +49,7 @@ public class ModBlocks {
                     .strength(3.5F)
                     .sound(SoundType.STONE)
                     .requiresCorrectToolForDrops()
+                    .noOcclusion()
             )
     );
 
@@ -57,6 +59,7 @@ public class ModBlocks {
                     .mapColor(MapColor.WOOD)
                     .strength(2.5F)
                     .sound(SoundType.WOOD)
+                    .noOcclusion()
             )
     );
 
@@ -68,6 +71,7 @@ public class ModBlocks {
                     .sound(SoundType.LANTERN)
                     .lightLevel(state -> 15)
                     .requiresCorrectToolForDrops()
+                    .noOcclusion()
             )
     );
 
@@ -78,6 +82,7 @@ public class ModBlocks {
                     .strength(5.0F, 1200.0F)
                     .sound(SoundType.ANVIL)
                     .requiresCorrectToolForDrops()
+                    .noOcclusion()
             )
     );
 
@@ -159,6 +164,7 @@ public class ModBlocks {
                     .strength(3.5F)
                     .sound(SoundType.STONE)
                     .lightLevel(state -> 15)
+                    .noOcclusion()
             )
     );
 
@@ -168,6 +174,7 @@ public class ModBlocks {
                     .mapColor(MapColor.QUARTZ)
                     .strength(2.0F)
                     .sound(SoundType.BONE_BLOCK)
+                    .noOcclusion()
             )
     );
 
@@ -186,6 +193,7 @@ public class ModBlocks {
                     .mapColor(MapColor.STONE)
                     .strength(3.0F)
                     .sound(SoundType.STONE)
+                    .noOcclusion()
             )
     );
 
@@ -198,6 +206,7 @@ public class ModBlocks {
                     .sound(SoundType.NETHERITE_BLOCK)
                     .lightLevel(state -> 14)
                     .requiresCorrectToolForDrops()
+                    .noOcclusion()
             )
     );
 

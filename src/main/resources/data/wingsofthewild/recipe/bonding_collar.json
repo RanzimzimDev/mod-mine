@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "L": "wingsofthewild:tanned_draconic_leather",
     "E": "wingsofthewild:ember_ingot"

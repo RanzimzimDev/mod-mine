@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "wingsofthewild:solarium_ore",
+    "wingsofthewild:void_shadow_ore",
+    "wingsofthewild:astralite_ore",
+    "wingsofthewild:chronium_ore"
+  ]
+}

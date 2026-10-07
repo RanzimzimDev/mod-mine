@@ -1,0 +1,18 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "wingsofthewild:ore_ember",
+    "wingsofthewild:ore_terraslate",
+    "wingsofthewild:ore_abyssal_tide",
+    "wingsofthewild:ore_tempest",
+    "wingsofthewild:ore_frostbite",
+    "wingsofthewild:ore_miasma",
+    "wingsofthewild:ore_fulgurite",
+    "wingsofthewild:ore_solarium",
+    "wingsofthewild:ore_void_shadow",
+    "wingsofthewild:ore_astralite",
+    "wingsofthewild:ore_chronium"
+  ],
+  "step": "underground_ores"
+}

@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "wingsofthewild:deepslate_ember_ore",
+    "wingsofthewild:abyssal_tide_ore",
+    "wingsofthewild:tempest_ore",
+    "wingsofthewild:frostbite_ore",
+    "wingsofthewild:miasma_ore",
+    "wingsofthewild:fulgurite_ore",
+    "wingsofthewild:raw_ember_block",
+    "wingsofthewild:draconic_hearth",
+    "wingsofthewild:incubation_brazier",
+    "wingsofthewild:draconic_anvil",
+    "wingsofthewild:draconic_foundry"
+  ]
+}

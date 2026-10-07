@@ -1,6 +1,1208 @@
 {
-  "parent": "minecraft:item/generated",
+  "credit": "Modeled by Wings of the Wild 3D Workstation Specialist",
+  "ambientocclusion": true,
   "textures": {
-    "layer0": "wingsofthewild:item/dragonologist_tome"
+    "tome": "wingsofthewild:item/dragonologist_tome",
+    "bone": "wingsofthewild:item/dragon_bone",
+    "particle": "wingsofthewild:item/dragonologist_tome"
+  },
+  "elements": [
+    {
+      "name": "back_cover",
+      "from": [
+        3.5,
+        1.5,
+        5.5
+      ],
+      "to": [
+        13.0,
+        14.5,
+        6.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            2,
+            13,
+            12
+          ],
+          "texture": "#tome"
+        },
+        "south": {
+          "uv": [
+            3,
+            9,
+            13,
+            12
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "front_cover",
+      "from": [
+        3.5,
+        1.5,
+        9.8
+      ],
+      "to": [
+        13.0,
+        14.5,
+        10.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            9,
+            13,
+            12
+          ],
+          "texture": "#tome"
+        },
+        "south": {
+          "uv": [
+            3,
+            1,
+            13,
+            13
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "spine_base",
+      "from": [
+        2.8,
+        1.5,
+        5.8
+      ],
+      "to": [
+        3.8,
+        14.5,
+        10.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "south": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            1,
+            1,
+            3,
+            13
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "spine_curve_back",
+      "from": [
+        3.2,
+        1.5,
+        5.5
+      ],
+      "to": [
+        4.0,
+        14.5,
+        6.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "spine_curve_front",
+      "from": [
+        3.2,
+        1.5,
+        9.8
+      ],
+      "to": [
+        4.0,
+        14.5,
+        10.5
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            1,
+            1,
+            3,
+            3
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "spine_rib_top",
+      "from": [
+        2.5,
+        11.8,
+        5.6
+      ],
+      "to": [
+        3.5,
+        13.0,
+        10.4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "south": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "spine_rib_mid",
+      "from": [
+        2.5,
+        7.4,
+        5.6
+      ],
+      "to": [
+        3.5,
+        8.6,
+        10.4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "south": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "spine_rib_bottom",
+      "from": [
+        2.5,
+        3.0,
+        5.6
+      ],
+      "to": [
+        3.5,
+        4.2,
+        10.4
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "south": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "parchment_pages",
+      "from": [
+        3.8,
+        2.2,
+        6.2
+      ],
+      "to": [
+        12.2,
+        13.8,
+        9.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            3,
+            11,
+            7
+          ],
+          "texture": "#bone"
+        },
+        "south": {
+          "uv": [
+            8,
+            3,
+            11,
+            7
+          ],
+          "texture": "#bone"
+        },
+        "east": {
+          "uv": [
+            8,
+            3,
+            11,
+            11
+          ],
+          "texture": "#bone"
+        },
+        "up": {
+          "uv": [
+            8,
+            3,
+            11,
+            7
+          ],
+          "texture": "#bone"
+        },
+        "down": {
+          "uv": [
+            8,
+            3,
+            11,
+            7
+          ],
+          "texture": "#bone"
+        }
+      }
+    },
+    {
+      "name": "relief_crest_plate",
+      "from": [
+        5.2,
+        3.8,
+        10.5
+      ],
+      "to": [
+        11.8,
+        11.2,
+        10.85
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            4,
+            6,
+            5
+          ],
+          "texture": "#tome"
+        },
+        "south": {
+          "uv": [
+            4,
+            3,
+            12,
+            9
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            5,
+            4,
+            6,
+            5
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            5,
+            4,
+            6,
+            5
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            5,
+            4,
+            6,
+            5
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            5,
+            4,
+            6,
+            5
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "dragon_eye_gem",
+      "from": [
+        7.4,
+        6.4,
+        10.85
+      ],
+      "to": [
+        9.6,
+        8.6,
+        11.25
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            6,
+            5,
+            9,
+            7
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            7,
+            5,
+            8,
+            7
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            7,
+            5,
+            8,
+            7
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            7,
+            5,
+            8,
+            7
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            7,
+            5,
+            8,
+            7
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "front_corner_tl",
+      "from": [
+        10.8,
+        12.3,
+        9.7
+      ],
+      "to": [
+        13.1,
+        14.6,
+        10.65
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "front_corner_bl",
+      "from": [
+        10.8,
+        1.4,
+        9.7
+      ],
+      "to": [
+        13.1,
+        3.7,
+        10.65
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "back_corner_tl",
+      "from": [
+        10.8,
+        12.3,
+        5.35
+      ],
+      "to": [
+        13.1,
+        14.6,
+        6.3
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "back_corner_bl",
+      "from": [
+        10.8,
+        1.4,
+        5.35
+      ],
+      "to": [
+        13.1,
+        3.7,
+        6.3
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            13,
+            4,
+            15,
+            6
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "clasp_strap_side",
+      "from": [
+        12.0,
+        6.5,
+        6.1
+      ],
+      "to": [
+        12.9,
+        9.5,
+        9.9
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            13,
+            4,
+            15,
+            8
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            13,
+            5,
+            14,
+            7
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            13,
+            5,
+            14,
+            7
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "clasp_buckle_front",
+      "from": [
+        10.5,
+        6.8,
+        10.45
+      ],
+      "to": [
+        12.2,
+        9.2,
+        11.0
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            13,
+            4,
+            15,
+            7
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            14,
+            5,
+            15,
+            7
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            14,
+            5,
+            15,
+            7
+          ],
+          "texture": "#tome"
+        },
+        "up": {
+          "uv": [
+            14,
+            5,
+            15,
+            7
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            14,
+            5,
+            15,
+            7
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "bookmark_ribbon_dangle",
+      "from": [
+        7.5,
+        0.4,
+        7.8
+      ],
+      "to": [
+        8.5,
+        2.2,
+        8.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            13,
+            8,
+            14
+          ],
+          "texture": "#tome"
+        },
+        "south": {
+          "uv": [
+            4,
+            13,
+            8,
+            14
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            4,
+            13,
+            5,
+            14
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            4,
+            13,
+            5,
+            14
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            4,
+            13,
+            5,
+            14
+          ],
+          "texture": "#tome"
+        }
+      }
+    },
+    {
+      "name": "bookmark_ribbon_tail",
+      "from": [
+        7.2,
+        -0.6,
+        7.9
+      ],
+      "to": [
+        8.2,
+        0.4,
+        8.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            13,
+            12,
+            14
+          ],
+          "texture": "#tome"
+        },
+        "south": {
+          "uv": [
+            8,
+            13,
+            12,
+            14
+          ],
+          "texture": "#tome"
+        },
+        "east": {
+          "uv": [
+            8,
+            13,
+            9,
+            14
+          ],
+          "texture": "#tome"
+        },
+        "west": {
+          "uv": [
+            8,
+            13,
+            9,
+            14
+          ],
+          "texture": "#tome"
+        },
+        "down": {
+          "uv": [
+            8,
+            13,
+            9,
+            14
+          ],
+          "texture": "#tome"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        20,
+        -40,
+        15
+      ],
+      "translation": [
+        0.5,
+        3.0,
+        1.0
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        20,
+        40,
+        -15
+      ],
+      "translation": [
+        -0.5,
+        3.0,
+        1.0
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        15,
+        -30,
+        10
+      ],
+      "translation": [
+        2.0,
+        3.2,
+        0.0
+      ],
+      "scale": [
+        0.68,
+        0.68,
+        0.68
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        15,
+        30,
+        -10
+      ],
+      "translation": [
+        -2.0,
+        3.2,
+        0.0
+      ],
+      "scale": [
+        0.68,
+        0.68,
+        0.68
+      ]
+    },
+    "ground": {
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        3.0,
+        0
+      ],
+      "scale": [
+        0.55,
+        0.55,
+        0.55
+      ]
+    },
+    "gui": {
+      "rotation": [
+        25,
+        215,
+        -10
+      ],
+      "translation": [
+        0,
+        0.5,
+        0
+      ],
+      "scale": [
+        0.85,
+        0.85,
+        0.85
+      ]
+    },
+    "head": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        12.5,
+        0
+      ],
+      "scale": [
+        0.85,
+        0.85,
+        0.85
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    }
   }
 }

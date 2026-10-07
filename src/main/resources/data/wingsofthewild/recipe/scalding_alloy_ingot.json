@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "wingsofthewild:abyssal_tide_ingot",
     "wingsofthewild:ember_ingot",

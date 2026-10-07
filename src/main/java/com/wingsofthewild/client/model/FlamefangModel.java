@@ -9,11 +9,11 @@ import net.minecraft.resources.Identifier;
 public class FlamefangModel extends GeoModel<FlamefangEntity> {
 
     private static final Identifier MODEL_RESOURCE =
-            Identifier.fromNamespaceAndPath(WingsOfTheWild.MODID, "geo/flamefang_adult.geo.json");
+            Identifier.fromNamespaceAndPath(WingsOfTheWild.MODID, "flamefang_adult");
     private static final Identifier TEXTURE_RESOURCE =
             Identifier.fromNamespaceAndPath(WingsOfTheWild.MODID, "textures/entity/flamefang_adult.png");
     private static final Identifier ANIMATION_RESOURCE =
-            Identifier.fromNamespaceAndPath(WingsOfTheWild.MODID, "animations/flamefang_adult.animation.json");
+            Identifier.fromNamespaceAndPath(WingsOfTheWild.MODID, "flamefang_adult");
 
     @Override
     public Identifier getModelResource(GeoRenderState state) {

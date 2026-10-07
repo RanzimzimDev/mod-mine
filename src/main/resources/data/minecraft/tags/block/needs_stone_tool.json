@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "wingsofthewild:ember_ore",
+    "wingsofthewild:terraslate_ore",
+    "wingsofthewild:draconic_stone",
+    "wingsofthewild:draconic_stone_bricks",
+    "wingsofthewild:chiseled_draconic_bricks"
+  ]
+}

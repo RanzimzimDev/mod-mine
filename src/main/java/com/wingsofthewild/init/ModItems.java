@@ -1,7 +1,10 @@
 package com.wingsofthewild.init;
 
 import com.wingsofthewild.WingsOfTheWild;
+import com.wingsofthewild.item.DragonHornItem;
+import com.wingsofthewild.item.DragonologistTomeItem;
 import com.wingsofthewild.item.EmberSwordItem;
+import com.wingsofthewild.item.FlightMapCaseItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -215,7 +218,8 @@ public class ModItems {
             properties -> properties.stacksTo(1));
 
     // Item 50: Tomo do Dragonologista (Livro guia com ilustrações das espécies e receitas)
-    public static final DeferredItem<Item> DRAGONOLOGIST_TOME = ITEMS.registerSimpleItem("dragonologist_tome",
+    public static final DeferredItem<Item> DRAGONOLOGIST_TOME = ITEMS.registerItem("dragonologist_tome",
+            DragonologistTomeItem::new,
             properties -> properties.stacksTo(1));
 
     // --- Categoria 8: Armadura de Escamas do Jogador & Vestimentas (59 a 64) ---
@@ -245,7 +249,8 @@ public class ModItems {
 
     // --- Categoria 9: Equipamentos Táticos & Voo Avançado (65 a 70) ---
     // Item 65: Berrante de Batalha Dracônico (Afugenta monstros e convoca o dragão)
-    public static final DeferredItem<Item> DRAGON_HORN = ITEMS.registerSimpleItem("dragon_horn",
+    public static final DeferredItem<Item> DRAGON_HORN = ITEMS.registerItem("dragon_horn",
+            DragonHornItem::new,
             properties -> properties.stacksTo(1));
 
     // Item 66: Rédeas de Tendão Reforçadas (Componente de alta resistência para selaria)
@@ -257,7 +262,8 @@ public class ModItems {
             properties -> properties.stacksTo(1).fireResistant());
 
     // Item 68: Estojo de Cartografia de Voo (Permite consultar mapas sem largar as rédeas)
-    public static final DeferredItem<Item> FLIGHT_MAP_CASE = ITEMS.registerSimpleItem("flight_map_case",
+    public static final DeferredItem<Item> FLIGHT_MAP_CASE = ITEMS.registerItem("flight_map_case",
+            FlightMapCaseItem::new,
             properties -> properties.stacksTo(1));
 
     // Item 69: Fogo de Sinalização Dracônica (Coluna de fumaça colorida visível a longa distância)

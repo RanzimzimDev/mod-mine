@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "food",
   "ingredients": [
     "wingsofthewild:charred_meat",
     "wingsofthewild:spicy_magma_berries",

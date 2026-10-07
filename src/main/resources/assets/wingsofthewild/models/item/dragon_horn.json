@@ -1,6 +1,1276 @@
 {
-  "parent": "minecraft:item/generated",
+  "credit": "Modeled by Wings of the Wild 3D Workstation Specialist",
+  "ambientocclusion": true,
   "textures": {
-    "layer0": "wingsofthewild:item/dragon_horn"
+    "horn": "wingsofthewild:item/dragon_horn",
+    "particle": "wingsofthewild:item/dragon_horn"
+  },
+  "elements": [
+    {
+      "name": "mouthpiece_rim",
+      "from": [
+        7.0,
+        13.0,
+        2.0
+      ],
+      "to": [
+        9.0,
+        14.5,
+        3.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            13,
+            0,
+            15,
+            3
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            13,
+            0,
+            15,
+            3
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            13,
+            0,
+            15,
+            3
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            13,
+            0,
+            15,
+            3
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            13,
+            0,
+            15,
+            3
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            13,
+            0,
+            15,
+            3
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "mouthpiece_collar",
+      "from": [
+        6.8,
+        12.5,
+        2.8
+      ],
+      "to": [
+        9.2,
+        14.2,
+        4.0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            1,
+            15,
+            4
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            12,
+            1,
+            15,
+            4
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            12,
+            1,
+            15,
+            4
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            12,
+            1,
+            15,
+            4
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            12,
+            1,
+            15,
+            4
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            12,
+            1,
+            15,
+            4
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "horn_throat_1",
+      "from": [
+        6.6,
+        10.5,
+        3.2
+      ],
+      "to": [
+        9.4,
+        12.8,
+        5.0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            10,
+            3,
+            14,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            10,
+            3,
+            14,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            10,
+            3,
+            14,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            10,
+            3,
+            14,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            10,
+            3,
+            14,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            10,
+            3,
+            14,
+            6
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "horn_throat_2",
+      "from": [
+        6.4,
+        8.5,
+        3.8
+      ],
+      "to": [
+        9.6,
+        10.8,
+        6.0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            9,
+            4,
+            13,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            9,
+            4,
+            13,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            9,
+            4,
+            13,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            9,
+            4,
+            13,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            9,
+            4,
+            13,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            9,
+            4,
+            13,
+            7
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "brass_band_upper",
+      "from": [
+        6.2,
+        8.8,
+        3.6
+      ],
+      "to": [
+        9.8,
+        10.2,
+        6.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            3,
+            11,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            8,
+            3,
+            11,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            8,
+            3,
+            11,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            8,
+            3,
+            11,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            8,
+            3,
+            11,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            8,
+            3,
+            11,
+            6
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "horn_mid_1",
+      "from": [
+        6.2,
+        6.5,
+        4.8
+      ],
+      "to": [
+        9.8,
+        8.8,
+        7.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            5,
+            12,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            7,
+            5,
+            12,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            7,
+            5,
+            12,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            7,
+            5,
+            12,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            7,
+            5,
+            12,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            7,
+            5,
+            12,
+            8
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "horn_mid_2",
+      "from": [
+        6.0,
+        4.8,
+        6.2
+      ],
+      "to": [
+        10.0,
+        7.2,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            6,
+            11,
+            10
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            6,
+            6,
+            11,
+            10
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            6,
+            6,
+            11,
+            10
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            6,
+            6,
+            11,
+            10
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            6,
+            6,
+            11,
+            10
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            6,
+            6,
+            11,
+            10
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "brass_harness_center",
+      "from": [
+        5.8,
+        4.5,
+        7.2
+      ],
+      "to": [
+        10.2,
+        7.5,
+        8.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            5,
+            10,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            5,
+            5,
+            10,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            5,
+            5,
+            10,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            5,
+            5,
+            10,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            5,
+            5,
+            10,
+            8
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            5,
+            5,
+            10,
+            8
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "brass_suspension_ring",
+      "from": [
+        7.5,
+        3.2,
+        7.6
+      ],
+      "to": [
+        8.5,
+        4.6,
+        8.6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            4,
+            10,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            8,
+            4,
+            10,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            8,
+            4,
+            10,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            8,
+            4,
+            10,
+            6
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            8,
+            4,
+            10,
+            6
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "horn_rise_1",
+      "from": [
+        5.8,
+        5.5,
+        9.2
+      ],
+      "to": [
+        10.2,
+        8.5,
+        12.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            7,
+            10,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            4,
+            7,
+            10,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            4,
+            7,
+            10,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            4,
+            7,
+            10,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            4,
+            7,
+            10,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            4,
+            7,
+            10,
+            11
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "horn_rise_2",
+      "from": [
+        5.5,
+        7.5,
+        10.8
+      ],
+      "to": [
+        10.5,
+        11.2,
+        14.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            8,
+            9,
+            12
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            3,
+            8,
+            9,
+            12
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            3,
+            8,
+            9,
+            12
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            3,
+            8,
+            9,
+            12
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            3,
+            8,
+            9,
+            12
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            3,
+            8,
+            9,
+            12
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "brass_band_lower",
+      "from": [
+        5.3,
+        9.0,
+        11.8
+      ],
+      "to": [
+        10.7,
+        10.4,
+        13.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            9,
+            8,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            3,
+            9,
+            8,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            3,
+            9,
+            8,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            3,
+            9,
+            8,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            3,
+            9,
+            8,
+            11
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            3,
+            9,
+            8,
+            11
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "horn_bell_flare",
+      "from": [
+        5.0,
+        10.5,
+        12.0
+      ],
+      "to": [
+        11.0,
+        14.8,
+        16.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            10,
+            8,
+            14
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            2,
+            10,
+            8,
+            14
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            2,
+            10,
+            8,
+            14
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            2,
+            10,
+            8,
+            14
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            2,
+            10,
+            8,
+            14
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            2,
+            10,
+            8,
+            14
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "horn_bell_brass_rim",
+      "from": [
+        4.6,
+        13.5,
+        11.8
+      ],
+      "to": [
+        11.4,
+        15.2,
+        16.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            10,
+            7,
+            13
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            2,
+            10,
+            7,
+            13
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            2,
+            10,
+            7,
+            13
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            2,
+            10,
+            7,
+            13
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            2,
+            10,
+            7,
+            13
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            2,
+            10,
+            7,
+            13
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "horn_sound_cavity",
+      "from": [
+        5.5,
+        13.6,
+        12.6
+      ],
+      "to": [
+        10.5,
+        15.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            13,
+            13,
+            15,
+            15
+          ],
+          "texture": "#horn"
+        },
+        "down": {
+          "uv": [
+            13,
+            13,
+            15,
+            15
+          ],
+          "texture": "#horn"
+        },
+        "north": {
+          "uv": [
+            13,
+            13,
+            15,
+            15
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            13,
+            13,
+            15,
+            15
+          ],
+          "texture": "#horn"
+        },
+        "east": {
+          "uv": [
+            13,
+            13,
+            15,
+            15
+          ],
+          "texture": "#horn"
+        },
+        "west": {
+          "uv": [
+            13,
+            13,
+            15,
+            15
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "dragon_carved_crest_left",
+      "from": [
+        5.7,
+        6.0,
+        5.5
+      ],
+      "to": [
+        6.2,
+        8.5,
+        8.0
+      ],
+      "faces": {
+        "west": {
+          "uv": [
+            5,
+            4,
+            8,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "north": {
+          "uv": [
+            5,
+            4,
+            6,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            5,
+            4,
+            6,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            5,
+            4,
+            8,
+            5
+          ],
+          "texture": "#horn"
+        }
+      }
+    },
+    {
+      "name": "dragon_carved_crest_right",
+      "from": [
+        9.8,
+        6.0,
+        5.5
+      ],
+      "to": [
+        10.3,
+        8.5,
+        8.0
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5,
+            4,
+            8,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "north": {
+          "uv": [
+            5,
+            4,
+            6,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "south": {
+          "uv": [
+            5,
+            4,
+            6,
+            7
+          ],
+          "texture": "#horn"
+        },
+        "up": {
+          "uv": [
+            5,
+            4,
+            8,
+            5
+          ],
+          "texture": "#horn"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        70,
+        -30,
+        20
+      ],
+      "translation": [
+        0,
+        3.5,
+        1.0
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        70,
+        30,
+        -20
+      ],
+      "translation": [
+        0,
+        3.5,
+        1.0
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        10,
+        -75,
+        25
+      ],
+      "translation": [
+        1.5,
+        3.0,
+        1.0
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        10,
+        75,
+        -25
+      ],
+      "translation": [
+        -1.5,
+        3.0,
+        1.0
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        90
+      ],
+      "translation": [
+        0,
+        3.0,
+        0
+      ],
+      "scale": [
+        0.6,
+        0.6,
+        0.6
+      ]
+    },
+    "gui": {
+      "rotation": [
+        25,
+        135,
+        -20
+      ],
+      "translation": [
+        0,
+        0.5,
+        0
+      ],
+      "scale": [
+        0.85,
+        0.85,
+        0.85
+      ]
+    },
+    "head": {
+      "rotation": [
+        -20,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        13.0,
+        1.0
+      ],
+      "scale": [
+        0.9,
+        0.9,
+        0.9
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        90,
+        35
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    }
   }
 }

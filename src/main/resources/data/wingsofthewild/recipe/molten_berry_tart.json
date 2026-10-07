@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "food",
   "key": {
     "B": "wingsofthewild:spicy_magma_berries",
     "W": "minecraft:wheat",

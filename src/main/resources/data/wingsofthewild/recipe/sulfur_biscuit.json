@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "food",
   "key": {
     "W": "minecraft:wheat",
     "H": "wingsofthewild:bonding_honeycomb"

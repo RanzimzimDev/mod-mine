@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "E": "wingsofthewild:ember_ingot",
     "D": "minecraft:diamond"
