@@ -29,6 +29,7 @@ public class WingsOfTheWild {
 
         // Registrando Blocos, Itens, Entidades, Menus e Abas Criativas no Barramento de Eventos
         ModBlocks.BLOCKS.register(modEventBus);
+        com.wingsofthewild.init.ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         ModMenuTypes.MENUS.register(modEventBus);
@@ -36,14 +37,25 @@ public class WingsOfTheWild {
 
         // Registro de Atributos de Entidades
         modEventBus.addListener(this::registerAttributes);
+        modEventBus.addListener(this::registerPayloads);
 
         // Registro de Telas de GUI e Renderizadores de Entidade no Cliente
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             modEventBus.addListener(ModClientScreens::registerScreens);
             modEventBus.addListener(this::registerRenderers);
+            modEventBus.addListener(com.wingsofthewild.client.ModClientEvents::registerKeyMappings);
         }
 
         modEventBus.addListener(this::commonSetup);
+    }
+
+    private void registerPayloads(final net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent event) {
+        net.neoforged.neoforge.network.registration.PayloadRegistrar registrar = event.registrar("1");
+        registrar.playToServer(
+                com.wingsofthewild.network.DragonAttackPayload.TYPE,
+                com.wingsofthewild.network.DragonAttackPayload.STREAM_CODEC,
+                com.wingsofthewild.network.DragonAttackPayload::handle
+        );
     }
 
     private void registerAttributes(final EntityAttributeCreationEvent event) {

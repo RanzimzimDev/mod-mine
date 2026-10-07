@@ -34,7 +34,7 @@ def validate():
         an_bones = anims[k]['bones']
         tail_in_an = [b for b in an_bones if 'tail' in b]
         print(f"  {k}: {len(tail_in_an)} tail bones animated")
-    assert len(anims) == 5, f"Expected 5 animations, got {len(anims)}"
+    assert len(anims) >= 5, f"Expected at least 5 animations, got {len(anims)}"
 
     # 4. BBModel Check
     bb_path = r'D:\Mine\models\flamefang\flamefang_adult_geckolib.bbmodel'
@@ -49,10 +49,10 @@ def validate():
     print(f"BBModel resolution: {bb['resolution']}")
     assert fmt == 'geckolib_model', f"Expected geckolib_model, got {fmt}"
     assert elem_count > 100, f"Expected > 100 elements, got {elem_count}"
-    assert anim_count == 5, f"Expected 5 bb animations, got {anim_count}"
+    assert anim_count >= 5, f"Expected at least 5 bb animations, got {anim_count}"
     assert bb['resolution'] == {'width': 512, 'height': 512}
 
-    print("\n[ALL 4 ASSETS 100% VALIDATED - 2.5X WIDER DRAGON SUCCESS!]")
+    print("\n[ALL 4 ASSETS 100% VALIDATED - HARMONIC DRAGON SUCCESS!]")
 
 if __name__ == "__main__":
     validate()

@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "has_egg=false": {
       "model": "wingsofthewild:block/dragon_nest"
+    },
+    "has_egg=true": {
+      "model": "wingsofthewild:block/dragon_nest_with_egg"
     }
   }
 }

@@ -150,3 +150,35 @@ Atendendo ao feedback de testes in-game sobre artefatos de transparência e oclu
   - Pedestal de base assentado perfeitamente no chão de `Y = 0` a `Y = 2.5` (`[1, 0, 1]` a `[15, 2.5, 15]`), com `cullface: "down"`.
   - Textura do rodapé e colar intermediário mapeadas para `incubation_brazier_bottom.png` (textura 100% opaca, sem nenhum pixel transparente), eliminando completamente a folga transparente e linhas invisíveis relatadas in-game.
   - UVs do fuste da coluna fixados estritamente na faixa segura `Y = 4..10` de `incubation_brazier_side.png`, evitando a linha vazada de índice 15.
+
+---
+
+### ✅ Rodada 3 — Sistema de Incubação Interativo do Ninho de Dragão (Concluída em 2026-10-07)
+
+Implementação completa da mecânica viva de incubação e dos modelos 3D dinâmicos para o Ninho de Dragão (`dragon_nest`):
+
+#### 1. Arquitetura Java NeoForge 26.3 (`DragonNestBlock` & `DragonNestBlockEntity`)
+* **Colocação & Retirada de Ovos:**
+  - Clique com botão direito segurando `flamefang_egg` em ninho vazio insere o ovo, consome o item do inventário (salvo em modo criativo), transita o blockstate para `has_egg=true`, toca `SoundEvents.CHICKEN_EGG` e reinicia o contador de incubação.
+  - Interação com a mão vazia (`useWithoutItem`) em ninho ocupado resgata o ovo com segurança para o inventário do jogador (ou dropa no chão se cheio), reseta `has_egg=false` e o progresso térmico.
+  - Quebra do ninho com ovo (`destroy`) efetua drop garantido de `flamefang_egg` via `popResource`.
+* **Detecção Térmica & Calor Direcional:**
+  - O `DragonNestBlockEntity` executa varredura por tick no servidor inspecionando blocos inferiores (`pos.below()`) e adjacentes horizontais (Norte, Sul, Leste, Oeste).
+  - Reconhece fontes de calor nativas e do mod: `wingsofthewild:incubation_brazier`, `minecraft:fire`, `minecraft:soul_fire`, `minecraft:campfire` (verificando `LIT`), `minecraft:soul_campfire`, `minecraft:magma_block` e `minecraft:lava`.
+  - O `incubation_brazier` posicionado sob o ninho atua como base térmica máxima acelerando o ciclo em 3x.
+* **Partículas & Eclosão Dracônica:**
+  - Enquanto aquecido, o ninho emite partículas térmicas no servidor (`ParticleTypes.FLAME` e `ParticleTypes.SMOKE`).
+  - Ao atingir 1200 ticks de aquecimento acumulado, o ovo choca: emite estilhaçamento sonoro (`SoundEvents.TURTLE_EGG_BREAK`), explosão de brasas (`FLAME` e `LAVA`), invoca o filhote `FlamefangEntity` com `setBaby(true)` alinhado no centro via `snapTo`, e restaura o ninho para `has_egg=false`.
+* **Persistência de Dados (MC 26.3):**
+  - Serialização implementada via `ValueOutput.putInt` e `ValueInput.getIntOr` para persistência robusta do progresso de incubação entre saves e reinicializações do servidor.
+
+#### 2. Modelos 3D & Recursos Visuais
+* **Modelo com Ovo:** `src/main/resources/assets/wingsofthewild/models/block/dragon_nest_with_egg.json` e `D:\Mine\models\blocks\dragon_nest_with_egg.bbmodel`.
+* **Geometria do Ovo Dracônico:** 9 cubos tridimensionais esculpidos no centro do ninho (`Y = 1.5` a `13.5`), abrangendo base de assentamento, corpo cônico em 3 estágios, ápice chanfrado e 4 quilhas/cristas cardinais em relevo.
+* **Textura Dedicada:** `src/main/resources/assets/wingsofthewild/textures/block/flamefang_egg.png` com padrão de escamas de basalto vulcânico e veios incandescentes de magma.
+* **Blockstate Dinâmico:** `src/main/resources/assets/wingsofthewild/blockstates/dragon_nest.json` configurado para alternar perfeitamente entre `has_egg=false` (`dragon_nest`) e `has_egg=true` (`dragon_nest_with_egg`).
+* **Normalização Geométrica:** Correção de limites em todos os elementos para satisfazer `from <= to` e intervalo legal `[-16.0, 32.0]`.
+
+#### 3. Certificação & Build
+* **Compilação NeoForge:** `./gradlew compileJava` e `./gradlew jar` aprovados com código de saída 0.
+* **Auditoria de Recursos:** `audit_validator.py` com 116 / 116 itens e blocos aprovados em 100% dos critérios.

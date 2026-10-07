@@ -34,7 +34,7 @@ public class ModBlocks {
 
     // Bloco 01: Ninho Dracônico Artesanal (Bloco rústico de palha e gravetos para chocar ovos)
     public static final DeferredBlock<Block> DRAGON_NEST = registerBlock("dragon_nest",
-            properties -> new Block(properties
+            properties -> new com.wingsofthewild.block.DragonNestBlock(properties
                     .mapColor(MapColor.COLOR_BROWN)
                     .strength(0.8F)
                     .sound(SoundType.GRASS)

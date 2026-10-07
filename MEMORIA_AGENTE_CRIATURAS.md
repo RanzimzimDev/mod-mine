@@ -342,3 +342,45 @@ Os modelos legados com asas caídas foram expurgados. Foram criados do zero 4 mo
    - `./gradlew compileJava` $\rightarrow$ BUILD SUCCESSFUL (0 erros).
    - `./gradlew build` $\rightarrow$ BUILD SUCCESSFUL (Jar de produção compilado com sucesso).
    - O comando `/summon wingsofthewild:flamefang ~ ~ ~` está 100% operacional no jogo!
+
+---
+
+## 🏛️ METAS CONCLUÍDAS — Redimensionamento 3D Proporcional & Fim Definitivo do Achatamento (2026-10-07)
+
+### 1. Resolução do Feedback do Usuário
+* **Demanda:** *"redmencione o dragão total de largura e altura agora ele ficou super achatado. e esta feio"*
+* **Diagnóstico Anatômico:** A versão anterior possuía uma envergadura alar excessivamente ampla (284 unidades / 17.8 blocos) e torso com largura muito superior à altura (42-60 unidades de largura para apenas 18-22 unidades de altura de torso, gerando uma relação 2:1 a 2.5:1). Além disso, as asas permaneciam abertas horizontalmente a quase 180° no repouso no solo, fazendo o dragão parecer uma folha/panqueca achatada e desproporcional.
+
+### 2. Nova Anatomia 3D Proporcional & Atlética (Estilo Apex Predator / ARK Wyvern / Monster Hunter)
+1. `[x]` **Torso Profundo e Esbelto (Eliminação da Panqueca):**
+   - Altura/Profundidade vertical do torso: **32 unidades** (do esterno em $Y = 26$ até o dorso em $Y = 58$, com crista espinhal até $Y = 66$).
+   - Largura do torso: **26 a 30 unidades** (ombros com 30 unidades, peitoral com 24, abdômen afunilado com 22, pélvis com 24).
+   - Relação Altura/Largura de **1.2:1** (torso mais profundo verticalmente do que largo horizontalmente), criando uma silhueta nobre, atlética e poderosa.
+2. `[x]` **Postura Quadrúpede Elevada:**
+   - 4 membros digitígrados robustos erguendo o ventre a **26 unidades do chão** (~1.6 blocos de vão livre do solo).
+   - Canelas de 22 unidades e coxas/ombros de 24-26 unidades, com patas predadoras plantadas firmemente no chão em $Y = 0$.
+   - Postura compacta e imponente com largura de pegada de 34-36 unidades (~2.2 blocos).
+3. `[x]` **Pescoço e Cabeça Majestosos:**
+   - Pescoço atlético em curva S elevando o crânio até $Y = 80$ e chifres recurvados até $Y = 84-88$ (5.5 blocos de altura).
+4. `[x]` **Asas Proporcionais & Dobradas no Solo:**
+   - Envergadura total em voo: **176 unidades** (~11 blocos de envergadura), ampla e majestosa sem dominar o cenário de forma bizarra.
+   - **Asas Dobradas no Repouso (idle e walk):** As asas agora dobram-se de forma elegante e anatômica ao longo dos flancos do dragão quando ele está no solo, reduzindo a largura em repouso para apenas **38 a 42 unidades** (~2.5 blocos), eliminando 100% da impressão de prancha achatada!
+5. `[x]` **Novo Osso de Montaria (`saddle`):**
+   - Criado o osso `saddle` filho de `body` posicionado na crista dorsal ($[0, 58, 0]$), com assento de couro trabalhado, pommel dianteiro, cantle traseiro, cilha de barriga e estribos forjados para passageiros.
+6. `[x]` **Textura Ultra-HD 512x512 Atualizada:**
+   - Paleta vulcânica com escamas de obsidiana chanfradas, veios de magma líquido brilhante e nova textura para a sela de couro com detalhes em latão e estribos de ferro.
+   - 100% livre de padrões de xadrez.
+7. `[x]` **Suíte Completa de 10 Animações Mantida & Aperfeiçoada:**
+   - `idle`: Postura altiva quadrúpede com asas recolhidas e respiração lenta.
+   - `walk`: Marcha diagonal realista de 4 patas com asas recolhidas e flexão de jarretes.
+   - `fly_flap`: Voo cinematográfico em 43 frames com asas 100% estendidas e patas recolhidas.
+   - `glide`: Planeio majestoso em correntes de convecção térmica.
+   - `eating`, `sleep`, `wake_up`, `roar`, `attack_bite`, `attack_fireball` perfeitamente calibrados.
+8. `[x]` **Integração no Mod:**
+   - `flamefang_adult.geo.json`: 37 ossos, bounds $X: [-19, 19]$ (corpo) e $Y: [0, 84]$ (altura de 5.25 blocos).
+   - `flamefang_adult_geckolib.bbmodel`: 145 elementos anatômicos em formato `geckolib_model`.
+   - `flamefang_adult.png`: Textura 512x512.
+   - `flamefang_adult.animation.json`: 10 animações sincronizadas.
+   - `FlamefangEntity.java`: Suporte a dados sincronizados de sela (`DATA_SADDLED`), montaria com posicionamento do cavaleiro (`getPassengerAttachmentPoint` em $Y = 3.6$) e controle pelo jogador (`getControllingPassenger`).
+   - `validate_all_stages.py` e `validate_assets.py` aprovados com 100% de sucesso.
+   - `painel.html` atualizado autonomamente nas abas `tab-equipe` e `tab-blockbench`.

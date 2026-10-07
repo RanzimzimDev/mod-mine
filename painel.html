@@ -584,22 +584,22 @@
         <div class="kpi-card" style="border-color: #2ea043;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <h3 style="color: #2ea043;">🛠️ Agente 1: Itens & Sistemas</h3>
-            <span class="status-tag status-done">GUIS, TELAS & 65 RECEITAS (RODADA 7)</span>
+            <span class="status-tag status-done">GUIS DE BOLSAS & ESTAÇÕES ENTREGUES (RODADA 8)</span>
           </div>
           <p style="color: var(--text-muted); margin: 10px 0; font-size: 0.92rem;">
             Responsável pelos blocos funcionais, comidas, selaria, armaduras, ferramentas, GUIs, menus e lógica Java NeoForge.
           </p>
           <div style="font-size: 0.85rem; color: #c9d1d9;">
             📁 <b>Memória:</b> <code>D:\Mine\MEMORIA_AGENTE_ITENS.md</code><br>
-            📦 <b>Progresso Atual:</b> 116 Itens/Blocos + 3 GUIs + 65 Receitas Concluídas (100.0%)<br>
-            🏆 <b>Status Final:</b> Rodadas 1 a 7 100% finalizadas! Telas e Menus interativos implementados para Forja de Ligas, Fornalha Culinária e Bancada de Selaria, integrados a blocos no mundo com texturas 256x256 customizadas e 65 receitas oficiais completas de smelting/crafting compatíveis com JEI/EMI em <code>wingsofthewild-1.0.0.jar</code>.
+            📦 <b>Progresso Atual:</b> 116 Itens/Blocos + 4 GUIs + 65 Receitas Concluídas (100.0%)<br>
+            🏆 <b>Status Final:</b> Rodadas 1 a 8 100% finalizadas! Telas e Menus interativos implementados para Forja de Ligas, Fornalha Culinária, Bancada de Selaria e Bolsas Portáteis (9 e 27 slots ao clicar com botão direito), com persistência em DataComponents.CONTAINER e 65 receitas oficiais completas em <code>wingsofthewild-1.0.0.jar</code>.
           </div>
         </div>
 
         <div class="kpi-card" style="border-color: #ff5722;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <h3 style="color: #ff5722;">🐉 Agente 2: Criaturas & 3D</h3>
-            <span class="status-tag status-done">ENTIDADE JAVA & GECKOLIB REGISTRADA NO JOGO</span>
+            <span class="status-tag status-done">DRAGÃO PROPORCIONAL & ATLÉTICO (FIM DO ACHATAMENTO)</span>
           </div>
           <p style="color: var(--text-muted); margin: 10px 0; font-size: 0.92rem;">
             Responsável pelos modelos 3D Blockbench, esqueleto GeckoLib, animações fluidas e modelo 3D do ovo.
@@ -607,13 +607,23 @@
           <div style="font-size: 0.85rem; color: #c9d1d9;">
             📁 <b>Memória:</b> <code>D:\Mine\MEMORIA_AGENTE_CRIATURAS.md</code><br>
             📂 <b>Arquivos Alvo:</b> <code>flamefang_{adult, Juvenil, hatchling, egg}_geckolib.bbmodel</code><br>
-            🎬 <b>Nova Suíte Completa de Animações (10 no Adulto, 8 no Juvenil, 8 no Filhote):</b>
-            <br>• <b>Voo Fluido e Potente (fly_flap):</b> Upstroke arqueado gracioso com asas dobrando suavemente contra o vento, downstroke vigoroso com abertura total de 284 unidades de envergadura, oscilação corporal em Y/Z com empuxo aerodinâmico, 4 patas digitígradas recolhidas sob o ventre e cauda de 7 estágios ondulando em chicote senoidal contínuo.
-            <br>• <b>Planeio Majestoso (glide):</b> Asas estendidas flutuando em correntes térmicas com diedro positivo suave, micro-oscilações de alta velocidade nas pontas e cauda atuando como leme.
-            <br>• <b>Alimentação Voraz (eating):</b> Cabeça e pescoço curvam-se até o solo, 3 mordidas ritmadas com mandíbula estalando e engolir com contração muscular.
-            <br>• <b>Sono Profundo Aninhado (sleep):</b> Deitado no ninho (Y=-22), patas dobradas, asas coladas ao dorso, cauda abraçando o flanco e cabeça aninhada com respiração lenta de 6 segundos.
-            <br>• <b>Despertar e Alerta (wake_up):</b> Abre os olhos, bocejo escancarando a mandíbula a 62°, espreguiçada com patas dianteiras no solo, levanta e postura alerta a 88 unidades de altura.
-            <br>• <b>Rugido Titânico de Intimidação (roar):</b> Estufamento do peitoral de 60 unidades, abertura de intimidação das asas de 284 unidades, pescoço erguido e mandíbula aberta a 65° com tremor sonoro.
+            🔥 <b>Redimensionamento 3D Proporcional (Fim Definitivo do Achatamento):</b><br>
+            • <b>Anatomia Esbelta & Profunda:</b> Torso com 32 unidades de profundidade/altura e 26-30 de largura (relação Altura/Largura de 1.2:1 — corpo atlético e esbelto de predador, eliminando qualquer aspecto achatado).<br>
+            • <b>Postura Elevada & Membros Digitígrados:</b> 4 patas musculosas elevando o ventre a 26 unidades do solo, plantadas firmemente em Y=0 com garras afiadas.<br>
+            • <b>Envergadura Harmoniosa & Asas Dobradas no Repouso:</b> Asas articuladas em 4 junções com 176 unidades de envergadura em voo (~11 blocos) e graciosamente dobradas ao longo dos flancos no solo (largura em repouso de apenas 38-42 unidades).<br>
+            • <b>Osso de Sela (Saddle):</b> Osso <code>saddle</code> adicionado na crista dorsal entre os ombros e o dorso, com assento de couro, estribos e correias de fixação.<br>
+            🎬 <b>Suíte Completa de 10 Animações Sincronizadas:</b>
+            <br>• <b>Repouso Nobre (idle):</b> Postura quadrúpede altiva com respiração torácica, asas recolhidas e ondulação senoidal lenta da cauda de 7 estágios.
+            <br>• <b>Marcha Diagonal (walk):</b> Passo quadrúpede realista com patas dianteiras e traseiras cruzadas, flexão de jarretes e asas firmemente dobradas.
+            <br>• <b>Voo Cinematográfico (fly_flap):</b> 43 keyframes de mecânica assimétrica com abertura total das asas (176 unidades), empuxo vertical e 4 patas recolhidas aerodinamicamente sob o peito.
+            <br>• <b>Planeio Térmico (glide):</b> Flutuação estável com asas estendidas, micro-ondulações nas pontas e leme caudal.
+            <br>• <b>Alimentação (eating):</b> Cabeça abaixando, 3 mordidas ritmadas com mandíbula estalando e deglutição.
+            <br>• <b>Sono Aninhado (sleep):</b> Encolhido no solo (Y=-24) com asas envolvendo o corpo em manto protetor.
+            <br>• <b>Despertar (wake_up):</b> Bocejo com abertura mandibular de 62°, espreguiçada e postura de alerta erguendo o crânio a Y=84-88.
+            <br>• <b>Rugido (roar):</b> Erguimento frontal em 2 patas, expansão peitoral e abertura intimidadora de mandíbula a 65°.
+            <br>• <b>Mordida Terrestre (attack_bite):</b> Bote fulminante e mandíbula se fechando com impacto vigoroso.
+            <br>• <b>Sopro de Fogo / Bola de Fogo (attack_fireball):</b> Inalação profunda, recuo em 4 patas e flare térmico de 1.9x no leque caudal.
+            <br>• <b>Invocação no Jogo (/summon wingsofthewild:flamefang):</b> 120 HP, 12 Dano, 8 Armadura, 0.6 Voo, suporte a montaria com sela (<code>basic_dragon_saddle</code> e <code>reinforced_flame_saddle</code>). Integração 100% pronta!
             <br>• <b>Invocação no Jogo (/summon wingsofthewild:flamefang):</b> Entidade Java registrada em <code>ModEntities.java</code>, classe <code>FlamefangEntity.java</code> com GeoEntity, atributos épicos (120 HP, 12 Dano, 8 Armadura, 0.6 Voo), modelo <code>FlamefangModel.java</code>, renderizador <code>FlamefangRenderer.java</code> e registro no mod principal <code>WingsOfTheWild.java</code>. Compilado e pronto no JAR!
           </div>
         </div>
@@ -652,21 +662,21 @@
         <div class="kpi-card" style="border-color: #ff9800;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <h3 style="color: #ff9800;">🏛️ Agente 5: Arquiteto 3D de Blocos & Estações de Trabalho</h3>
-            <span class="status-tag status-done">7 WORKSTATIONS 100% MODELADAS (3D)</span>
+            <span class="status-tag status-done">WORKSTATIONS 3D + SISTEMA DE INCUBAÇÃO DO NINHO CONCLUÍDOS</span>
           </div>
           <p style="color: var(--text-muted); margin: 10px 0; font-size: 0.92rem;">
-            Responsável pelos modelos cúbicos 3D imersivos, arquivos Blockbench (.bbmodel), modelos JSON de bloco/item e mapeamento UV das estações de trabalho e blocos interativos.
+            Responsável pelos modelos cúbicos 3D imersivos, arquivos Blockbench (.bbmodel), modelos JSON de bloco/item, mapeamento UV e mecânicas interativas das estações de trabalho e blocos dracônicos.
           </p>
           <div style="font-size: 0.85rem; color: #c9d1d9;">
             📁 <b>Memória:</b> <code>D:\Mine\MEMORIA_AGENTE_ESTACOES.md</code><br>
-            📐 <b>Modelos Blockbench:</b> <code>D:\Mine\modelslocks\*.bbmodel</code> (7 arquivos com texturas base64 embutidas)<br>
+            📐 <b>Modelos Blockbench:</b> <code>D:\Mine\models\blocks\*.bbmodel</code> (10 arquivos com texturas base64 embutidas)<br>
             📦 <b>Modelos JSON:</b> <code>src/main/resources/assets/wingsofthewild/models/block/*.json</code><br>
-            🏛️ <b>Estações Entregues:</b>
-            <br>• <b>dragon_nest:</b> 28 elementos 3D, diâmetro externo 26x26, leito côncavo rebaixado em palha chamuscada para acomodar o ovo de Flamefang, 8 pedras basálticas de ancoragem e galhos entrelaçados.
+            🏛️ <b>Estações & Mecânicas Entregues:</b>
+            <br>• <b>dragon_nest (com Sistema Vivo de Incubação):</b> Modelo vazio (28 el.) e com ovo de dragão <code>dragon_nest_with_egg</code> (37 el.), suporte térmico automatizado a fontes de calor adjacentes e inferiores (com o <code>incubation_brazier</code> fornecendo eficiência máxima 3x), emissão de partículas térmicas (FLAME/SMOKE), inserção/retirada interativa de ovos, quebra segura e eclosão aos 1200 ticks gerando um filhote de Flamefang!
             <br>• <b>draconic_foundry:</b> 24 elementos 3D, cadinho refratário superior com bacia oca de liga fundida, calha lateral saliente de vazamento de metal líquido, fornalha com abertura em arco e brasas ardentes.
             <br>• <b>draconic_hearth:</b> 20 elementos 3D, compartimento inferior de cinzas com puxador, grelha com caldeirão volumétrico suspenso e chaminé rústica com respiradouros.
             <br>• <b>tack_workbench:</b> 22 elementos 3D, pernas chanfradas de carvalho escuro, tampo de couro cru esticado, gaveta funcional com puxador de osso, ferramentas de entalhe penduradas e carretel lateral de tendões.
-            <br>• <b>incubation_brazier:</b> 19 elementos 3D, pedestal e coluna esculpida em ardósia, taça com magma perpétuo e 4 garras de ferro mantendo o fogo concentrado.
+            <br>• <b>incubation_brazier:</b> 19 elementos 3D, pedestal e coluna esculpida em ardósia, taça com magma perpétuo e 4 garras de ferro mantendo o fogo concentrado (100% opaco e assentado no solo).
             <br>• <b>draconic_anvil:</b> 17 elementos 3D, bigorna maciça de obsidiana e magma com runas incandescentes entalhadas, chifres frontais curvos de dragão e talão reforçado.
             <br>• <b>dragon_perch:</b> 16 elementos 3D, mastro de madeira resistente com reforços e cintas de ferro, trave transversal chanfrada de 26 unidades com ranhuras de garra e ponteiras com olhais.
           </div>
@@ -1429,7 +1439,7 @@
         <p>Os modelos antigos foram removidos. Restam exclusivamente os 4 modelos oficiais com suporte nativo ao GeckoLib:</p>
         <br>
         <ul style="margin-left: 20px; line-height: 2;">
-          <li><b>👑 <code>flamefang_adult_geckolib.bbmodel</code>:</b> <b>Dragão Adulto Colossal Harmônico & Suíte de 10 Animações:</b> 5.5 blocos de altura (88 unidades), 17.8 blocos de envergadura alar (284 unidades), 143 elementos anatômicos, 36 ossos, textura Ultra-HD 512x512 vulcânica sem xadrez. <b>10 Animações Blockbench & GeckoLib:</b> <code>idle</code> (postura nobre), <code>walk</code> (passo quadrúpede), <code>fly_flap</code> (bater de asas fluido cinematográfico com empuxo e patas recolhidas), <code>glide</code> (planeio termal com asas abertas), <code>eating</code> (alimentação com 3 mordidas ritmadas e engolir), <code>sleep</code> (sono aninhado no ninho com respiração profunda de 6.0s), <code>wake_up</code> (despertar com bocejo de 62° e espreguiçada), <code>roar</code> (rugido com peitoral de 60 unidades e envergadura de 284 unidades), <code>attack_bite</code> (mordida de combate) e <code>attack_fireball</code> (baforada devastadora).</li>
+          <li><b>👑 <code>flamefang_adult_geckolib.bbmodel</code>:</b> <b>Dragão Adulto Proporcional & Atlético (Fim Definitivo do Achatamento):</b> 5.5 blocos de altura (88 unidades), torso esbelto e profundo de 32 unidades de altura por 26-30 de largura (relação Altura/Largura 1.2:1 eliminando formato de panqueca), 176 unidades de envergadura alar de voo (~11 blocos) e asas graciosamente dobradas ao longo dos flancos em repouso no solo (largura de apenas 38-42 unidades). 145 elementos anatômicos, 37 ossos (incluindo osso <code>saddle</code> posicionado no dorso para montaria), 4 patas digitígradas plantadas em Y=0, cauda de 7 estágios com lâmina caudal de 30 unidades e textura Ultra-HD 512x512 vulcânica sem xadrez. <b>10 Animações Blockbench & GeckoLib:</b> <code>idle</code> (postura nobre com asas recolhidas), <code>walk</code> (marcha diagonal com asas dobradas), <code>fly_flap</code> (bater de asas fluido cinematográfico com empuxo e patas recolhidas), <code>glide</code> (planeio termal com asas abertas), <code>eating</code> (alimentação com 3 mordidas ritmadas e engolir), <code>sleep</code> (sono aninhado no ninho com respiração profunda de 6.0s), <code>wake_up</code> (despertar com bocejo de 62° e espreguiçada), <code>roar</code> (rugido com erguimento bípede e expansão peitoral), <code>attack_bite</code> (mordida de combate) e <code>attack_fireball</code> (baforada devastadora).</li>
           <li><b>⚡ <code>flamefang_Juvenil_geckolib.bbmodel</code>:</b> <b>Dragão Juvenil Atlético (Padrão Hexápode & Asas Amplas):</b> 2.5 blocos de altura, 150 unidades de envergadura (~9.4 blocos). <b>Anatomia Hexápode:</b> 4 patas completas plantadas no solo (Y=0) com ombros musculosos e garras predadoras (eliminando braços suspensos de T-Rex), peito atlético com quilha peitoral desenvolvida, asas aerodinâmicas amplas estendidas para trás no plano horizontal com membranas carmesins ao longo dos flancos (Isle of Berk), cauda orgânica articulada de 4 segmentos com leque de magma de 20 unidades de largura (sem cubos toscos), e textura HD 256x256 de obsidiana e magma ativo sem xadrez. 74 elementos, 29 ossos, 8 animações GeckoLib sincronizadas (idle, walk, fly_flap fluido, glide, eating, sleep, wake_up, roar).</li>
           <li><b>🐣 <code>flamefang_hatchling_geckolib.bbmodel</code>:</b> <b>Filhote Chibi (Quadrúpede Fofo & Broto Orgânico de Fogo):</b> 1.0 bloco de altura. <b>Anatomia Quadrúpede Fofa:</b> 4 patinhas firmemente apoiadas no solo (Y=0), barriguinha roliça e peito cheinho de bebê aquecido, asinhas aerodinâmicas proporcionais estendidas para trás, cauda orgânica com broto arredondado de fogo em pétalas/gota (eliminando cubos toscos), olhos grandes dourados com brilho e pupila viva, e textura 128x128 detalhada de filhote. 21 elementos, 14 ossos, 8 animações GeckoLib sincronizadas (idle, walk, fly_flap fofo, glide, eating, sleep, wake_up, roar).</li>
           <li><b>🥚 <code>flamefang_egg_geckolib.bbmodel</code>:</b> Modelo 3D do Ovo de Magma com relevo de obsidiana e veios de lava (com animação de pulsação e balanço de pré-eclosão).</li>
@@ -1446,12 +1456,12 @@
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
               <img src="src/main/resources/assets/wingsofthewild/textures/block/dragon_nest.png" style="width: 48px; height: 48px; image-rendering: pixelated; border-radius: 6px; border: 1px solid #ff9800;" alt="Ninho Dracônico">
               <div>
-                <h4 style="color: #fff; font-size: 1.05rem;">1. Ninho Dracônico Artesanal</h4>
-                <code style="color: #ff9800; font-size: 0.75rem;">dragon_nest.bbmodel</code>
+                <h4 style="color: #fff; font-size: 1.05rem;">1. Ninho Dracônico Artesanal (Incubação Viva)</h4>
+                <code style="color: #ff9800; font-size: 0.75rem;">dragon_nest.bbmodel & dragon_nest_with_egg.bbmodel</code>
               </div>
             </div>
             <p style="font-size: 0.85rem; color: #c9d1d9; line-height: 1.5;">
-              <b>28 Elementos 3D:</b> Diâmetro externo expandido de 26x26 unidades, leito côncavo rebaixado forrado em palha chamuscada para aninhar o ovo de Flamefang, 8 pedras basálticas de ancoragem no solo e borda octogonal de galhos grossos e gravetos rústicos entrelaçados.
+              <b>28 a 37 Elementos 3D:</b> Diâmetro externo expandido de 26x26 unidades, leito côncavo rebaixado forrado em palha chamuscada para aninhar o ovo de Flamefang, 8 pedras basálticas de ancoragem no solo e borda octogonal de galhos rústicos entrelaçados. Inclui variante com ovo 3D de 9 elementos e veios magmáticos, suporte térmico com aceleração por braseiro (3x), partículas de brasa e fumaça e eclosão natural do filhote Flamefang!
             </p>
           </div>
 

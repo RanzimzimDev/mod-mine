@@ -44,8 +44,6 @@ def pack_uvs(cubes_list, tex_w, tex_h, padding=2):
             unique_items_map[uv_group][1] = max(unique_items_map[uv_group][1], ph)
 
     unique_items = [(gid, dims[0], dims[1]) for gid, dims in unique_items_map.items()]
-
-    # Sort descending by height, then width
     unique_items.sort(key=lambda item: (item[2], item[1]), reverse=True)
 
     shelves = []
@@ -78,18 +76,17 @@ def pack_uvs(cubes_list, tex_w, tex_h, padding=2):
 
 # ---------------------------------------------------------------------------
 # ADULT FLAMEFANG ANATOMY — HARMONIC 3D PROPORTIONS (NON-FLATTENED)
-# Imposing, noble, apex predatory dragon (style Monster Hunter / ARK Wyvern)
+# Imposing, noble, tall apex predatory dragon (style Monster Hunter / ARK Wyvern)
 #
-# - Torso Height: 26-28 units (Y: 24 to 52). Deep chest keel & massive pectorals.
-# - Torso Width: 36-42 units (X: -21 to +21 at shoulders, -18 to +18 mid-torso).
-# - Ratio Width/Height: ~1.4 (Athletic, powerful, eliminates flat pancake look!).
-# - Legs: Long, muscular quadrupedal limbs raising belly 24-28 units above ground.
-#   All 4 feet planted firmly at Y = 0 with sharp raptorial talons.
-# - Neck & Head: Serpentine noble S-curve raising cranium to Y = 78 and horns to Y = 88.
-#   Total creature height: 5.5 blocks (88 units).
-# - Wings: 4-joint chain with 284-unit colossal wingspan (~17.8 blocks).
-# - Tail: 7-stage articulated chain (9 bones) tapering from 20 to 6 width,
-#   ending in a 37-unit wide glowing magma fan blade.
+# - Torso Height: 32 units deep (Y: 26 to 58). Deep sternum keel & barrel chest.
+# - Torso Width: 26-30 units (X: -15 to +15 shoulders, -13 to +13 mid-torso).
+# - Ratio Height/Width: ~1.2 (Taller than it is wide, eliminating flattened pancake!).
+# - Legs: Long, powerful quadrupedal limbs raising torso 26 units above ground.
+#   All 4 feet planted firmly at Y = 0 with sharp raptorial claws.
+# - Neck & Head: Majestic erect S-curve raising cranium to Y = 80, horns to Y = 84-88.
+# - Wings: 4-joint chain with ~176-unit wingspan (~11 blocks), folded in idle/walk.
+# - Saddle: Built-in saddle bone on dorsal ridge between shoulders and mid-torso.
+# - Tail: 7-stage articulated chain (9 bones) ending in glowing magma fan blade.
 # ---------------------------------------------------------------------------
 
 adult_bones = [
@@ -97,425 +94,427 @@ adult_bones = [
     {
         "name": "body",
         "parent": "root",
-        "pivot": [0, 42, 0],
+        "pivot": [0, 48, 0],
         "cubes": [
-            # 1. Deep chest keel (prominent flight muscle anchor, 28 width, 22 height)
-            {"name": "chest_keel_l", "origin": [0, 24, -26], "size": [14, 22, 16], "category": "torso_chest", "uv_group": "chest_keel_half"},
-            {"name": "chest_keel_r", "origin": [-14, 24, -26], "size": [14, 22, 16], "category": "torso_chest", "uv_group": "chest_keel_half"},
-            # 2. Heavy pectoral armor plates (32 width, 18 height)
-            {"name": "pectoral_armor_l", "origin": [0, 26, -24], "size": [16, 18, 10], "category": "chest_armor", "uv_group": "pectoral_half"},
-            {"name": "pectoral_armor_r", "origin": [-16, 26, -24], "size": [16, 18, 10], "category": "chest_armor", "uv_group": "pectoral_half"},
-            # 3. Broad muscular shoulder girdle (42 width total: X from -21 to +21)
-            {"name": "shoulder_girdle_l", "origin": [0, 38, -18], "size": [21, 12, 12], "category": "torso_back", "uv_group": "shoulder_girdle_half"},
-            {"name": "shoulder_girdle_r", "origin": [-21, 38, -18], "size": [21, 12, 12], "category": "torso_back", "uv_group": "shoulder_girdle_half"},
-            # 4. Mid torso ribcage (36 width, 22 height: X from -18 to +18, Y from 28 to 50)
-            {"name": "torso_mid_l", "origin": [0, 28, -14], "size": [18, 22, 16], "category": "torso_mid", "uv_group": "torso_mid_half"},
-            {"name": "torso_mid_r", "origin": [-18, 28, -14], "size": [18, 22, 16], "category": "torso_mid", "uv_group": "torso_mid_half"},
-            # 5. Tapered belly (32 width, 18 height: X from -16 to +16, Y from 30 to 48)
-            {"name": "belly_mid_l", "origin": [0, 30, 2], "size": [16, 18, 14], "category": "torso_belly", "uv_group": "belly_half"},
-            {"name": "belly_mid_r", "origin": [-16, 30, 2], "size": [16, 18, 14], "category": "torso_belly", "uv_group": "belly_half"},
-            # 6. Muscular pelvis / hips (34 width, 18 height: X from -17 to +17, Y from 32 to 50)
-            {"name": "pelvis_hips_l", "origin": [0, 32, 16], "size": [17, 18, 14], "category": "torso_hips", "uv_group": "pelvis_half"},
-            {"name": "pelvis_hips_r", "origin": [-17, 32, 16], "size": [17, 18, 14], "category": "torso_hips", "uv_group": "pelvis_half"},
-            # 7. Tiered dorsal spines along the central back
-            {"name": "dorsal_spines", "origin": [-2.5, 48, -18], "size": [5, 8, 32], "category": "spikes", "uv_group": "dorsal_spines"}
+            # 1. Deep chest keel (prominent flight muscle anchor, 20 width, 30 height)
+            {"name": "chest_keel_l", "origin": [0, 26, -24], "size": [10, 30, 16], "category": "torso_chest", "uv_group": "chest_keel_half"},
+            {"name": "chest_keel_r", "origin": [-10, 26, -24], "size": [10, 30, 16], "category": "torso_chest", "uv_group": "chest_keel_half"},
+            # 2. Heavy pectoral armor plates (24 width, 24 height)
+            {"name": "pectoral_armor_l", "origin": [0, 30, -22], "size": [12, 24, 12], "category": "chest_armor", "uv_group": "pectoral_half"},
+            {"name": "pectoral_armor_r", "origin": [-12, 30, -22], "size": [12, 24, 12], "category": "chest_armor", "uv_group": "pectoral_half"},
+            # 3. Broad muscular shoulder girdle (30 width total: X from -15 to +15)
+            {"name": "shoulder_girdle_l", "origin": [0, 42, -18], "size": [15, 16, 14], "category": "torso_back", "uv_group": "shoulder_girdle_half"},
+            {"name": "shoulder_girdle_r", "origin": [-15, 42, -18], "size": [15, 16, 14], "category": "torso_back", "uv_group": "shoulder_girdle_half"},
+            # 4. Mid torso ribcage (26 width, 26 height: X from -13 to +13, Y from 32 to 58)
+            {"name": "torso_mid_l", "origin": [0, 32, -12], "size": [13, 26, 16], "category": "torso_mid", "uv_group": "torso_mid_half"},
+            {"name": "torso_mid_r", "origin": [-13, 32, -12], "size": [13, 26, 16], "category": "torso_mid", "uv_group": "torso_mid_half"},
+            # 5. Tapered belly (22 width, 22 height: X from -11 to +11, Y from 34 to 56)
+            {"name": "belly_mid_l", "origin": [0, 34, 4], "size": [11, 22, 14], "category": "torso_belly", "uv_group": "belly_half"},
+            {"name": "belly_mid_r", "origin": [-11, 34, 4], "size": [11, 22, 14], "category": "torso_belly", "uv_group": "belly_half"},
+            # 6. Muscular pelvis / hips (24 width, 22 height: X from -12 to +12, Y from 36 to 58)
+            {"name": "pelvis_hips_l", "origin": [0, 36, 18], "size": [12, 22, 14], "category": "torso_hips", "uv_group": "pelvis_half"},
+            {"name": "pelvis_hips_r", "origin": [-12, 36, 18], "size": [12, 22, 14], "category": "torso_hips", "uv_group": "pelvis_half"},
+            # 7. Tiered dorsal spines along central back (raising back profile to Y = 66)
+            {"name": "dorsal_spines", "origin": [-2, 56, -18], "size": [4, 10, 34], "category": "spikes", "uv_group": "dorsal_spines"}
+        ]
+    },
+    # -------------------------------------------------------------
+    # SADDLE (MOUNT SYSTEM RIGGING, RESTING ON DORSAL RIDGE)
+    # -------------------------------------------------------------
+    {
+        "name": "saddle",
+        "parent": "body",
+        "pivot": [0, 58, 0],
+        "cubes": [
+            {"name": "saddle_seat", "origin": [-7, 57, -6], "size": [14, 3, 14], "category": "saddle_leather", "uv_group": "saddle_seat"},
+            {"name": "saddle_pommel", "origin": [-5, 59, -8], "size": [10, 5, 3], "category": "saddle_leather", "uv_group": "saddle_pommel"},
+            {"name": "saddle_cantle", "origin": [-5, 59, 7], "size": [10, 6, 3], "category": "saddle_leather", "uv_group": "saddle_cantle"},
+            {"name": "saddle_girth_l", "origin": [6, 38, -2], "size": [3, 20, 6], "category": "saddle_leather", "uv_group": "saddle_girth"},
+            {"name": "saddle_girth_r", "origin": [-9, 38, -2], "size": [3, 20, 6], "category": "saddle_leather", "uv_group": "saddle_girth"},
+            {"name": "stirrup_strap_l", "origin": [7, 26, 0], "size": [1, 13, 2], "category": "saddle_leather", "uv_group": "stirrup_strap"},
+            {"name": "stirrup_strap_r", "origin": [-8, 26, 0], "size": [1, 13, 2], "category": "saddle_leather", "uv_group": "stirrup_strap"},
+            {"name": "stirrup_iron_l", "origin": [6.5, 22, -1], "size": [2, 4, 4], "category": "saddle_iron", "uv_group": "stirrup_iron"},
+            {"name": "stirrup_iron_r", "origin": [-8.5, 22, -1], "size": [2, 4, 4], "category": "saddle_iron", "uv_group": "stirrup_iron"}
         ]
     },
     # -------------------------------------------------------------
     # FRONT LEGS (ATHLETIC DIGITIGRADE FORELIMBS, GROUND Y = 0)
-    # Stance at X = ±20, raising shoulders high to Y = 42
+    # Stance at X = ±14, raising shoulders high to Y = 48
     # -------------------------------------------------------------
     {
         "name": "leg_front_left",
         "parent": "body",
-        "pivot": [20, 42, -14],
+        "pivot": [14, 48, -12],
         "cubes": [
-            {"name": "shoulder_front_left", "origin": [14, 22, -21], "size": [12, 22, 14], "category": "leg", "uv_group": "leg_front_upper"},
-            {"name": "shoulder_plate_fl", "origin": [14, 32, -22], "size": [12.5, 10, 15], "category": "spikes", "uv_group": "shoulder_plate"}
+            {"name": "shoulder_front_left", "origin": [10, 26, -17], "size": [8, 24, 11], "category": "leg", "uv_group": "leg_front_upper"},
+            {"name": "shoulder_plate_fl", "origin": [9.5, 38, -18], "size": [9, 12, 12], "category": "spikes", "uv_group": "shoulder_plate"}
         ]
     },
     {
         "name": "leg_front_left_shin",
         "parent": "leg_front_left",
-        "pivot": [20, 22, -14],
+        "pivot": [14, 26, -12],
         "cubes": [
-            {"name": "shin_front_left", "origin": [15, 4, -20], "size": [10, 20, 11], "category": "leg", "uv_group": "shin_column"},
-            {"name": "elbow_spur_fl", "origin": [17, 18, -9], "size": [6, 6, 6], "category": "spikes", "uv_group": "elbow_spur"},
-            {"name": "carpal_fl", "origin": [15.5, 2, -19.5], "size": [9, 5, 10], "category": "leg", "uv_group": "carpal_joint"}
+            {"name": "shin_front_left", "origin": [10.5, 5, -16], "size": [7, 22, 9], "category": "leg", "uv_group": "shin_column"},
+            {"name": "elbow_spur_fl", "origin": [12, 22, -7], "size": [5, 5, 5], "category": "spikes", "uv_group": "elbow_spur"},
+            {"name": "carpal_fl", "origin": [11, 2, -15.5], "size": [6, 4, 8], "category": "leg", "uv_group": "carpal_joint"}
         ]
     },
     {
         "name": "leg_front_left_foot",
         "parent": "leg_front_left_shin",
-        "pivot": [20, 4, -15],
+        "pivot": [14, 5, -12],
         "cubes": [
-            {"name": "foot_pad_fl", "origin": [13.5, 0, -22], "size": [13, 5, 14], "category": "foot", "uv_group": "foot_pad"},
-            {"name": "toe_fl_outer", "origin": [21.5, 0, -28], "size": [4, 4, 8], "category": "claw", "uv_group": "toe_side"},
-            {"name": "claw_fl_outer", "origin": [22, 0, -33], "size": [2.5, 3, 5], "category": "claw", "uv_group": "claw_side"},
-            {"name": "toe_fl_mid", "origin": [18, 0, -30], "size": [4.5, 4, 10], "category": "claw", "uv_group": "toe_mid"},
-            {"name": "claw_fl_mid", "origin": [18.5, 0, -36], "size": [3, 3, 6], "category": "claw", "uv_group": "claw_mid"},
-            {"name": "toe_fl_inner", "origin": [14, 0, -28], "size": [4, 4, 8], "category": "claw", "uv_group": "toe_side"},
-            {"name": "claw_fl_inner", "origin": [14.5, 0, -33], "size": [2.5, 3, 5], "category": "claw", "uv_group": "claw_side"},
-            {"name": "claw_fl_rear", "origin": [18.5, 0.5, -9], "size": [3.5, 3, 5], "category": "claw", "uv_group": "claw_rear"}
+            {"name": "foot_pad_fl", "origin": [9, 0, -18], "size": [10, 5, 12], "category": "foot", "uv_group": "foot_pad"},
+            {"name": "toe_fl_outer", "origin": [15, 0, -23], "size": [3, 3.5, 6], "category": "claw", "uv_group": "toe_side"},
+            {"name": "claw_fl_outer", "origin": [15.5, 0, -27], "size": [2, 2.5, 4], "category": "claw", "uv_group": "claw_side"},
+            {"name": "toe_fl_mid", "origin": [12, 0, -25], "size": [3.5, 3.5, 8], "category": "claw", "uv_group": "toe_mid"},
+            {"name": "claw_fl_mid", "origin": [12.5, 0, -30], "size": [2.5, 2.5, 5], "category": "claw", "uv_group": "claw_mid"},
+            {"name": "toe_fl_inner", "origin": [9, 0, -23], "size": [3, 3.5, 6], "category": "claw", "uv_group": "toe_side"},
+            {"name": "claw_fl_inner", "origin": [9.5, 0, -27], "size": [2, 2.5, 4], "category": "claw", "uv_group": "claw_side"},
+            {"name": "claw_fl_rear", "origin": [12.5, 0.5, -7], "size": [2.5, 2.5, 4], "category": "claw", "uv_group": "claw_rear"}
         ]
     },
     {
         "name": "leg_front_right",
         "parent": "body",
-        "pivot": [-20, 42, -14],
+        "pivot": [-14, 48, -12],
         "cubes": [
-            {"name": "shoulder_front_right", "origin": [-26, 22, -21], "size": [12, 22, 14], "category": "leg", "uv_group": "leg_front_upper"},
-            {"name": "shoulder_plate_fr", "origin": [-26.5, 32, -22], "size": [12.5, 10, 15], "category": "spikes", "uv_group": "shoulder_plate"}
+            {"name": "shoulder_front_right", "origin": [-18, 26, -17], "size": [8, 24, 11], "category": "leg", "uv_group": "leg_front_upper"},
+            {"name": "shoulder_plate_fr", "origin": [-18.5, 38, -18], "size": [9, 12, 12], "category": "spikes", "uv_group": "shoulder_plate"}
         ]
     },
     {
         "name": "leg_front_right_shin",
         "parent": "leg_front_right",
-        "pivot": [-20, 22, -14],
+        "pivot": [-14, 26, -12],
         "cubes": [
-            {"name": "shin_front_right", "origin": [-25, 4, -20], "size": [10, 20, 11], "category": "leg", "uv_group": "shin_column"},
-            {"name": "elbow_spur_fr", "origin": [-23, 18, -9], "size": [6, 6, 6], "category": "spikes", "uv_group": "elbow_spur"},
-            {"name": "carpal_fr", "origin": [-24.5, 2, -19.5], "size": [9, 5, 10], "category": "leg", "uv_group": "carpal_joint"}
+            {"name": "shin_front_right", "origin": [-17.5, 5, -16], "size": [7, 22, 9], "category": "leg", "uv_group": "shin_column"},
+            {"name": "elbow_spur_fr", "origin": [-17, 22, -7], "size": [5, 5, 5], "category": "spikes", "uv_group": "elbow_spur"},
+            {"name": "carpal_fr", "origin": [-17, 2, -15.5], "size": [6, 4, 8], "category": "leg", "uv_group": "carpal_joint"}
         ]
     },
     {
         "name": "leg_front_right_foot",
         "parent": "leg_front_right_shin",
-        "pivot": [-20, 4, -15],
+        "pivot": [-14, 5, -12],
         "cubes": [
-            {"name": "foot_pad_fr", "origin": [-26.5, 0, -22], "size": [13, 5, 14], "category": "foot", "uv_group": "foot_pad"},
-            {"name": "toe_fr_outer", "origin": [-25.5, 0, -28], "size": [4, 4, 8], "category": "claw", "uv_group": "toe_side"},
-            {"name": "claw_fr_outer", "origin": [-24.5, 0, -33], "size": [2.5, 3, 5], "category": "claw", "uv_group": "claw_side"},
-            {"name": "toe_fr_mid", "origin": [-22.5, 0, -30], "size": [4.5, 4, 10], "category": "claw", "uv_group": "toe_mid"},
-            {"name": "claw_fr_mid", "origin": [-21.5, 0, -36], "size": [3, 3, 6], "category": "claw", "uv_group": "claw_mid"},
-            {"name": "toe_fr_inner", "origin": [-18, 0, -28], "size": [4, 4, 8], "category": "claw", "uv_group": "toe_side"},
-            {"name": "claw_fr_inner", "origin": [-17, 0, -33], "size": [2.5, 3, 5], "category": "claw", "uv_group": "claw_side"},
-            {"name": "claw_fr_rear", "origin": [-22, 0.5, -9], "size": [3.5, 3, 5], "category": "claw", "uv_group": "claw_rear"}
+            {"name": "foot_pad_fr", "origin": [-19, 0, -18], "size": [10, 5, 12], "category": "foot", "uv_group": "foot_pad"},
+            {"name": "toe_fr_outer", "origin": [-18, 0, -23], "size": [3, 3.5, 6], "category": "claw", "uv_group": "toe_side"},
+            {"name": "claw_fr_outer", "origin": [-17.5, 0, -27], "size": [2, 2.5, 4], "category": "claw", "uv_group": "claw_side"},
+            {"name": "toe_fr_mid", "origin": [-15.5, 0, -25], "size": [3.5, 3.5, 8], "category": "claw", "uv_group": "toe_mid"},
+            {"name": "claw_fr_mid", "origin": [-15, 0, -30], "size": [2.5, 2.5, 5], "category": "claw", "uv_group": "claw_mid"},
+            {"name": "toe_fr_inner", "origin": [-12, 0, -23], "size": [3, 3.5, 6], "category": "claw", "uv_group": "toe_side"},
+            {"name": "claw_fr_inner", "origin": [-11.5, 0, -27], "size": [2, 2.5, 4], "category": "claw", "uv_group": "claw_side"},
+            {"name": "claw_fr_rear", "origin": [-15, 0.5, -7], "size": [2.5, 2.5, 4], "category": "claw", "uv_group": "claw_rear"}
         ]
     },
     # -------------------------------------------------------------
-    # NECK, HEAD & HORNS (ERECT MAJESTIC S-CURVE, CROWNING AT Y = 88)
+    # NECK, HEAD & HORNS (MAJESTIC S-CURVE, CROWNING AT Y = 88)
     # -------------------------------------------------------------
     {
         "name": "neck",
         "parent": "body",
-        "pivot": [0, 46, -18],
+        "pivot": [0, 50, -16],
         "cubes": [
-            {"name": "neck_lower", "origin": [-8, 38, -30], "size": [16, 18, 14], "category": "neck", "uv_group": "neck_lower_wide"},
-            {"name": "neck_spines_lower", "origin": [-1.5, 54, -28], "size": [3, 7, 10], "category": "spikes", "uv_group": "neck_spines"}
+            {"name": "neck_lower", "origin": [-7, 44, -28], "size": [14, 18, 14], "category": "neck", "uv_group": "neck_lower_wide"},
+            {"name": "neck_spines_lower", "origin": [-1.5, 60, -26], "size": [3, 6, 9], "category": "spikes", "uv_group": "neck_spines"}
         ]
     },
     {
         "name": "neck_upper",
         "parent": "neck",
-        "pivot": [0, 56, -28],
+        "pivot": [0, 58, -26],
         "cubes": [
-            {"name": "neck_upper_main", "origin": [-7, 52, -40], "size": [14, 18, 14], "category": "neck", "uv_group": "neck_upper_wide"},
-            {"name": "neck_spines_upper", "origin": [-1.5, 68, -38], "size": [3, 7, 10], "category": "spikes", "uv_group": "neck_spines"}
+            {"name": "neck_upper_main", "origin": [-6, 56, -38], "size": [12, 18, 14], "category": "neck", "uv_group": "neck_upper_wide"},
+            {"name": "neck_spines_upper", "origin": [-1.5, 72, -36], "size": [3, 6, 9], "category": "spikes", "uv_group": "neck_spines"}
         ]
     },
     {
         "name": "head",
         "parent": "neck_upper",
-        "pivot": [0, 68, -38],
+        "pivot": [0, 70, -36],
         "cubes": [
-            {"name": "cranium", "origin": [-8, 64, -54], "size": [16, 14, 16], "category": "head", "uv_group": "cranium_wide"},
-            {"name": "brow_ridges", "origin": [-7.5, 76, -52], "size": [15, 4, 10], "category": "spikes", "uv_group": "brow_ridges"},
-            {"name": "snout_upper", "origin": [-6, 64, -66], "size": [12, 10, 14], "category": "snout", "uv_group": "snout_upper_wide"}
+            {"name": "cranium", "origin": [-7, 66, -50], "size": [14, 14, 15], "category": "head", "uv_group": "cranium_wide"},
+            {"name": "brow_ridges", "origin": [-6.5, 78, -48], "size": [13, 4, 9], "category": "spikes", "uv_group": "brow_ridges"},
+            {"name": "snout_upper", "origin": [-5.5, 66, -62], "size": [11, 10, 14], "category": "snout", "uv_group": "snout_upper_wide"}
         ]
     },
     {
         "name": "jaw_lower",
         "parent": "head",
-        "pivot": [0, 64, -50],
+        "pivot": [0, 66, -46],
         "cubes": [
-            {"name": "jaw", "origin": [-5.5, 59, -64], "size": [11, 6, 14], "category": "jaw", "uv_group": "jaw_wide"}
+            {"name": "jaw", "origin": [-5, 61, -60], "size": [10, 6, 14], "category": "jaw", "uv_group": "jaw_wide"}
         ]
     },
     {
         "name": "horns",
         "parent": "head",
-        "pivot": [0, 76, -48],
+        "pivot": [0, 78, -44],
         "cubes": [
-            {"name": "horn_left_main", "origin": [5, 74, -46], "size": [4, 6, 14], "category": "horn", "uv_group": "horn_main"},
-            {"name": "horn_left_tip", "origin": [7, 78, -34], "size": [3, 3, 10], "category": "horn", "uv_group": "horn_tip"},
-            {"name": "horn_right_main", "origin": [-9, 74, -46], "size": [4, 6, 14], "category": "horn", "uv_group": "horn_main"},
-            {"name": "horn_right_tip", "origin": [-10, 78, -34], "size": [3, 3, 10], "category": "horn", "uv_group": "horn_tip"},
-            {"name": "cheek_spikes", "origin": [-11, 63, -50], "size": [22, 4, 4], "category": "spikes", "uv_group": "cheek_spikes"}
+            {"name": "horn_left_main", "origin": [4, 76, -42], "size": [3.5, 6, 12], "category": "horn", "uv_group": "horn_main"},
+            {"name": "horn_left_tip", "origin": [5.5, 81, -31], "size": [2.5, 3, 9], "category": "horn", "uv_group": "horn_tip"},
+            {"name": "horn_right_main", "origin": [-7.5, 76, -42], "size": [3.5, 6, 12], "category": "horn", "uv_group": "horn_main"},
+            {"name": "horn_right_tip", "origin": [-8, 81, -31], "size": [2.5, 3, 9], "category": "horn", "uv_group": "horn_tip"},
+            {"name": "cheek_spikes", "origin": [-9, 65, -46], "size": [18, 3, 4], "category": "spikes", "uv_group": "cheek_spikes"}
         ]
     },
     # -------------------------------------------------------------
     # COLOSSAL HIND LEGS & RAPTOR FEET (GROUND Y = 0)
-    # Stance at X = ±18, raising pelvis high to Y = 42
+    # Stance at X = ±13, raising pelvis high to Y = 48
     # -------------------------------------------------------------
     {
         "name": "leg_left",
         "parent": "body",
-        "pivot": [18, 42, 18],
+        "pivot": [13, 48, 22],
         "cubes": [
-            {"name": "thigh_left", "origin": [12, 20, 10], "size": [14, 24, 16], "category": "leg", "uv_group": "thigh_muscle"}
+            {"name": "thigh_left", "origin": [8.5, 24, 15], "size": [10, 26, 14], "category": "leg", "uv_group": "thigh_muscle"}
         ]
     },
     {
         "name": "leg_left_shin",
         "parent": "leg_left",
-        "pivot": [19, 22, 18],
+        "pivot": [13.5, 24, 22],
         "cubes": [
-            {"name": "shin_left", "origin": [14, 4, 14], "size": [11, 20, 12], "category": "leg", "uv_group": "shin_column"},
-            {"name": "hock_left", "origin": [14.5, 2, 12], "size": [10, 8, 9], "category": "leg", "uv_group": "hock_ankle"}
+            {"name": "shin_left", "origin": [9.5, 5, 17], "size": [8, 22, 10], "category": "leg", "uv_group": "shin_column"},
+            {"name": "hock_left", "origin": [10, 3, 15], "size": [7, 8, 8], "category": "leg", "uv_group": "hock_ankle"}
         ]
     },
     {
         "name": "leg_left_foot",
         "parent": "leg_left_shin",
-        "pivot": [19, 4, 15],
+        "pivot": [13.5, 5, 22],
         "cubes": [
-            {"name": "foot_pad_left", "origin": [12.5, 0, 7], "size": [14, 5, 16], "category": "foot", "uv_group": "foot_pad"},
-            {"name": "toe_outer_l", "origin": [21, 0, 2], "size": [4, 4, 8], "category": "claw", "uv_group": "toe_side"},
-            {"name": "claw_outer_l", "origin": [21.5, 0, -3], "size": [2.5, 3, 5], "category": "claw", "uv_group": "claw_side"},
-            {"name": "toe_mid_l", "origin": [17, 0, 0], "size": [4.5, 4, 10], "category": "claw", "uv_group": "toe_mid"},
-            {"name": "claw_mid_l", "origin": [17.5, 0, -6], "size": [3, 3, 6], "category": "claw", "uv_group": "claw_mid"},
-            {"name": "toe_inner_l", "origin": [13, 0, 2], "size": [4, 4, 8], "category": "claw", "uv_group": "toe_side"},
-            {"name": "claw_inner_l", "origin": [13.5, 0, -3], "size": [2.5, 3, 5], "category": "claw", "uv_group": "claw_side"},
-            {"name": "claw_rear_l", "origin": [17.5, 1, 22], "size": [3.5, 3, 5], "category": "claw", "uv_group": "claw_rear"}
+            {"name": "foot_pad_left", "origin": [8.5, 0, 15], "size": [10, 5, 13], "category": "foot", "uv_group": "foot_pad"},
+            {"name": "toe_outer_l", "origin": [14.5, 0, 10], "size": [3, 3.5, 7], "category": "claw", "uv_group": "toe_side"},
+            {"name": "claw_outer_l", "origin": [15, 0, 6], "size": [2, 2.5, 4], "category": "claw", "uv_group": "claw_side"},
+            {"name": "toe_mid_l", "origin": [11.5, 0, 8], "size": [3.5, 3.5, 9], "category": "claw", "uv_group": "toe_mid"},
+            {"name": "claw_mid_l", "origin": [12, 0, 3], "size": [2.5, 2.5, 5], "category": "claw", "uv_group": "claw_mid"},
+            {"name": "toe_inner_l", "origin": [8.5, 0, 10], "size": [3, 3.5, 7], "category": "claw", "uv_group": "toe_side"},
+            {"name": "claw_inner_l", "origin": [9, 0, 6], "size": [2, 2.5, 4], "category": "claw", "uv_group": "claw_side"},
+            {"name": "claw_rear_l", "origin": [12, 0.5, 27], "size": [2.5, 2.5, 4], "category": "claw", "uv_group": "claw_rear"}
         ]
     },
     {
         "name": "leg_right",
         "parent": "body",
-        "pivot": [-18, 42, 18],
+        "pivot": [-13, 48, 22],
         "cubes": [
-            {"name": "thigh_right", "origin": [-26, 20, 10], "size": [14, 24, 16], "category": "leg", "uv_group": "thigh_muscle"}
+            {"name": "thigh_right", "origin": [-18.5, 24, 15], "size": [10, 26, 14], "category": "leg", "uv_group": "thigh_muscle"}
         ]
     },
     {
         "name": "leg_right_shin",
         "parent": "leg_right",
-        "pivot": [-19, 22, 18],
+        "pivot": [-13.5, 24, 22],
         "cubes": [
-            {"name": "shin_right", "origin": [-25, 4, 14], "size": [11, 20, 12], "category": "leg", "uv_group": "shin_column"},
-            {"name": "hock_right", "origin": [-24.5, 2, 12], "size": [10, 8, 9], "category": "leg", "uv_group": "hock_ankle"}
+            {"name": "shin_right", "origin": [-17.5, 5, 17], "size": [8, 22, 10], "category": "leg", "uv_group": "shin_column"},
+            {"name": "hock_right", "origin": [-17, 3, 15], "size": [7, 8, 8], "category": "leg", "uv_group": "hock_ankle"}
         ]
     },
     {
         "name": "leg_right_foot",
         "parent": "leg_right_shin",
-        "pivot": [-19, 4, 15],
+        "pivot": [-13.5, 5, 22],
         "cubes": [
-            {"name": "foot_pad_right", "origin": [-26.5, 0, 7], "size": [14, 5, 16], "category": "foot", "uv_group": "foot_pad"},
-            {"name": "toe_outer_r", "origin": [-25, 0, 2], "size": [4, 4, 8], "category": "claw", "uv_group": "toe_side"},
-            {"name": "claw_outer_r", "origin": [-24, 0, -3], "size": [2.5, 3, 5], "category": "claw", "uv_group": "claw_side"},
-            {"name": "toe_mid_r", "origin": [-21.5, 0, 0], "size": [4.5, 4, 10], "category": "claw", "uv_group": "toe_mid"},
-            {"name": "claw_mid_r", "origin": [-20.5, 0, -6], "size": [3, 3, 6], "category": "claw", "uv_group": "claw_mid"},
-            {"name": "toe_inner_r", "origin": [-17, 0, 2], "size": [4, 4, 8], "category": "claw", "uv_group": "toe_side"},
-            {"name": "claw_inner_r", "origin": [-16, 0, -3], "size": [2.5, 3, 5], "category": "claw", "uv_group": "claw_side"},
-            {"name": "claw_rear_r", "origin": [-21, 1, 22], "size": [3.5, 3, 5], "category": "claw", "uv_group": "claw_rear"}
+            {"name": "foot_pad_right", "origin": [-18.5, 0, 15], "size": [10, 5, 13], "category": "foot", "uv_group": "foot_pad"},
+            {"name": "toe_outer_r", "origin": [-17.5, 0, 10], "size": [3, 3.5, 7], "category": "claw", "uv_group": "toe_side"},
+            {"name": "claw_outer_r", "origin": [-17, 0, 6], "size": [2, 2.5, 4], "category": "claw", "uv_group": "claw_side"},
+            {"name": "toe_mid_r", "origin": [-15, 0, 8], "size": [3.5, 3.5, 9], "category": "claw", "uv_group": "toe_mid"},
+            {"name": "claw_mid_r", "origin": [-14.5, 0, 3], "size": [2.5, 2.5, 5], "category": "claw", "uv_group": "claw_mid"},
+            {"name": "toe_inner_r", "origin": [-11.5, 0, 10], "size": [3, 3.5, 7], "category": "claw", "uv_group": "toe_side"},
+            {"name": "claw_inner_r", "origin": [-11, 0, 6], "size": [2, 2.5, 4], "category": "claw", "uv_group": "claw_side"},
+            {"name": "claw_rear_r", "origin": [-14.5, 0.5, 27], "size": [2.5, 2.5, 4], "category": "claw", "uv_group": "claw_rear"}
         ]
     },
     # -------------------------------------------------------------
-    # 4-JOINT ARTICULATED WINGS (Anchored at muscular shoulders X = ±21)
-    # Total wingspan: 284 units (~17.8 blocks)
+    # 4-JOINT ARTICULATED WINGS (Anchored at muscular shoulders X = ±15)
+    # Total flight wingspan: ~176 units (~11 blocks)
     # -------------------------------------------------------------
     {
         "name": "wing_shoulder_left",
         "parent": "body",
-        "pivot": [21, 48, -12],
+        "pivot": [15, 54, -10],
         "cubes": [
-            {"name": "shoulder_joint_l", "origin": [19, 45, -15], "size": [8, 6, 8], "category": "wing_arm", "uv_group": "wing_shoulder_joint"},
-            {"name": "shoulder_guard_l", "origin": [18, 50, -16], "size": [10, 4, 8], "category": "spikes", "uv_group": "wing_shoulder_guard"}
+            {"name": "shoulder_joint_l", "origin": [13, 51, -13], "size": [6, 6, 7], "category": "wing_arm", "uv_group": "wing_shoulder_joint"},
+            {"name": "shoulder_guard_l", "origin": [12, 55, -14], "size": [8, 4, 7], "category": "spikes", "uv_group": "wing_shoulder_guard"}
         ]
     },
     {
         "name": "wing_arm_left",
         "parent": "wing_shoulder_left",
-        "pivot": [27, 48, -12],
+        "pivot": [19, 54, -10],
         "cubes": [
-            {"name": "wing_arm_l", "origin": [27, 46, -14], "size": [26, 5, 5], "category": "wing_arm", "uv_group": "wing_bone_arm"},
-            {"name": "wing_mem_inner_l", "origin": [26, 47, -9], "size": [26, 1, 39], "category": "wing_membrane", "uv_group": "wing_mem_inner"}
+            {"name": "wing_arm_l", "origin": [19, 52, -12], "size": [18, 4, 4], "category": "wing_arm", "uv_group": "wing_bone_arm"},
+            {"name": "wing_mem_inner_l", "origin": [18, 53, -8], "size": [18, 1, 30], "category": "wing_membrane", "uv_group": "wing_mem_inner"}
         ]
     },
     {
         "name": "wing_forearm_left",
         "parent": "wing_arm_left",
-        "pivot": [53, 48, -11],
+        "pivot": [37, 54, -10],
         "cubes": [
-            {"name": "wing_forearm_l", "origin": [53, 46, -13], "size": [32, 5, 5], "category": "wing_arm", "uv_group": "wing_bone_arm"},
-            {"name": "elbow_spur_l", "origin": [51, 47, -17], "size": [4, 5, 5], "category": "claw", "uv_group": "wing_elbow_spur"},
-            {"name": "wrist_claw_l", "origin": [83, 46, -16], "size": [4, 4, 4], "category": "claw", "uv_group": "wing_wrist_claw"},
-            {"name": "wing_mem_mid_l", "origin": [51, 47, -8], "size": [33, 1, 50], "category": "wing_membrane", "uv_group": "wing_mem_mid"}
+            {"name": "wing_forearm_l", "origin": [37, 52, -12], "size": [24, 4, 4], "category": "wing_arm", "uv_group": "wing_bone_arm"},
+            {"name": "elbow_spur_l", "origin": [35, 53, -15], "size": [3, 4, 4], "category": "claw", "uv_group": "wing_elbow_spur"},
+            {"name": "wrist_claw_l", "origin": [59, 52, -14], "size": [3, 3, 3], "category": "claw", "uv_group": "wing_wrist_claw"},
+            {"name": "wing_mem_mid_l", "origin": [36, 53, -8], "size": [24, 1, 38], "category": "wing_membrane", "uv_group": "wing_mem_mid"}
         ]
     },
     {
         "name": "wing_fingers_left",
         "parent": "wing_forearm_left",
-        "pivot": [85, 48, -10],
+        "pivot": [61, 54, -9],
         "cubes": [
-            {"name": "wing_finger1_l", "origin": [85, 47, -12], "size": [48, 3, 4], "category": "wing_arm", "uv_group": "wing_finger_main"},
-            {"name": "wing_finger2_l", "origin": [85, 47, 12], "size": [40, 2.5, 3.5], "category": "wing_arm", "uv_group": "wing_finger_sub"},
-            {"name": "wing_finger3_l", "origin": [85, 47, 28], "size": [34, 2.5, 3.5], "category": "wing_arm", "uv_group": "wing_finger_sub"},
-            {"name": "wing_mem_outer_l", "origin": [83, 47, -8], "size": [48, 1, 52], "category": "wing_membrane", "uv_group": "wing_mem_outer"},
-            {"name": "wing_mem_tip_l", "origin": [118, 47, 2], "size": [24, 1, 38], "category": "wing_membrane", "uv_group": "wing_mem_tip"}
+            {"name": "wing_finger1_l", "origin": [61, 53, -11], "size": [30, 2.5, 3.5], "category": "wing_arm", "uv_group": "wing_finger_main"},
+            {"name": "wing_finger2_l", "origin": [61, 53, 7], "size": [26, 2, 3], "category": "wing_arm", "uv_group": "wing_finger_sub"},
+            {"name": "wing_finger3_l", "origin": [61, 53, 20], "size": [22, 2, 3], "category": "wing_arm", "uv_group": "wing_finger_sub"},
+            {"name": "wing_mem_outer_l", "origin": [60, 53, -8], "size": [30, 1, 38], "category": "wing_membrane", "uv_group": "wing_mem_outer"},
+            {"name": "wing_mem_tip_l", "origin": [82, 53, 0], "size": [16, 1, 28], "category": "wing_membrane", "uv_group": "wing_mem_tip"}
         ]
     },
     {
         "name": "wing_shoulder_right",
         "parent": "body",
-        "pivot": [-21, 48, -12],
+        "pivot": [-15, 54, -10],
         "cubes": [
-            {"name": "shoulder_joint_r", "origin": [-27, 45, -15], "size": [8, 6, 8], "category": "wing_arm", "uv_group": "wing_shoulder_joint"},
-            {"name": "shoulder_guard_r", "origin": [-28, 50, -16], "size": [10, 4, 8], "category": "spikes", "uv_group": "wing_shoulder_guard"}
+            {"name": "shoulder_joint_r", "origin": [-19, 51, -13], "size": [6, 6, 7], "category": "wing_arm", "uv_group": "wing_shoulder_joint"},
+            {"name": "shoulder_guard_r", "origin": [-20, 55, -14], "size": [8, 4, 7], "category": "spikes", "uv_group": "wing_shoulder_guard"}
         ]
     },
     {
         "name": "wing_arm_right",
         "parent": "wing_shoulder_right",
-        "pivot": [-27, 48, -12],
+        "pivot": [-19, 54, -10],
         "cubes": [
-            {"name": "wing_arm_r", "origin": [-53, 46, -14], "size": [26, 5, 5], "category": "wing_arm", "uv_group": "wing_bone_arm"},
-            {"name": "wing_mem_inner_r", "origin": [-52, 47, -9], "size": [26, 1, 39], "category": "wing_membrane", "uv_group": "wing_mem_inner"}
+            {"name": "wing_arm_r", "origin": [-37, 52, -12], "size": [18, 4, 4], "category": "wing_arm", "uv_group": "wing_bone_arm"},
+            {"name": "wing_mem_inner_r", "origin": [-36, 53, -8], "size": [18, 1, 30], "category": "wing_membrane", "uv_group": "wing_mem_inner"}
         ]
     },
     {
         "name": "wing_forearm_right",
         "parent": "wing_arm_right",
-        "pivot": [-53, 48, -11],
+        "pivot": [-37, 54, -10],
         "cubes": [
-            {"name": "wing_forearm_r", "origin": [-85, 46, -13], "size": [32, 5, 5], "category": "wing_arm", "uv_group": "wing_bone_arm"},
-            {"name": "elbow_spur_r", "origin": [-55, 47, -17], "size": [4, 5, 5], "category": "claw", "uv_group": "wing_elbow_spur"},
-            {"name": "wrist_claw_r", "origin": [-87, 46, -16], "size": [4, 4, 4], "category": "claw", "uv_group": "wing_wrist_claw"},
-            {"name": "wing_mem_mid_r", "origin": [-84, 47, -8], "size": [33, 1, 50], "category": "wing_membrane", "uv_group": "wing_mem_mid"}
+            {"name": "wing_forearm_r", "origin": [-61, 52, -12], "size": [24, 4, 4], "category": "wing_arm", "uv_group": "wing_bone_arm"},
+            {"name": "elbow_spur_r", "origin": [-38, 53, -15], "size": [3, 4, 4], "category": "claw", "uv_group": "wing_elbow_spur"},
+            {"name": "wrist_claw_r", "origin": [-62, 52, -14], "size": [3, 3, 3], "category": "claw", "uv_group": "wing_wrist_claw"},
+            {"name": "wing_mem_mid_r", "origin": [-60, 53, -8], "size": [24, 1, 38], "category": "wing_membrane", "uv_group": "wing_mem_mid"}
         ]
     },
     {
         "name": "wing_fingers_right",
         "parent": "wing_forearm_right",
-        "pivot": [-85, 48, -10],
+        "pivot": [-61, 54, -9],
         "cubes": [
-            {"name": "wing_finger1_r", "origin": [-133, 47, -12], "size": [48, 3, 4], "category": "wing_arm", "uv_group": "wing_finger_main"},
-            {"name": "wing_finger2_r", "origin": [-125, 47, 12], "size": [40, 2.5, 3.5], "category": "wing_arm", "uv_group": "wing_finger_sub"},
-            {"name": "wing_finger3_r", "origin": [-119, 47, 28], "size": [34, 2.5, 3.5], "category": "wing_arm", "uv_group": "wing_finger_sub"},
-            {"name": "wing_mem_outer_r", "origin": [-131, 47, -8], "size": [48, 1, 52], "category": "wing_membrane", "uv_group": "wing_mem_outer"},
-            {"name": "wing_mem_tip_r", "origin": [-142, 47, 2], "size": [24, 1, 38], "category": "wing_membrane", "uv_group": "wing_mem_tip"}
+            {"name": "wing_finger1_r", "origin": [-91, 53, -11], "size": [30, 2.5, 3.5], "category": "wing_arm", "uv_group": "wing_finger_main"},
+            {"name": "wing_finger2_r", "origin": [-87, 53, 7], "size": [26, 2, 3], "category": "wing_arm", "uv_group": "wing_finger_sub"},
+            {"name": "wing_finger3_r", "origin": [-83, 53, 20], "size": [22, 2, 3], "category": "wing_arm", "uv_group": "wing_finger_sub"},
+            {"name": "wing_mem_outer_r", "origin": [-90, 53, -8], "size": [30, 1, 38], "category": "wing_membrane", "uv_group": "wing_mem_outer"},
+            {"name": "wing_mem_tip_r", "origin": [-98, 53, 0], "size": [16, 1, 28], "category": "wing_membrane", "uv_group": "wing_mem_tip"}
         ]
     },
     # -------------------------------------------------------------
-    # ORGANIC 7-STAGE ARTICULATED TAIL CHAIN (9 BONES TOTAL)
-    # Tapers smoothly from pelvis (width 20) down to shaft (width 6),
-    # ending in a colossal 37-unit wide glowing magma fan blade
+    # 7-STAGE ARTICULATED TAIL (9 BONES)
+    # Organic continuous taper from pelvis into glowing magma fan blade
     # -------------------------------------------------------------
-    # Segment 1: Base connecting smoothly to pelvis
     {
         "name": "tail_1",
         "parent": "body",
-        "pivot": [0, 42, 30],
+        "pivot": [0, 48, 30],
         "cubes": [
-            {"name": "tail_1_core", "origin": [-10, 34, 30], "size": [20, 16, 16], "category": "tail_core", "uv_group": "tail_1_core"},
-            {"name": "tail_1_side_l", "origin": [10, 36, 31], "size": [4, 12, 14], "category": "tail_plate", "uv_group": "tail1_side_plate"},
-            {"name": "tail_1_side_r", "origin": [-14, 36, 31], "size": [4, 12, 14], "category": "tail_plate", "uv_group": "tail1_side_plate"},
-            {"name": "tail_1_spine", "origin": [-1.5, 50, 31], "size": [3, 6, 14], "category": "tail_spine", "uv_group": "tail_spine_upper"},
-            {"name": "tail_1_keel", "origin": [-3, 31.5, 31], "size": [6, 2.5, 14], "category": "tail_keel", "uv_group": "tail_keel_base"}
+            {"name": "tail_1_core", "origin": [-7, 43, 30], "size": [14, 12, 14], "category": "tail_core", "uv_group": "tail_1_core"},
+            {"name": "tail_1_spine", "origin": [-1.5, 55, 32], "size": [3, 6, 10], "category": "tail_spine", "uv_group": "tail_spine_lg"},
+            {"name": "tail_1_keel", "origin": [-1.0, 39, 32], "size": [2, 4, 10], "category": "tail_keel", "uv_group": "tail_keel_lg"}
         ]
     },
-    # Segment 2: Upper tail with conical lateral spikes
     {
         "name": "tail_2",
         "parent": "tail_1",
-        "pivot": [0, 41, 46],
+        "pivot": [0, 48, 44],
         "cubes": [
-            {"name": "tail_2_core", "origin": [-8, 34.5, 46], "size": [16, 14, 16], "category": "tail_core", "uv_group": "tail_2_core"},
-            {"name": "tail_2_spike_l", "origin": [8, 38.5, 47], "size": [4, 3.5, 14], "category": "tail_spike", "uv_group": "tail_lateral_spike"},
-            {"name": "tail_2_spike_r", "origin": [-12, 38.5, 47], "size": [4, 3.5, 14], "category": "tail_spike", "uv_group": "tail_lateral_spike"},
-            {"name": "tail_2_spine", "origin": [-1.25, 48.5, 47], "size": [2.5, 6, 14], "category": "tail_spine", "uv_group": "tail_spine_upper"},
-            {"name": "tail_2_keel", "origin": [-2.5, 32.5, 47], "size": [5, 2.5, 14], "category": "tail_keel", "uv_group": "tail_keel_base"}
+            {"name": "tail_2_core", "origin": [-6, 44, 44], "size": [12, 10, 14], "category": "tail_core", "uv_group": "tail_2_core"},
+            {"name": "tail_2_spine", "origin": [-1.5, 54, 46], "size": [3, 5, 10], "category": "tail_spine", "uv_group": "tail_spine_lg"},
+            {"name": "tail_2_keel", "origin": [-1.0, 40, 46], "size": [2, 4, 10], "category": "tail_keel", "uv_group": "tail_keel_lg"}
         ]
     },
-    # Segment 3: Mid tail with cutting obsidian lateral blades
     {
         "name": "tail_3",
         "parent": "tail_2",
-        "pivot": [0, 40, 62],
+        "pivot": [0, 48, 58],
         "cubes": [
-            {"name": "tail_3_core", "origin": [-6.5, 34.5, 62], "size": [13, 12, 16], "category": "tail_core", "uv_group": "tail_mid_core"},
-            {"name": "tail_3_blade_l", "origin": [6.5, 38, 63], "size": [4, 3.5, 14], "category": "tail_blade", "uv_group": "tail_lateral_spike"},
-            {"name": "tail_3_blade_r", "origin": [-10.5, 38, 63], "size": [4, 3.5, 14], "category": "tail_blade", "uv_group": "tail_lateral_spike"},
-            {"name": "tail_3_spine", "origin": [-1.1, 46.5, 63], "size": [2.2, 5, 14], "category": "tail_spine", "uv_group": "tail_spine_mid"},
-            {"name": "tail_3_keel", "origin": [-2, 32.5, 63], "size": [4, 2.5, 14], "category": "tail_keel", "uv_group": "tail_keel_base"}
+            {"name": "tail_3_core", "origin": [-5, 45, 58], "size": [10, 8, 14], "category": "tail_core", "uv_group": "tail_3_core"},
+            {"name": "tail_3_spine", "origin": [-1.0, 53, 60], "size": [2, 4, 10], "category": "tail_spine", "uv_group": "tail_spine_sm"},
+            {"name": "tail_3_blade_l", "origin": [5, 47, 60], "size": [3, 2, 8], "category": "tail_blade", "uv_group": "tail_blade_side"},
+            {"name": "tail_3_blade_r", "origin": [-8, 47, 60], "size": [3, 2, 8], "category": "tail_blade", "uv_group": "tail_blade_side"}
         ]
     },
-    # Segment 4: Tapered mid-rear tail with stabilizing fins
     {
         "name": "tail_4",
         "parent": "tail_3",
-        "pivot": [0, 39, 78],
+        "pivot": [0, 48, 72],
         "cubes": [
-            {"name": "tail_4_core", "origin": [-5, 34.5, 78], "size": [10, 10, 16], "category": "tail_core", "uv_group": "tail_mid_core"},
-            {"name": "tail_4_fin_l", "origin": [5, 37.5, 79], "size": [4.5, 2, 14], "category": "tail_fin", "uv_group": "tail_lateral_fin"},
-            {"name": "tail_4_fin_r", "origin": [-9.5, 37.5, 79], "size": [4.5, 2, 14], "category": "tail_fin", "uv_group": "tail_lateral_fin"},
-            {"name": "tail_4_spine", "origin": [-1.1, 44.5, 79], "size": [2.2, 5, 14], "category": "tail_spine", "uv_group": "tail_spine_mid"}
+            {"name": "tail_4_core", "origin": [-4, 46, 72], "size": [8, 7, 14], "category": "tail_core", "uv_group": "tail_4_core"},
+            {"name": "tail_4_spine", "origin": [-1.0, 53, 74], "size": [2, 3, 10], "category": "tail_spine", "uv_group": "tail_spine_sm"},
+            {"name": "tail_4_fin_l", "origin": [4, 47.5, 74], "size": [3, 1.5, 8], "category": "tail_fin", "uv_group": "tail_fin_side"},
+            {"name": "tail_4_fin_r", "origin": [-7, 47.5, 74], "size": [3, 1.5, 8], "category": "tail_fin", "uv_group": "tail_fin_side"}
         ]
     },
-    # Segment 5: Pre-fan tapered segment expanding horizontal wings
     {
         "name": "tail_5",
         "parent": "tail_4",
-        "pivot": [0, 38, 94],
+        "pivot": [0, 48, 86],
         "cubes": [
-            {"name": "tail_5_core", "origin": [-4, 34.5, 94], "size": [8, 8, 16], "category": "tail_core", "uv_group": "tail_rear_core"},
-            {"name": "tail_5_fin_l", "origin": [4, 37, 95], "size": [5, 2, 14], "category": "tail_fin", "uv_group": "tail_lateral_fin"},
-            {"name": "tail_5_fin_r", "origin": [-9, 37, 95], "size": [5, 2, 14], "category": "tail_fin", "uv_group": "tail_lateral_fin"},
-            {"name": "tail_5_spine", "origin": [-0.75, 42.5, 95], "size": [1.5, 4, 14], "category": "tail_spine", "uv_group": "tail_spine_lower"}
+            {"name": "tail_5_core", "origin": [-3, 46.5, 86], "size": [6, 6, 14], "category": "tail_core", "uv_group": "tail_5_core"},
+            {"name": "tail_5_fin_l", "origin": [3, 47.5, 88], "size": [3.5, 1.2, 10], "category": "tail_fin", "uv_group": "tail_fin_side"},
+            {"name": "tail_5_fin_r", "origin": [-6.5, 47.5, 88], "size": [3.5, 1.2, 10], "category": "tail_fin", "uv_group": "tail_fin_side"}
         ]
     },
-    # Segment 6: Base anchor shaft for the caudal fan
     {
         "name": "tail_6",
         "parent": "tail_5",
-        "pivot": [0, 37, 110],
+        "pivot": [0, 48, 100],
         "cubes": [
-            {"name": "tail_6_core", "origin": [-3, 34.5, 110], "size": [6, 6.5, 16], "category": "tail_core", "uv_group": "tail_rear_core"},
-            {"name": "tail_6_fin_l", "origin": [3, 36.5, 111], "size": [5, 2, 14], "category": "tail_fin", "uv_group": "tail_lateral_fin"},
-            {"name": "tail_6_fin_r", "origin": [-8, 36.5, 111], "size": [5, 2, 14], "category": "tail_fin", "uv_group": "tail_lateral_fin"},
-            {"name": "tail_6_spine", "origin": [-0.75, 41, 111], "size": [1.5, 3.5, 14], "category": "tail_spine", "uv_group": "tail_spine_lower"}
+            {"name": "tail_6_core", "origin": [-2.5, 47, 100], "size": [5, 5, 14], "category": "tail_core", "uv_group": "tail_6_core"},
+            {"name": "tail_6_fin_l", "origin": [2.5, 47.8, 102], "size": [4, 1.2, 10], "category": "tail_fin", "uv_group": "tail_fin_side"},
+            {"name": "tail_6_fin_r", "origin": [-6.5, 47.8, 102], "size": [4, 1.2, 10], "category": "tail_fin", "uv_group": "tail_fin_side"}
         ]
     },
-    # Segment 7: COLOSSAL CAUDAL BLADE & MAGMA FAN (Width: 37 units)
     {
         "name": "tail_flame",
         "parent": "tail_6",
-        "pivot": [0, 37, 126],
+        "pivot": [0, 48, 114],
         "cubes": [
-            {"name": "fan_spine_core", "origin": [-2, 35, 126], "size": [4, 4, 26], "category": "flame_core", "uv_group": "fan_spine_core"},
-            {"name": "fan_spear_tip", "origin": [-1, 36, 152], "size": [2, 2, 10], "category": "spikes", "uv_group": "fan_spear_tip"},
-            {"name": "fan_keel_dorsal", "origin": [-1, 39, 127], "size": [2, 5.5, 24], "category": "flame_keel", "uv_group": "fan_keel"},
-            {"name": "fan_keel_ventral", "origin": [-1, 30.5, 128], "size": [2, 5.5, 24], "category": "flame_keel", "uv_group": "fan_keel"}
+            {"name": "fan_hub", "origin": [-2, 47.5, 114], "size": [4, 4, 16], "category": "flame_core", "uv_group": "fan_hub"},
+            {"name": "fan_spear_tip", "origin": [-1.5, 48, 130], "size": [3, 2.5, 14], "category": "tail_core", "uv_group": "fan_spear_tip"},
+            {"name": "fan_dorsal_keel", "origin": [-1, 51.5, 116], "size": [2, 3, 16], "category": "flame_keel", "uv_group": "fan_keel"},
+            {"name": "fan_ventral_keel", "origin": [-1, 44.5, 116], "size": [2, 3, 16], "category": "flame_keel", "uv_group": "fan_keel"}
         ]
     },
-    # Articulated Left Flame Wing (X extends to +18.5)
     {
         "name": "tail_flame_left",
         "parent": "tail_flame",
-        "pivot": [2, 37, 127],
+        "pivot": [2, 48, 118],
         "cubes": [
-            {"name": "fan_blade_inner_l", "origin": [2, 36.2, 127], "size": [7, 1.6, 24], "category": "flame_blade_inner", "uv_group": "fan_blade_inner"},
-            {"name": "fan_blade_mid_l", "origin": [9, 36.3, 129], "size": [4.5, 1.2, 18], "category": "flame_blade_mid", "uv_group": "fan_blade_outer_group"},
-            {"name": "fan_blade_outer_l", "origin": [13.5, 36.4, 131], "size": [4.5, 1.2, 18], "category": "flame_blade_outer", "uv_group": "fan_blade_outer_group"},
-            {"name": "fan_spike_front_l", "origin": [12.5, 36.8, 127], "size": [3, 2, 8], "category": "flame_spike", "uv_group": "fan_spike_front"},
-            {"name": "fan_flare_rear_l", "origin": [1, 36.5, 149], "size": [6, 1.0, 16], "category": "flame_flare", "uv_group": "fan_flare_rear"},
-            {"name": "fan_crust_tip_l", "origin": [16, 36, 135], "size": [2.5, 2.5, 6], "category": "basalt_crust", "uv_group": "fan_crust_tip"}
+            {"name": "fan_blade_inner_l", "origin": [2, 47.2, 118], "size": [5, 1.4, 20], "category": "flame_blade_inner", "uv_group": "fan_blade_inner"},
+            {"name": "fan_blade_mid_l", "origin": [7, 47.3, 120], "size": [3.5, 1.2, 15], "category": "flame_blade_mid", "uv_group": "fan_blade_outer_group"},
+            {"name": "fan_blade_outer_l", "origin": [10.5, 47.4, 122], "size": [3.5, 1.2, 14], "category": "flame_blade_outer", "uv_group": "fan_blade_outer_group"},
+            {"name": "fan_spike_front_l", "origin": [10, 47.8, 118], "size": [2.5, 1.8, 6], "category": "flame_spike", "uv_group": "fan_spike_front"},
+            {"name": "fan_flare_rear_l", "origin": [1, 47.5, 136], "size": [5, 1.0, 12], "category": "flame_flare", "uv_group": "fan_flare_rear"},
+            {"name": "fan_crust_tip_l", "origin": [12.5, 47, 126], "size": [2, 2, 5], "category": "basalt_crust", "uv_group": "fan_crust_tip"}
         ]
     },
-    # Articulated Right Flame Wing (X extends to -18.5)
     {
         "name": "tail_flame_right",
         "parent": "tail_flame",
-        "pivot": [-2, 37, 127],
+        "pivot": [-2, 48, 118],
         "cubes": [
-            {"name": "fan_blade_inner_r", "origin": [-9, 36.2, 127], "size": [7, 1.6, 24], "category": "flame_blade_inner", "uv_group": "fan_blade_inner"},
-            {"name": "fan_blade_mid_r", "origin": [-13.5, 36.3, 129], "size": [4.5, 1.2, 18], "category": "flame_blade_mid", "uv_group": "fan_blade_outer_group"},
-            {"name": "fan_blade_outer_r", "origin": [-18, 36.4, 131], "size": [4.5, 1.2, 18], "category": "flame_blade_outer", "uv_group": "fan_blade_outer_group"},
-            {"name": "fan_spike_front_r", "origin": [-15.5, 36.8, 127], "size": [3, 2, 8], "category": "flame_spike", "uv_group": "fan_spike_front"},
-            {"name": "fan_flare_rear_r", "origin": [-7, 36.5, 149], "size": [6, 1.0, 16], "category": "flame_flare", "uv_group": "fan_flare_rear"},
-            {"name": "fan_crust_tip_r", "origin": [-18.5, 36, 135], "size": [2.5, 2.5, 6], "category": "basalt_crust", "uv_group": "fan_crust_tip"}
+            {"name": "fan_blade_inner_r", "origin": [-7, 47.2, 118], "size": [5, 1.4, 20], "category": "flame_blade_inner", "uv_group": "fan_blade_inner"},
+            {"name": "fan_blade_mid_r", "origin": [-10.5, 47.3, 120], "size": [3.5, 1.2, 15], "category": "flame_blade_mid", "uv_group": "fan_blade_outer_group"},
+            {"name": "fan_blade_outer_r", "origin": [-14, 47.4, 122], "size": [3.5, 1.2, 14], "category": "flame_blade_outer", "uv_group": "fan_blade_outer_group"},
+            {"name": "fan_spike_front_r", "origin": [-12.5, 47.8, 118], "size": [2.5, 1.8, 6], "category": "flame_spike", "uv_group": "fan_spike_front"},
+            {"name": "fan_flare_rear_r", "origin": [-6, 47.5, 136], "size": [5, 1.0, 12], "category": "flame_flare", "uv_group": "fan_flare_rear"},
+            {"name": "fan_crust_tip_r", "origin": [-14.5, 47, 126], "size": [2, 2, 5], "category": "basalt_crust", "uv_group": "fan_crust_tip"}
         ]
     }
 ]
@@ -525,9 +524,9 @@ adult_bones = [
 # ---------------------------------------------------------------------------
 def paint_adult_texture(tex, bones_def, tex_w, tex_h):
     CORE_WHITE       = (255, 255, 230, 255) # Supercritical white core
-    PLASMA_YELLOW    = (255, 238, 51, 255)  # #FFEE33 pure magma
-    MAGMA_GOLD       = (255, 170, 0, 255)   # #FFAA00 active radiant magma
-    FIRE_ORANGE      = (255, 68, 0, 255)    # #FF4400 surging flame
+    PLASMA_YELLOW    = (255, 238, 51, 255)  # Pure magma
+    MAGMA_GOLD       = (255, 170, 0, 255)   # Active radiant magma
+    FIRE_ORANGE      = (255, 68, 0, 255)    # Surging flame
     CRIMSON_LAVA     = (185, 28, 16, 255)   # Deep volcanic crimson
     CHAR_EMBER       = (98, 20, 16, 255)    # Cooling embers
     BASALT_CRUST     = (46, 36, 40, 255)    # Cooled volcanic crust
@@ -546,6 +545,11 @@ def paint_adult_texture(tex, bones_def, tex_w, tex_h):
     EYE_GOLD         = (255, 205, 15, 255)
     EYE_PUPIL        = (12, 8, 8, 255)
     FANG_COLOR       = (232, 224, 202, 255)
+    SADDLE_LEATHER_BASE = (92, 44, 22, 255) # Rich warm saddle leather
+    SADDLE_LEATHER_HIGH = (122, 61, 30, 255)
+    SADDLE_LEATHER_DARK = (62, 28, 14, 255)
+    SADDLE_GOLD_TRIM    = (212, 175, 55, 255) # Burnished brass / gold buckles
+    SADDLE_IRON_STIRRUP = (100, 100, 108, 255) # Forged iron stirrups
 
     for b in bones_def:
         for c in b.get("cubes", []):
@@ -623,7 +627,19 @@ def paint_adult_texture(tex, bones_def, tex_w, tex_h):
                             else:
                                 base_c = OBSIDIAN_BASE
 
-                        # 3. Tail Plates, Spikes, Blades & Fins
+                        # 3. Saddle Crafting Texture
+                        elif cat == "saddle_leather":
+                            if local_x == 0 or local_x == fw_int - 1 or local_y == 0 or local_y == fh_int - 1:
+                                base_c = SADDLE_GOLD_TRIM if (fname == "up" and (local_x % 3 == 0 or local_y % 3 == 0)) else SADDLE_LEATHER_DARK
+                            elif fname == "up" and (local_x == 1 or local_x == fw_int - 2 or local_y == 1 or local_y == fh_int - 2):
+                                base_c = SADDLE_GOLD_TRIM
+                            else:
+                                base_c = SADDLE_LEATHER_BASE if (local_x + local_y) % 2 == 0 else SADDLE_LEATHER_HIGH
+
+                        elif cat == "saddle_iron":
+                            base_c = SADDLE_IRON_STIRRUP if fname != "down" else (70, 70, 75, 255)
+
+                        # 4. Tail Plates, Spikes, Blades & Fins
                         elif cat in ("tail_plate", "tail_spike", "tail_blade", "tail_fin"):
                             rel_edge = local_x / max(1, fw_int - 1)
                             if local_y == 0 or local_y == fh_int - 1:
@@ -635,7 +651,7 @@ def paint_adult_texture(tex, bones_def, tex_w, tex_h):
                             else:
                                 base_c = OBSIDIAN_SCALE
 
-                        # 4. Spines & Keels
+                        # 5. Spines & Keels
                         elif cat in ("tail_spine", "tail_keel", "flame_keel"):
                             if cat in ("tail_keel", "flame_keel"):
                                 if t_y < 0.35:
@@ -652,7 +668,7 @@ def paint_adult_texture(tex, bones_def, tex_w, tex_h):
                                 else:
                                     base_c = OBSIDIAN_SCALE
 
-                        # 5. Caudal Magma Fan & Blades
+                        # 6. Caudal Magma Fan & Blades
                         elif cat in ("flame_core", "flame_blade_inner", "flame_blade_mid", "flame_blade_outer", "flame_flare", "flame_spike", "basalt_crust"):
                             if cat == "flame_core":
                                 if fname in ("up", "down"):
@@ -704,7 +720,7 @@ def paint_adult_texture(tex, bones_def, tex_w, tex_h):
                             elif cat == "basalt_crust":
                                 base_c = CHAR_EMBER if (local_x + local_y) % 4 == 0 else BASALT_CRUST
 
-                        # 6. Head, Snout, Jaw, Horns & Wings
+                        # 7. Head, Snout, Jaw, Horns & Wings
                         elif cat == "neck":
                             base_c = MAGMA_GOLD if (fname == "down" and abs(local_x - fw_int/2.0) < 2.5) else OBSIDIAN_SCALE
                         elif cat == "head":
@@ -764,7 +780,7 @@ def paint_adult_texture(tex, bones_def, tex_w, tex_h):
                         tex.putpixel((fu_n + fx, fv_n), FANG_COLOR)
 
 # ---------------------------------------------------------------------------
-# 5 ADVANCED ANIMATIONS (ADAPTED TO HARMONIC QUADRUPEDAL STANCE)
+# 10 ADVANCED ANIMATIONS (ADAPTED TO HARMONIC TALL QUADRUPEDAL STANCE)
 # ---------------------------------------------------------------------------
 
 def generate_adult_fly_flap(duration=1.4, frames=43):
@@ -812,21 +828,21 @@ def generate_adult_fly_flap(duration=1.4, frames=43):
         s = math.sin(psi)
         c = math.cos(psi)
 
-        # 4 wing joints (graceful upstroke arch, powerful 284-unit full span downstroke)
+        # 4 wing joints full span extension and flapping
         sh_z = 24.0 * s
         sh_x = -4.0 * c
         sh_y = 6.0 * s
 
-        arm_z = 32.0 * s
-        arm_y = 14.0 * max(0.0, s) # folds back in upstroke
+        arm_z = 30.0 * s
+        arm_y = 12.0 * max(0.0, s)
         arm_x = -6.0 * c
 
         s_fore = math.sin(psi - 0.45)
-        fore_z = -16.0 * max(0.0, s) + 24.0 * min(0.0, s_fore) # graceful arch upstroke, full stretch downstroke
-        fore_y = 10.0 * max(0.0, s_fore)
+        fore_z = -16.0 * max(0.0, s) + 22.0 * min(0.0, s_fore)
+        fore_y = 8.0 * max(0.0, s_fore)
 
         s_fing = math.sin(psi - 0.75)
-        fing_z = -22.0 * max(0.0, s) + 28.0 * min(0.0, s_fing)
+        fing_z = -20.0 * max(0.0, s) + 24.0 * min(0.0, s_fing)
 
         # Left wing
         bones_data["wing_shoulder_left"]["rotation"][str(t)] = [round(sh_x, 2), round(sh_y, 2), round(sh_z, 2)]
@@ -848,36 +864,34 @@ def generate_adult_fly_flap(duration=1.4, frames=43):
         bones_data["body"]["rotation"][str(t)] = [pitch_x, 0.0, 0.0]
 
         # Vestibular neck/head stabilization
-        bones_data["neck"]["rotation"][str(t)] = [round(-5.0 + 3.0 * s, 2), 0.0, 0.0]
-        bones_data["neck"]["position"][str(t)] = [0.0, round(0.5 * s, 2), round(-0.8 * c, 2)]
-        bones_data["neck_upper"]["rotation"][str(t)] = [round(-3.0 + 2.0 * s, 2), 0.0, 0.0]
-        bones_data["head"]["rotation"][str(t)] = [round(-2.0 - 1.5 * s, 2), 0.0, 0.0]
+        neck_pitch = round(-0.75 * pitch_x, 2)
+        bones_data["neck"]["rotation"][str(t)] = [neck_pitch, 0.0, 0.0]
+        bones_data["neck"]["position"][str(t)] = [0.0, round(-0.4 * lift_y, 2), 0.0]
+        bones_data["neck_upper"]["rotation"][str(t)] = [round(-0.4 * pitch_x, 2), 0.0, 0.0]
+        bones_data["head"]["rotation"][str(t)] = [round(-0.3 * pitch_x, 2), 0.0, 0.0]
 
-        # 4 legs aerodynamically tucked under belly
-        leg_susp = 2.5 * c
-        front_leg_pitch = round(50.0 + leg_susp, 2)
-        front_shin_pitch = round(-42.0 - leg_susp, 2)
-        front_foot_pitch = round(12.0, 2)
-        bones_data["leg_front_left"]["rotation"][str(t)] = [front_leg_pitch, 0.0, 4.0]
-        bones_data["leg_front_left_shin"]["rotation"][str(t)] = [front_shin_pitch, 0.0, 0.0]
-        bones_data["leg_front_left_foot"]["rotation"][str(t)] = [front_foot_pitch, 0.0, 0.0]
+        # Aerodynamic tuck of all 4 quadrupedal legs
+        leg_tuck_front = round(52.0 + 4.0 * s, 2)
+        shin_tuck_front = round(-42.0 - 3.0 * s, 2)
+        foot_tuck_front = round(16.0 + 2.0 * s, 2)
+        bones_data["leg_front_left"]["rotation"][str(t)] = [leg_tuck_front, 0.0, 3.0]
+        bones_data["leg_front_left_shin"]["rotation"][str(t)] = [shin_tuck_front, 0.0, 0.0]
+        bones_data["leg_front_left_foot"]["rotation"][str(t)] = [foot_tuck_front, 0.0, 0.0]
+        bones_data["leg_front_right"]["rotation"][str(t)] = [leg_tuck_front, 0.0, -3.0]
+        bones_data["leg_front_right_shin"]["rotation"][str(t)] = [shin_tuck_front, 0.0, 0.0]
+        bones_data["leg_front_right_foot"]["rotation"][str(t)] = [foot_tuck_front, 0.0, 0.0]
 
-        bones_data["leg_front_right"]["rotation"][str(t)] = [front_leg_pitch, 0.0, -4.0]
-        bones_data["leg_front_right_shin"]["rotation"][str(t)] = [front_shin_pitch, 0.0, 0.0]
-        bones_data["leg_front_right_foot"]["rotation"][str(t)] = [front_foot_pitch, 0.0, 0.0]
+        leg_tuck_rear = round(48.0 + 4.0 * s, 2)
+        shin_tuck_rear = round(-35.0 - 3.0 * s, 2)
+        foot_tuck_rear = round(14.0 + 2.0 * s, 2)
+        bones_data["leg_left"]["rotation"][str(t)] = [leg_tuck_rear, 0.0, 4.0]
+        bones_data["leg_left_shin"]["rotation"][str(t)] = [shin_tuck_rear, 0.0, 0.0]
+        bones_data["leg_left_foot"]["rotation"][str(t)] = [foot_tuck_rear, 0.0, 0.0]
+        bones_data["leg_right"]["rotation"][str(t)] = [leg_tuck_rear, 0.0, -4.0]
+        bones_data["leg_right_shin"]["rotation"][str(t)] = [shin_tuck_rear, 0.0, 0.0]
+        bones_data["leg_right_foot"]["rotation"][str(t)] = [foot_tuck_rear, 0.0, 0.0]
 
-        hind_leg_pitch = round(44.0 + leg_susp, 2)
-        hind_shin_pitch = round(-32.0 - leg_susp, 2)
-        hind_foot_pitch = round(10.0, 2)
-        bones_data["leg_left"]["rotation"][str(t)] = [hind_leg_pitch, 0.0, 5.0]
-        bones_data["leg_left_shin"]["rotation"][str(t)] = [hind_shin_pitch, 0.0, 0.0]
-        bones_data["leg_left_foot"]["rotation"][str(t)] = [hind_foot_pitch, 0.0, 0.0]
-
-        bones_data["leg_right"]["rotation"][str(t)] = [hind_leg_pitch, 0.0, -5.0]
-        bones_data["leg_right_shin"]["rotation"][str(t)] = [hind_shin_pitch, 0.0, 0.0]
-        bones_data["leg_right_foot"]["rotation"][str(t)] = [hind_foot_pitch, 0.0, 0.0]
-
-        # Continuous sinusoidal traveling whip wave along all 7 tail segments
+        # Sinusoidal traveling wave along tail
         for seg_idx, (bname, amp, lag) in enumerate([
             ("tail_1", 3.0, 0.35),
             ("tail_2", 5.5, 0.70),
@@ -891,7 +905,7 @@ def generate_adult_fly_flap(duration=1.4, frames=43):
             bones_data[bname]["rotation"][str(t)] = [seg_pitch, seg_yaw, 0.0]
 
         flame_pitch = round(-24.0 * math.sin(psi - 2.45), 2)
-        flame_scale = round(1.18 + 0.22 * math.sin(psi - 2.45), 2)
+        flame_scale = round(1.15 + 0.20 * math.sin(psi - 2.45), 2)
         bones_data["tail_flame"]["rotation"][str(t)] = [flame_pitch, 0.0, 0.0]
         bones_data["tail_flame"]["scale"][str(t)] = [flame_scale, flame_scale, flame_scale]
 
@@ -1014,91 +1028,24 @@ def generate_adult_eating():
         "animation_length": 3.2,
         "bones": {
             "body": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.6": [6.0, 0.0, 0.0],
-                    "1.2": [7.0, 2.0, 0.0],
-                    "1.8": [6.0, -2.0, 0.0],
-                    "2.4": [2.0, 0.0, 0.0],
-                    "3.2": [0.0, 0.0, 0.0]
-                },
-                "position": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.6": [0.0, -1.8, -2.0],
-                    "1.2": [0.0, -2.0, -1.0],
-                    "2.4": [0.0, -0.6, 0.0],
-                    "3.2": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "0.6": [6.0, 0.0, 0.0], "1.2": [7.0, 2.0, 0.0], "1.8": [6.0, -2.0, 0.0], "2.4": [2.0, 0.0, 0.0], "3.2": [0.0, 0.0, 0.0]},
+                "position": {"0.0": [0.0, 0.0, 0.0], "0.6": [0.0, -1.8, -2.0], "1.2": [0.0, -2.0, -1.0], "2.4": [0.0, -0.6, 0.0], "3.2": [0.0, 0.0, 0.0]}
             },
             "neck": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.6": [28.0, 0.0, 0.0],
-                    "1.2": [24.0, 4.0, 2.0],
-                    "1.8": [26.0, -4.0, -2.0],
-                    "2.4": [10.0, 0.0, 0.0],
-                    "3.2": [0.0, 0.0, 0.0]
-                },
-                "position": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.6": [0.0, -2.5, -3.0],
-                    "1.2": [0.0, -2.0, -1.0],
-                    "2.4": [0.0, 0.0, 0.0],
-                    "3.2": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "0.6": [28.0, 0.0, 0.0], "1.2": [24.0, 4.0, 2.0], "1.8": [26.0, -4.0, -2.0], "2.4": [10.0, 0.0, 0.0], "3.2": [0.0, 0.0, 0.0]},
+                "position": {"0.0": [0.0, 0.0, 0.0], "0.6": [0.0, -2.5, -3.0], "1.2": [0.0, -2.0, -1.0], "2.4": [0.0, 0.0, 0.0], "3.2": [0.0, 0.0, 0.0]}
             },
             "neck_upper": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.6": [22.0, 0.0, 0.0],
-                    "1.2": [18.0, 3.0, 0.0],
-                    "1.8": [20.0, -3.0, 0.0],
-                    "2.4": [6.0, 0.0, 0.0],
-                    "3.2": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "0.6": [22.0, 0.0, 0.0], "1.2": [18.0, 3.0, 0.0], "1.8": [20.0, -3.0, 0.0], "2.4": [6.0, 0.0, 0.0], "3.2": [0.0, 0.0, 0.0]}
             },
             "head": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.6": [16.0, 0.0, 0.0],
-                    "1.2": [12.0, 8.0, 5.0],
-                    "1.5": [15.0, -6.0, -4.0],
-                    "1.8": [10.0, 4.0, 2.0],
-                    "2.4": [-4.0, 0.0, 0.0],
-                    "3.2": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "0.6": [16.0, 0.0, 0.0], "1.2": [12.0, 8.0, 5.0], "1.5": [15.0, -6.0, -4.0], "1.8": [10.0, 4.0, 2.0], "2.4": [-4.0, 0.0, 0.0], "3.2": [0.0, 0.0, 0.0]}
             },
             "jaw_lower": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.6": [15.0, 0.0, 0.0],
-                    "0.9": [45.0, 0.0, 0.0],
-                    "1.15": [-2.0, 0.0, 0.0],
-                    "1.4": [38.0, 0.0, 0.0],
-                    "1.65": [0.0, 0.0, 0.0],
-                    "1.9": [28.0, 0.0, 0.0],
-                    "2.15": [0.0, 0.0, 0.0],
-                    "2.5": [10.0, 0.0, 0.0],
-                    "2.8": [0.0, 0.0, 0.0],
-                    "3.2": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "0.6": [15.0, 0.0, 0.0], "0.9": [45.0, 0.0, 0.0], "1.15": [-2.0, 0.0, 0.0], "1.4": [38.0, 0.0, 0.0], "1.65": [0.0, 0.0, 0.0], "1.9": [28.0, 0.0, 0.0], "2.15": [0.0, 0.0, 0.0], "2.5": [10.0, 0.0, 0.0], "2.8": [0.0, 0.0, 0.0], "3.2": [0.0, 0.0, 0.0]}
             },
-            "leg_front_left": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.6": [-6.0, 0.0, 1.0],
-                    "2.4": [-2.0, 0.0, 0.0],
-                    "3.2": [0.0, 0.0, 0.0]
-                }
-            },
-            "leg_front_right": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.6": [-6.0, 0.0, -1.0],
-                    "2.4": [-2.0, 0.0, 0.0],
-                    "3.2": [0.0, 0.0, 0.0]
-                }
-            },
+            "wing_shoulder_left": {"rotation": {"0.0": [12.0, -28.0, -16.0], "3.2": [12.0, -28.0, -16.0]}},
+            "wing_shoulder_right": {"rotation": {"0.0": [12.0, 28.0, 16.0], "3.2": [12.0, 28.0, 16.0]}},
             "tail_1": {"rotation": {"0.0": [0.0, 0.0, 0.0], "0.6": [2.0, 2.0, 0.0], "1.8": [2.0, -2.0, 0.0], "3.2": [0.0, 0.0, 0.0]}},
             "tail_2": {"rotation": {"0.0": [0.0, 0.0, 0.0], "0.6": [3.0, 4.0, 0.0], "1.8": [3.0, -4.0, 0.0], "3.2": [0.0, 0.0, 0.0]}},
             "tail_flame": {
@@ -1115,17 +1062,13 @@ def generate_adult_sleep():
         "bones": {
             "body": {
                 "rotation": {"0.0": [0.0, 0.0, -1.5], "3.0": [0.5, 0.0, -1.0], "6.0": [0.0, 0.0, -1.5]},
-                "position": {"0.0": [0.0, -22.0, 0.0], "3.0": [0.0, -21.2, 0.0], "6.0": [0.0, -22.0, 0.0]},
+                "position": {"0.0": [0.0, -24.0, 0.0], "3.0": [0.0, -23.2, 0.0], "6.0": [0.0, -24.0, 0.0]},
                 "scale": {"0.0": [1.0, 1.0, 1.0], "3.0": [1.03, 1.04, 1.02], "6.0": [1.0, 1.0, 1.0]}
             },
-            "leg_front_left": {
-                "rotation": {"0.0": [-25.0, 15.0, 20.0], "3.0": [-24.0, 15.0, 20.0], "6.0": [-25.0, 15.0, 20.0]}
-            },
+            "leg_front_left": {"rotation": {"0.0": [-25.0, 15.0, 20.0], "3.0": [-24.0, 15.0, 20.0], "6.0": [-25.0, 15.0, 20.0]}},
             "leg_front_left_shin": {"rotation": {"0.0": [65.0, 0.0, 0.0], "6.0": [65.0, 0.0, 0.0]}},
             "leg_front_left_foot": {"rotation": {"0.0": [-30.0, 0.0, 0.0], "6.0": [-30.0, 0.0, 0.0]}},
-            "leg_front_right": {
-                "rotation": {"0.0": [-25.0, -15.0, -20.0], "3.0": [-24.0, -15.0, -20.0], "6.0": [-25.0, -15.0, -20.0]}
-            },
+            "leg_front_right": {"rotation": {"0.0": [-25.0, -15.0, -20.0], "3.0": [-24.0, -15.0, -20.0], "6.0": [-25.0, -15.0, -20.0]}},
             "leg_front_right_shin": {"rotation": {"0.0": [65.0, 0.0, 0.0], "6.0": [65.0, 0.0, 0.0]}},
             "leg_front_right_foot": {"rotation": {"0.0": [-30.0, 0.0, 0.0], "6.0": [-30.0, 0.0, 0.0]}},
             "leg_left": {"rotation": {"0.0": [-40.0, 10.0, 25.0], "6.0": [-40.0, 10.0, 25.0]}},
@@ -1134,14 +1077,12 @@ def generate_adult_sleep():
             "leg_right": {"rotation": {"0.0": [-40.0, -10.0, -25.0], "6.0": [-40.0, -10.0, -25.0]}},
             "leg_right_shin": {"rotation": {"0.0": [60.0, 0.0, 0.0], "6.0": [60.0, 0.0, 0.0]}},
             "leg_right_foot": {"rotation": {"0.0": [-25.0, 0.0, 0.0], "6.0": [-25.0, 0.0, 0.0]}},
-            "wing_shoulder_left": {"rotation": {"0.0": [-15.0, -10.0, -25.0], "3.0": [-14.0, -10.0, -24.0], "6.0": [-15.0, -10.0, -25.0]}},
-            "wing_arm_left": {"rotation": {"0.0": [-20.0, -15.0, 15.0], "6.0": [-20.0, -15.0, 15.0]}},
-            "wing_forearm_left": {"rotation": {"0.0": [10.0, 30.0, -10.0], "6.0": [10.0, 30.0, -10.0]}},
-            "wing_fingers_left": {"rotation": {"0.0": [5.0, 15.0, 5.0], "6.0": [5.0, 15.0, 5.0]}},
-            "wing_shoulder_right": {"rotation": {"0.0": [-15.0, 10.0, 25.0], "3.0": [-14.0, 10.0, 24.0], "6.0": [-15.0, 10.0, 25.0]}},
-            "wing_arm_right": {"rotation": {"0.0": [-20.0, 15.0, -15.0], "6.0": [-20.0, 15.0, -15.0]}},
-            "wing_forearm_right": {"rotation": {"0.0": [10.0, -30.0, 10.0], "6.0": [10.0, -30.0, 10.0]}},
-            "wing_fingers_right": {"rotation": {"0.0": [5.0, -15.0, -5.0], "6.0": [5.0, -15.0, -5.0]}},
+            "wing_shoulder_left": {"rotation": {"0.0": [-10.0, -25.0, -15.0], "3.0": [-9.0, -25.0, -14.0], "6.0": [-10.0, -25.0, -15.0]}},
+            "wing_arm_left": {"rotation": {"0.0": [-15.0, -10.0, 10.0], "6.0": [-15.0, -10.0, 10.0]}},
+            "wing_forearm_left": {"rotation": {"0.0": [10.0, 25.0, -10.0], "6.0": [10.0, 25.0, -10.0]}},
+            "wing_shoulder_right": {"rotation": {"0.0": [-10.0, 25.0, 15.0], "3.0": [-9.0, 25.0, 14.0], "6.0": [-10.0, 25.0, 15.0]}},
+            "wing_arm_right": {"rotation": {"0.0": [-15.0, 10.0, -10.0], "6.0": [-15.0, 10.0, -10.0]}},
+            "wing_forearm_right": {"rotation": {"0.0": [10.0, -25.0, 10.0], "6.0": [10.0, -25.0, 10.0]}},
             "tail_1": {"rotation": {"0.0": [2.0, 12.0, 0.0], "3.0": [1.0, 12.0, 0.0], "6.0": [2.0, 12.0, 0.0]}},
             "tail_2": {"rotation": {"0.0": [0.0, 18.0, 0.0], "6.0": [0.0, 18.0, 0.0]}},
             "tail_3": {"rotation": {"0.0": [-2.0, 22.0, 0.0], "6.0": [-2.0, 22.0, 0.0]}},
@@ -1152,16 +1093,9 @@ def generate_adult_sleep():
                 "rotation": {"0.0": [-5.0, 12.0, 0.0], "6.0": [-5.0, 12.0, 0.0]},
                 "scale": {"0.0": [0.85, 0.85, 0.85], "3.0": [0.92, 0.95, 0.92], "6.0": [0.85, 0.85, 0.85]}
             },
-            "neck": {
-                "rotation": {"0.0": [22.0, 26.0, 10.0], "3.0": [20.5, 26.0, 10.0], "6.0": [22.0, 26.0, 10.0]}
-            },
-            "neck_upper": {
-                "rotation": {"0.0": [20.0, 32.0, 12.0], "3.0": [19.0, 32.0, 12.0], "6.0": [20.0, 32.0, 12.0]}
-            },
-            "head": {
-                "rotation": {"0.0": [14.0, 20.0, -8.0], "3.0": [13.0, 20.0, -8.0], "6.0": [14.0, 20.0, -8.0]}
-            },
-            "jaw_lower": {"rotation": {"0.0": [0.0, 0.0, 0.0], "6.0": [0.0, 0.0, 0.0]}}
+            "neck": {"rotation": {"0.0": [22.0, 26.0, 10.0], "3.0": [20.5, 26.0, 10.0], "6.0": [22.0, 26.0, 10.0]}},
+            "neck_upper": {"rotation": {"0.0": [20.0, 32.0, 12.0], "3.0": [19.0, 32.0, 12.0], "6.0": [20.0, 32.0, 12.0]}},
+            "head": {"rotation": {"0.0": [14.0, 20.0, -8.0], "3.0": [13.0, 20.0, -8.0], "6.0": [14.0, 20.0, -8.0]}}
         }
     }
 
@@ -1171,133 +1105,21 @@ def generate_adult_wake_up():
         "animation_length": 4.0,
         "bones": {
             "body": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, -1.5],
-                    "0.8": [2.0, 0.0, 0.0],
-                    "1.6": [8.0, 0.0, 0.0],
-                    "2.4": [4.0, 0.0, 0.0],
-                    "3.2": [0.0, 0.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                },
-                "position": {
-                    "0.0": [0.0, -22.0, 0.0],
-                    "0.8": [0.0, -20.0, 0.0],
-                    "1.6": [0.0, -16.0, 2.0],
-                    "2.4": [0.0, -8.0, 1.0],
-                    "3.2": [0.0, -2.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, -1.5], "0.8": [2.0, 0.0, 0.0], "1.6": [8.0, 0.0, 0.0], "2.4": [4.0, 0.0, 0.0], "4.0": [0.0, 0.0, 0.0]},
+                "position": {"0.0": [0.0, -24.0, 0.0], "0.8": [0.0, -20.0, 0.0], "1.6": [0.0, -14.0, 2.0], "2.4": [0.0, -6.0, 1.0], "4.0": [0.0, 0.0, 0.0]}
             },
             "neck": {
-                "rotation": {
-                    "0.0": [22.0, 26.0, 10.0],
-                    "0.8": [15.0, 12.0, 4.0],
-                    "1.6": [-18.0, 0.0, 0.0],
-                    "2.4": [-8.0, 0.0, 0.0],
-                    "3.2": [4.0, 0.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                },
-                "position": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "1.6": [0.0, 2.0, -2.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                }
-            },
-            "neck_upper": {
-                "rotation": {
-                    "0.0": [20.0, 32.0, 12.0],
-                    "0.8": [12.0, 14.0, 4.0],
-                    "1.6": [-14.0, 0.0, 0.0],
-                    "2.4": [-4.0, 0.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [22.0, 26.0, 10.0], "0.8": [15.0, 12.0, 4.0], "1.6": [-18.0, 0.0, 0.0], "2.4": [-8.0, 0.0, 0.0], "4.0": [0.0, 0.0, 0.0]}
             },
             "head": {
-                "rotation": {
-                    "0.0": [14.0, 20.0, -8.0],
-                    "0.8": [8.0, 8.0, 0.0],
-                    "1.6": [-22.0, 0.0, 0.0],
-                    "2.2": [-15.0, 0.0, 0.0],
-                    "2.6": [4.0, 0.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [14.0, 20.0, -8.0], "0.8": [8.0, 8.0, 0.0], "1.6": [-22.0, 0.0, 0.0], "2.2": [-15.0, 0.0, 0.0], "4.0": [0.0, 0.0, 0.0]}
             },
             "jaw_lower": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [0.0, 0.0, 0.0],
-                    "1.6": [58.0, 0.0, 0.0],
-                    "2.0": [62.0, 0.0, 0.0],
-                    "2.4": [0.0, 0.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "1.6": [58.0, 0.0, 0.0], "2.0": [62.0, 0.0, 0.0], "2.6": [0.0, 0.0, 0.0], "4.0": [0.0, 0.0, 0.0]}
             },
-            "leg_front_left": {
-                "rotation": {
-                    "0.0": [-25.0, 15.0, 20.0],
-                    "1.6": [-35.0, 0.0, 2.0],
-                    "2.8": [-10.0, 0.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                }
-            },
-            "leg_front_left_shin": {
-                "rotation": {
-                    "0.0": [65.0, 0.0, 0.0],
-                    "1.6": [20.0, 0.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                }
-            },
-            "leg_front_right": {
-                "rotation": {
-                    "0.0": [-25.0, -15.0, -20.0],
-                    "1.6": [-35.0, 0.0, -2.0],
-                    "2.8": [-10.0, 0.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                }
-            },
-            "leg_front_right_shin": {
-                "rotation": {
-                    "0.0": [65.0, 0.0, 0.0],
-                    "1.6": [20.0, 0.0, 0.0],
-                    "4.0": [0.0, 0.0, 0.0]
-                }
-            },
-            "leg_left": {
-                "rotation": {"0.0": [-40.0, 10.0, 25.0], "2.4": [-15.0, 0.0, 5.0], "4.0": [0.0, 0.0, 0.0]}
-            },
-            "leg_left_shin": {"rotation": {"0.0": [60.0, 0.0, 0.0], "4.0": [0.0, 0.0, 0.0]}},
-            "leg_right": {
-                "rotation": {"0.0": [-40.0, -10.0, -25.0], "2.4": [-15.0, 0.0, -5.0], "4.0": [0.0, 0.0, 0.0]}
-            },
-            "leg_right_shin": {"rotation": {"0.0": [60.0, 0.0, 0.0], "4.0": [0.0, 0.0, 0.0]}},
-            "wing_shoulder_left": {
-                "rotation": {"0.0": [-15.0, -10.0, -25.0], "1.6": [0.0, 0.0, 16.0], "3.0": [0.0, 0.0, -2.0], "4.0": [0.0, 0.0, 0.0]}
-            },
-            "wing_arm_left": {
-                "rotation": {"0.0": [-20.0, -15.0, 15.0], "1.6": [0.0, 0.0, -8.0], "4.0": [0.0, 0.0, 0.0]}
-            },
-            "wing_forearm_left": {
-                "rotation": {"0.0": [10.0, 30.0, -10.0], "4.0": [0.0, 0.0, 0.0]}
-            },
-            "wing_shoulder_right": {
-                "rotation": {"0.0": [-15.0, 10.0, 25.0], "1.6": [0.0, 0.0, -16.0], "3.0": [0.0, 0.0, 2.0], "4.0": [0.0, 0.0, 0.0]}
-            },
-            "wing_arm_right": {
-                "rotation": {"0.0": [-20.0, 15.0, -15.0], "1.6": [0.0, 0.0, 8.0], "4.0": [0.0, 0.0, 0.0]}
-            },
-            "wing_forearm_right": {
-                "rotation": {"0.0": [10.0, -30.0, 10.0], "4.0": [0.0, 0.0, 0.0]}
-            },
-            "tail_1": {"rotation": {"0.0": [2.0, 12.0, 0.0], "2.4": [0.0, 4.0, 0.0], "4.0": [0.0, 0.0, 0.0]}},
-            "tail_2": {"rotation": {"0.0": [0.0, 18.0, 0.0], "2.4": [0.0, 6.0, 0.0], "4.0": [0.0, 0.0, 0.0]}},
-            "tail_3": {"rotation": {"0.0": [-2.0, 22.0, 0.0], "2.4": [0.0, 8.0, 0.0], "4.0": [0.0, 0.0, 0.0]}},
-            "tail_4": {"rotation": {"0.0": [-4.0, 24.0, 0.0], "2.4": [0.0, 8.0, 0.0], "4.0": [0.0, 0.0, 0.0]}},
-            "tail_5": {"rotation": {"0.0": [-5.0, 22.0, 0.0], "2.4": [0.0, 6.0, 0.0], "4.0": [0.0, 0.0, 0.0]}},
-            "tail_6": {"rotation": {"0.0": [-6.0, 18.0, 0.0], "2.4": [0.0, 4.0, 0.0], "4.0": [0.0, 0.0, 0.0]}},
-            "tail_flame": {
-                "rotation": {"0.0": [-5.0, 12.0, 0.0], "2.4": [0.0, 0.0, 0.0], "4.0": [0.0, 0.0, 0.0]},
-                "scale": {"0.0": [0.85, 0.85, 0.85], "2.4": [1.15, 1.15, 1.15], "4.0": [1.0, 1.0, 1.0]}
-            }
+            "wing_shoulder_left": {"rotation": {"0.0": [-10.0, -25.0, -15.0], "1.6": [0.0, 0.0, 16.0], "3.0": [12.0, -28.0, -16.0], "4.0": [12.0, -28.0, -16.0]}},
+            "wing_shoulder_right": {"rotation": {"0.0": [-10.0, 25.0, 15.0], "1.6": [0.0, 0.0, -16.0], "3.0": [12.0, 28.0, 16.0], "4.0": [12.0, 28.0, 16.0]}},
+            "tail_1": {"rotation": {"0.0": [2.0, 12.0, 0.0], "2.4": [0.0, 4.0, 0.0], "4.0": [0.0, 0.0, 0.0]}}
         }
     }
 
@@ -1307,194 +1129,37 @@ def generate_adult_roar():
         "animation_length": 3.5,
         "bones": {
             "body": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-6.0, 0.0, 0.0],
-                    "1.3": [10.0, 0.0, 0.0],
-                    "1.7": [11.5, 0.0, 0.0],
-                    "2.1": [9.5, 0.0, 0.0],
-                    "2.7": [4.0, 0.0, 0.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                },
-                "position": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [0.0, -1.0, 3.0],
-                    "1.3": [0.0, 1.5, -4.0],
-                    "2.1": [0.0, 1.0, -3.5],
-                    "2.7": [0.0, 0.0, -1.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                },
-                "scale": {
-                    "0.0": [1.0, 1.0, 1.0],
-                    "0.8": [1.15, 1.18, 1.12],
-                    "1.3": [1.18, 1.20, 1.15],
-                    "2.1": [1.16, 1.18, 1.14],
-                    "2.7": [1.06, 1.06, 1.06],
-                    "3.5": [1.0, 1.0, 1.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "0.8": [-6.0, 0.0, 0.0], "1.3": [12.0, 0.0, 0.0], "1.7": [13.5, 0.0, 0.0], "2.1": [11.5, 0.0, 0.0], "2.7": [4.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]},
+                "position": {"0.0": [0.0, 0.0, 0.0], "0.8": [0.0, -1.0, 3.0], "1.3": [0.0, 2.5, -4.0], "2.1": [0.0, 2.0, -3.5], "3.5": [0.0, 0.0, 0.0]},
+                "scale": {"0.0": [1.0, 1.0, 1.0], "0.8": [1.12, 1.15, 1.10], "1.3": [1.15, 1.18, 1.12], "3.5": [1.0, 1.0, 1.0]}
             },
             "neck": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-22.0, 0.0, 0.0],
-                    "1.3": [34.0, 0.0, 0.0],
-                    "1.7": [36.0, 1.0, 0.0],
-                    "2.1": [33.0, -1.0, 0.0],
-                    "2.7": [12.0, 0.0, 0.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                },
-                "position": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [0.0, 1.0, 2.0],
-                    "1.3": [0.0, 2.0, -8.0],
-                    "2.1": [0.0, 1.5, -7.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
-            },
-            "neck_upper": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-16.0, 0.0, 0.0],
-                    "1.3": [28.0, 0.0, 0.0],
-                    "1.7": [30.0, 0.0, 0.0],
-                    "2.1": [27.0, 0.0, 0.0],
-                    "2.7": [8.0, 0.0, 0.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "0.8": [-22.0, 0.0, 0.0], "1.3": [34.0, 0.0, 0.0], "1.7": [36.0, 1.0, 0.0], "2.1": [33.0, -1.0, 0.0], "2.7": [12.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}
             },
             "head": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-10.0, 0.0, 0.0],
-                    "1.3": [22.0, 0.0, 0.0],
-                    "1.7": [24.0, 0.0, 0.0],
-                    "2.1": [21.0, 0.0, 0.0],
-                    "2.7": [6.0, 0.0, 0.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "0.8": [-10.0, 0.0, 0.0], "1.3": [22.0, 0.0, 0.0], "1.7": [24.0, 0.0, 0.0], "2.1": [21.0, 0.0, 0.0], "2.7": [6.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}
             },
             "jaw_lower": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [18.0, 0.0, 0.0],
-                    "1.3": [65.0, 0.0, 0.0],
-                    "1.7": [67.0, 0.0, 0.0],
-                    "2.1": [64.0, 0.0, 0.0],
-                    "2.7": [12.0, 0.0, 0.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "0.8": [18.0, 0.0, 0.0], "1.3": [65.0, 0.0, 0.0], "1.7": [67.0, 0.0, 0.0], "2.1": [64.0, 0.0, 0.0], "2.7": [12.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}
             },
             "wing_shoulder_left": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-10.0, -15.0, 12.0],
-                    "1.3": [15.0, -20.0, -38.0],
-                    "1.7": [16.0, -20.0, -39.0],
-                    "2.1": [14.0, -18.0, -36.0],
-                    "2.7": [5.0, -6.0, -10.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
-            },
-            "wing_arm_left": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-5.0, 0.0, 10.0],
-                    "1.3": [-10.0, 0.0, -25.0],
-                    "2.1": [-8.0, 0.0, -22.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
-            },
-            "wing_forearm_left": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "1.3": [0.0, 0.0, 15.0],
-                    "2.1": [0.0, 0.0, 12.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
-            },
-            "wing_fingers_left": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "1.3": [0.0, 0.0, -10.0],
-                    "2.1": [0.0, 0.0, -8.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [12.0, -28.0, -16.0], "0.8": [-10.0, -15.0, 12.0], "1.3": [15.0, -20.0, -38.0], "2.1": [14.0, -18.0, -36.0], "3.5": [12.0, -28.0, -16.0]}
             },
             "wing_shoulder_right": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-10.0, 15.0, -12.0],
-                    "1.3": [15.0, 20.0, 38.0],
-                    "1.7": [16.0, 20.0, 39.0],
-                    "2.1": [14.0, 18.0, 36.0],
-                    "2.7": [5.0, 6.0, 10.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
+                "rotation": {"0.0": [12.0, 28.0, 16.0], "0.8": [-10.0, 15.0, -12.0], "1.3": [15.0, 20.0, 38.0], "2.1": [14.0, 18.0, 36.0], "3.5": [12.0, 28.0, 16.0]}
             },
-            "wing_arm_right": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-5.0, 0.0, -10.0],
-                    "1.3": [-10.0, 0.0, 25.0],
-                    "2.1": [-8.0, 0.0, 22.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
-            },
-            "wing_forearm_right": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "1.3": [0.0, 0.0, -15.0],
-                    "2.1": [0.0, 0.0, -12.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
-            },
-            "wing_fingers_right": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "1.3": [0.0, 0.0, 10.0],
-                    "2.1": [0.0, 0.0, 8.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
-            },
-            "leg_front_left": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-10.0, 0.0, 2.0],
-                    "1.3": [16.0, 0.0, 4.0],
-                    "2.1": [14.0, 0.0, 3.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
-            },
-            "leg_front_right": {
-                "rotation": {
-                    "0.0": [0.0, 0.0, 0.0],
-                    "0.8": [-10.0, 0.0, -2.0],
-                    "1.3": [16.0, 0.0, -4.0],
-                    "2.1": [14.0, 0.0, -3.0],
-                    "3.5": [0.0, 0.0, 0.0]
-                }
-            },
-            "tail_1": {"rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [4.0, 0.0, 0.0], "2.1": [4.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}},
-            "tail_2": {"rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [8.0, 0.0, 0.0], "2.1": [8.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}},
-            "tail_3": {"rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [12.0, 0.0, 0.0], "2.1": [12.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}},
-            "tail_4": {"rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [16.0, 0.0, 0.0], "2.1": [16.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}},
-            "tail_5": {"rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [20.0, 0.0, 0.0], "2.1": [20.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}},
-            "tail_6": {"rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [24.0, 0.0, 0.0], "2.1": [24.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}},
+            "leg_front_left": {"rotation": {"0.0": [0.0, 0.0, 0.0], "0.8": [-10.0, 0.0, 2.0], "1.3": [16.0, 0.0, 4.0], "3.5": [0.0, 0.0, 0.0]}},
+            "leg_front_right": {"rotation": {"0.0": [0.0, 0.0, 0.0], "0.8": [-10.0, 0.0, -2.0], "1.3": [16.0, 0.0, -4.0], "3.5": [0.0, 0.0, 0.0]}},
+            "tail_1": {"rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [4.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]}},
             "tail_flame": {
-                "rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [28.0, 0.0, 0.0], "2.1": [28.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]},
-                "scale": {"0.0": [1.0, 1.0, 1.0], "0.8": [1.3, 1.3, 1.3], "1.3": [1.7, 1.9, 1.7], "2.1": [1.7, 1.9, 1.7], "3.5": [1.0, 1.0, 1.0]}
-            },
-            "tail_flame_left": {
-                "rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [0.0, 0.0, -15.0], "2.1": [0.0, 0.0, -15.0], "3.5": [0.0, 0.0, 0.0]}
-            },
-            "tail_flame_right": {
-                "rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [0.0, 0.0, 15.0], "2.1": [0.0, 0.0, 15.0], "3.5": [0.0, 0.0, 0.0]}
+                "rotation": {"0.0": [0.0, 0.0, 0.0], "1.3": [28.0, 0.0, 0.0], "3.5": [0.0, 0.0, 0.0]},
+                "scale": {"0.0": [1.0, 1.0, 1.0], "0.8": [1.25, 1.25, 1.25], "1.3": [1.6, 1.8, 1.6], "3.5": [1.0, 1.0, 1.0]}
             }
         }
     }
 
 adult_anims = {
-    # 1. NOBLE QUADRUPEDAL IDLE (Harmonic stance, deep predatory breathing)
+    # 1. NOBLE QUADRUPEDAL IDLE (Harmonic stance, deep predatory breathing, folded wings)
     "animation.flamefang_adult.idle": {
         "loop": True,
         "animation_length": 4.5,
@@ -1510,14 +1175,15 @@ adult_anims = {
             "leg_front_right": {"rotation": {"0.0": [0, 0, 0], "2.25": [-1.0, 0, 0], "4.5": [0, 0, 0]}},
             "leg_left": {"rotation": {"0.0": [0, 0, 0], "2.25": [1.0, 0, 0], "4.5": [0, 0, 0]}},
             "leg_right": {"rotation": {"0.0": [0, 0, 0], "2.25": [1.0, 0, 0], "4.5": [0, 0, 0]}},
-            "wing_shoulder_left": {"rotation": {"0.0": [0, 0, -2.0], "2.25": [0, 0, 0], "4.5": [0, 0, -2.0]}},
-            "wing_arm_left": {"rotation": {"0.0": [0, 0, -4.0], "2.25": [0, 0, -1.0], "4.5": [0, 0, -4.0]}},
-            "wing_forearm_left": {"rotation": {"0.0": [0, 0, 3.0], "2.25": [0, 0, 1.0], "4.5": [0, 0, 3.0]}},
-            "wing_fingers_left": {"rotation": {"0.0": [0, 0, -2.0], "2.25": [0, 0, 0], "4.5": [0, 0, -2.0]}},
-            "wing_shoulder_right": {"rotation": {"0.0": [0, 0, 2.0], "2.25": [0, 0, 0], "4.5": [0, 0, 2.0]}},
-            "wing_arm_right": {"rotation": {"0.0": [0, 0, 4.0], "2.25": [0, 0, 1.0], "4.5": [0, 0, 4.0]}},
-            "wing_forearm_right": {"rotation": {"0.0": [0, 0, -3.0], "2.25": [0, 0, -1.0], "4.5": [0, 0, -3.0]}},
-            "wing_fingers_right": {"rotation": {"0.0": [0, 0, 2.0], "2.25": [0, 0, 0], "4.5": [0, 0, 2.0]}},
+            # Wings folded elegantly along flanks
+            "wing_shoulder_left": {"rotation": {"0.0": [12.0, -28.0, -16.0], "2.25": [11.0, -27.0, -15.0], "4.5": [12.0, -28.0, -16.0]}},
+            "wing_arm_left": {"rotation": {"0.0": [-10.0, -18.0, 22.0], "2.25": [-9.0, -18.0, 21.0], "4.5": [-10.0, -18.0, 22.0]}},
+            "wing_forearm_left": {"rotation": {"0.0": [14.0, 24.0, -12.0], "2.25": [13.0, 24.0, -11.0], "4.5": [14.0, 24.0, -12.0]}},
+            "wing_fingers_left": {"rotation": {"0.0": [6.0, 10.0, 4.0], "2.25": [5.0, 10.0, 3.0], "4.5": [6.0, 10.0, 4.0]}},
+            "wing_shoulder_right": {"rotation": {"0.0": [12.0, 28.0, 16.0], "2.25": [11.0, 27.0, 15.0], "4.5": [12.0, 28.0, 16.0]}},
+            "wing_arm_right": {"rotation": {"0.0": [-10.0, 18.0, -22.0], "2.25": [-9.0, 18.0, -21.0], "4.5": [-10.0, 18.0, -22.0]}},
+            "wing_forearm_right": {"rotation": {"0.0": [14.0, -24.0, 12.0], "2.25": [13.0, -24.0, 11.0], "4.5": [14.0, -24.0, 12.0]}},
+            "wing_fingers_right": {"rotation": {"0.0": [6.0, -10.0, -4.0], "2.25": [5.0, -10.0, -3.0], "4.5": [6.0, -10.0, -4.0]}},
             "tail_1": {"rotation": {"0.0": [0, -2.0, 0], "2.25": [0, 2.0, 0], "4.5": [0, -2.0, 0]}},
             "tail_2": {"rotation": {"0.0": [0, -3.5, 0], "2.25": [0, 3.5, 0], "4.5": [0, -3.5, 0]}},
             "tail_3": {"rotation": {"0.0": [0, -5.5, 0], "2.25": [0, 5.5, 0], "4.5": [0, -5.5, 0]}},
@@ -1528,15 +1194,11 @@ adult_anims = {
                 "rotation": {"0.0": [0, -18.0, -5.0], "1.12": [3.0, 0.0, 0], "2.25": [0, 18.0, 5.0], "3.38": [-3.0, 0.0, 0], "4.5": [0, -18.0, -5.0]},
                 "scale": {"0.0": [1.0, 1.0, 1.0], "1.12": [1.12, 1.15, 1.12], "2.25": [0.95, 0.92, 0.95], "3.38": [1.14, 1.18, 1.14], "4.5": [1.0, 1.0, 1.0]}
             },
-            "tail_flame_left": {
-                "rotation": {"0.0": [0, 0, -4.0], "2.25": [0, 0, 4.0], "4.5": [0, 0, -4.0]}
-            },
-            "tail_flame_right": {
-                "rotation": {"0.0": [0, 0, 4.0], "2.25": [0, 0, -4.0], "4.5": [0, 0, 4.0]}
-            }
+            "tail_flame_left": {"rotation": {"0.0": [0, 0, -4.0], "2.25": [0, 0, 4.0], "4.5": [0, 0, -4.0]}},
+            "tail_flame_right": {"rotation": {"0.0": [0, 0, 4.0], "2.25": [0, 0, -4.0], "4.5": [0, 0, 4.0]}}
         }
     },
-    # 2. REALISTIC QUADRUPEDAL GAIT (Balanced trot/walk)
+    # 2. REALISTIC QUADRUPEDAL GAIT (Balanced trot/walk with folded wings)
     "animation.flamefang_adult.walk": {
         "loop": True,
         "animation_length": 2.0,
@@ -1551,22 +1213,48 @@ adult_anims = {
                     "2.0": [2.0, 1.5, -2.5]
                 }
             },
+            "neck": {
+                "rotation": {
+                    "0.0": [-2.0, -2.0, 1.5],
+                    "1.0": [-2.0, 2.0, -1.5],
+                    "2.0": [-2.0, -2.0, 1.5]
+                }
+            },
+            "head": {
+                "rotation": {
+                    "0.0": [1.0, 1.0, -1.0],
+                    "1.0": [1.0, -1.0, 1.0],
+                    "2.0": [1.0, 1.0, -1.0]
+                }
+            },
+            "wing_shoulder_left": {"rotation": {"0.0": [12.0, -28.0, -16.0], "2.0": [12.0, -28.0, -16.0]}},
+            "wing_shoulder_right": {"rotation": {"0.0": [12.0, 28.0, 16.0], "2.0": [12.0, 28.0, 16.0]}},
+            # Diagonal trot: Front Left + Rear Right swing forward while Front Right + Rear Left brace
             "leg_front_left": {
                 "rotation": {
-                    "0.0": [20.0, 0, 0],
+                    "0.0": [24.0, 0, 0],
                     "0.5": [-10.0, 0, 0],
-                    "1.0": [-20.0, 0, 0],
+                    "1.0": [-22.0, 0, 0],
                     "1.5": [0.0, 0, 0],
-                    "2.0": [20.0, 0, 0]
+                    "2.0": [24.0, 0, 0]
                 }
             },
             "leg_front_left_shin": {
                 "rotation": {
-                    "0.0": [5.0, 0, 0],
-                    "0.5": [-20.0, 0, 0],
-                    "1.0": [5.0, 0, 0],
-                    "1.5": [0.0, 0, 0],
-                    "2.0": [5.0, 0, 0]
+                    "0.0": [-12.0, 0, 0],
+                    "0.5": [18.0, 0, 0],
+                    "1.0": [6.0, 0, 0],
+                    "1.5": [-4.0, 0, 0],
+                    "2.0": [-12.0, 0, 0]
+                }
+            },
+            "leg_front_left_foot": {
+                "rotation": {
+                    "0.0": [-10.0, 0, 0],
+                    "0.5": [12.0, 0, 0],
+                    "1.0": [4.0, 0, 0],
+                    "1.5": [2.0, 0, 0],
+                    "2.0": [-10.0, 0, 0]
                 }
             },
             "leg_right": {
@@ -1589,20 +1277,20 @@ adult_anims = {
             },
             "leg_front_right": {
                 "rotation": {
-                    "0.0": [-20.0, 0, 0],
+                    "0.0": [-22.0, 0, 0],
                     "0.5": [0.0, 0, 0],
-                    "1.0": [20.0, 0, 0],
+                    "1.0": [24.0, 0, 0],
                     "1.5": [-10.0, 0, 0],
-                    "2.0": [-20.0, 0, 0]
+                    "2.0": [-22.0, 0, 0]
                 }
             },
             "leg_front_right_shin": {
                 "rotation": {
-                    "0.0": [5.0, 0, 0],
-                    "0.5": [0.0, 0, 0],
-                    "1.0": [5.0, 0, 0],
-                    "1.5": [-20.0, 0, 0],
-                    "2.0": [5.0, 0, 0]
+                    "0.0": [6.0, 0, 0],
+                    "0.5": [-4.0, 0, 0],
+                    "1.0": [-12.0, 0, 0],
+                    "1.5": [18.0, 0, 0],
+                    "2.0": [6.0, 0, 0]
                 }
             },
             "leg_left": {
@@ -1634,8 +1322,7 @@ adult_anims = {
             "tail_flame_right": {"rotation": {"0.0": [0, 3.0, 3.0], "1.0": [0, -3.0, -3.0], "2.0": [0, 3.0, 3.0]}}
         }
     },
-    # 3. ULTRA-FLUID DENSE FLIGHT (APPROVED 37-KEYFRAME SINE PHYSICS)
-        # 3. ULTRA-FLUID DENSE FLIGHT (APPROVED 43-KEYFRAME ASYMMETRIC FLIGHT PHYSICS)
+    # 3. ULTRA-FLUID DENSE FLIGHT (APPROVED 43-KEYFRAME ASYMMETRIC FLIGHT PHYSICS)
     "animation.flamefang_adult.fly_flap": generate_adult_fly_flap(duration=1.4, frames=43),
     # 4. GLIDE (GENTLE THERMAL UPDRAFT HOVERING)
     "animation.flamefang_adult.glide": generate_adult_glide(duration=4.0, frames=41),
@@ -1645,9 +1332,9 @@ adult_anims = {
     "animation.flamefang_adult.sleep": generate_adult_sleep(),
     # 7. WAKE UP (YAWN, STRETCH & ALERT POSTURE)
     "animation.flamefang_adult.wake_up": generate_adult_wake_up(),
-    # 8. ROAR (INTIMIDATING TITANIC ROAR & 284 WINGSPAN DISPLAY)
+    # 8. ROAR (INTIMIDATING TITANIC ROAR & WING FLARE DISPLAY)
     "animation.flamefang_adult.roar": generate_adult_roar(),
-    # 4. COMBAT 1: VICIOUS BITE ATTACK
+    # 9. COMBAT 1: VICIOUS BITE ATTACK
     "animation.flamefang_adult.attack_bite": {
         "loop": False,
         "animation_length": 1.4,
@@ -1681,7 +1368,7 @@ adult_anims = {
             "tail_flame": {"rotation": {"0.0": [0, 0, 0], "0.3": [20.0, 0, 0], "0.7": [-25.0, 0, 0], "1.4": [0, 0, 0]}}
         }
     },
-    # 5. COMBAT 2: DEEP INHALE & DEVASTATING FIREBALL BLAST
+    # 10. COMBAT 2: DEEP INHALE & DEVASTATING FIREBALL BLAST
     "animation.flamefang_adult.attack_fireball": {
         "loop": False,
         "animation_length": 1.8,
@@ -1707,8 +1394,8 @@ adult_anims = {
             "leg_front_right": {
                 "rotation": {"0.0": [0, 0, 0], "0.6": [-18.0, 0, -4.0], "1.0": [16.0, 0, -5.0], "1.4": [-4.0, 0, -1.0], "1.8": [0, 0, 0]}
             },
-            "wing_shoulder_left": {"rotation": {"0.0": [0, 0, 0], "0.6": [-15.0, 0, -10.0], "1.0": [20.0, 0, 25.0], "1.8": [0, 0, 0]}},
-            "wing_shoulder_right": {"rotation": {"0.0": [0, 0, 0], "0.6": [-15.0, 0, 10.0], "1.0": [20.0, 0, -25.0], "1.8": [0, 0, 0]}},
+            "wing_shoulder_left": {"rotation": {"0.0": [12.0, -28.0, -16.0], "0.6": [-15.0, 0, -10.0], "1.0": [20.0, 0, 25.0], "1.8": [12.0, -28.0, -16.0]}},
+            "wing_shoulder_right": {"rotation": {"0.0": [12.0, 28.0, 16.0], "0.6": [-15.0, 0, 10.0], "1.0": [20.0, 0, -25.0], "1.8": [12.0, 28.0, 16.0]}},
             "tail_1": {"rotation": {"0.0": [0, 0, 0], "0.6": [-8.0, 0, 0], "1.0": [10.0, 0, 0], "1.8": [0, 0, 0]}},
             "tail_2": {"rotation": {"0.0": [0, 0, 0], "0.6": [-12.0, 0, 0], "1.0": [15.0, 0, 0], "1.8": [0, 0, 0]}},
             "tail_3": {"rotation": {"0.0": [0, 0, 0], "0.6": [-15.0, 0, 0], "1.0": [18.0, 0, 0], "1.8": [0, 0, 0]}},
@@ -1738,10 +1425,11 @@ def export_updated_adult():
     tex_w, tex_h = 512, 512
 
     print(f"\n==========================================")
-    print(f"Exporting HARMONIC 3D ADULT FLAMEFANG: {model_name} ({tex_w}x{tex_h})")
-    print(f"Torso: 36-42 width, 26-28 height (Width/Height ratio ~1.4 - NON-FLATTENED)")
-    print(f"Height: 88 units (5.5 blocks). Stance: 4 legs planted at Y=0 (X=±20/±18)")
-    print(f"Wings: 4 joints, 284 wingspan. Tail: 7 stages, 37 fan width")
+    print(f"Exporting PROPORTIONAL 3D ADULT FLAMEFANG: {model_name} ({tex_w}x{tex_h})")
+    print(f"Torso: 26-30 width, 32 height (Height/Width ratio 1.2 - ANTI-FLATTENED)")
+    print(f"Height: 88 units (5.5+ blocks). Stance: 4 digitigrade legs at Y=0 (X=±14/±13)")
+    print(f"Wings: 4 joints, ~176 wingspan. Folded in idle/walk. Saddle rigged on dorsal ridge.")
+    print(f"Tail: 7 stages, 30 fan width.")
     print(f"==========================================")
 
     # 1. Gather cubes and pack UVs
@@ -1769,8 +1457,8 @@ def export_updated_adult():
                     "identifier": f"geometry.{model_name}",
                     "texture_width": tex_w,
                     "texture_height": tex_h,
-                    "visible_bounds_width": 20,
-                    "visible_bounds_height": 12,
+                    "visible_bounds_width": 16,
+                    "visible_bounds_height": 10,
                     "visible_bounds_offset": [0, 4, 0]
                 },
                 "bones": []
@@ -1948,7 +1636,7 @@ def export_updated_adult():
         },
         "name": model_name,
         "model_identifier": model_name,
-        "visible_box": [20, 12, 0],
+        "visible_box": [16, 10, 0],
         "resolution": {"width": tex_w, "height": tex_h},
         "elements": elements,
         "outliner": outliner,
@@ -1971,4 +1659,4 @@ def export_updated_adult():
 
 if __name__ == "__main__":
     export_updated_adult()
-    print("\n[SUCCESS] HARMONIC 3D ADULT FLAMEFANG GENERATED SUCCESSFULLY!")
+    print("\n[SUCCESS] PROPORTIONAL 3D ADULT FLAMEFANG GENERATED SUCCESSFULLY!")

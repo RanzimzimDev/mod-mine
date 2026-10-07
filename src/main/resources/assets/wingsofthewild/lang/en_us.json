@@ -235,5 +235,9 @@
   "item.wingsofthewild.scalding_alloy_ingot": "Scalding Alloy Ingot",
   "item.wingsofthewild.scalding_alloy_ingot.desc": "Fusão hidrotérmica combinando água abissal pressurizada e brasas.",
   "item.wingsofthewild.shadowflame_alloy_ingot": "Shadowflame Alloy Ingot",
-  "item.wingsofthewild.shadowflame_alloy_ingot.desc": "Fusão proibida entre a sombra do vazio e chamas dracônicas."
+  "item.wingsofthewild.shadowflame_alloy_ingot.desc": "Forbidden alloy fusing void shadow with draconic flame.",
+  "key.categories.wingsofthewild": "Wings of the Wild",
+  "key.wingsofthewild.dragon_attack": "Dragon Breath / Attack",
+  "message.wingsofthewild.dragon_grew_juvenile": "§6[Wings of the Wild]§r Your Flamefang Hatchling has grown into a §eJuvenile§r dragon!",
+  "message.wingsofthewild.dragon_grew_adult": "§6[Wings of the Wild]§r Your Juvenile Flamefang has matured into an §cAdult Dragon§r!"
 }

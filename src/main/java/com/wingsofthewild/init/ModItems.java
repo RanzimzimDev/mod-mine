@@ -2,6 +2,7 @@ package com.wingsofthewild.init;
 
 import com.wingsofthewild.WingsOfTheWild;
 import com.wingsofthewild.item.DragonHornItem;
+import com.wingsofthewild.item.DragonPouchItem;
 import com.wingsofthewild.item.DragonologistTomeItem;
 import com.wingsofthewild.item.EmberSwordItem;
 import com.wingsofthewild.item.FlightMapCaseItem;
@@ -113,8 +114,9 @@ public class ModItems {
     // Item 18: Osso Dracônico (Osso rígido e leve para cabos e armações)
     public static final DeferredItem<Item> DRAGON_BONE = ITEMS.registerSimpleItem("dragon_bone");
 
-    // Item 38: Alforje Dracônico Pequeno (Bolsas acopladas que adicionam 9 slots ao dragão)
-    public static final DeferredItem<Item> SMALL_DRAGON_POUCH = ITEMS.registerSimpleItem("small_dragon_pouch",
+    // Item 38: Alforje Dracônico Pequeno (Bolsa portátil com 9 slots de inventário)
+    public static final DeferredItem<DragonPouchItem> SMALL_DRAGON_POUCH = ITEMS.registerItem("small_dragon_pouch",
+            props -> new DragonPouchItem(props, 1),
             properties -> properties.stacksTo(1));
 
     // Item 20: Ovo de Flamefang (Fissurado - Estágio 2 de incubação)
@@ -185,8 +187,9 @@ public class ModItems {
                             .alwaysEdible()
                             .build()));
 
-    // Item 39: Alforje Dracônico Grande (Adiciona 27 slots de inventário móvel)
-    public static final DeferredItem<Item> LARGE_DRAGON_SADDLEBAGS = ITEMS.registerSimpleItem("large_dragon_saddlebags",
+    // Item 39: Alforje Dracônico Grande (Bolsa portátil com 27 slots de inventário móvel)
+    public static final DeferredItem<DragonPouchItem> LARGE_DRAGON_SADDLEBAGS = ITEMS.registerItem("large_dragon_saddlebags",
+            props -> new DragonPouchItem(props, 3),
             properties -> properties.stacksTo(1));
 
     // Item 41: Armadura Revestida de Brasa (Máxima proteção contra projéteis e impacto)

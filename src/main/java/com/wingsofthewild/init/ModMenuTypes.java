@@ -27,4 +27,13 @@ public class ModMenuTypes {
             "tack_workbench",
             () -> IMenuTypeExtension.create((windowId, inv, data) -> new TackWorkbenchMenu(windowId, inv))
     );
+
+    public static final DeferredHolder<MenuType<?>, MenuType<com.wingsofthewild.world.inventory.DragonPouchMenu>> DRAGON_POUCH = MENUS.register(
+            "dragon_pouch",
+            () -> IMenuTypeExtension.create((windowId, inv, data) -> {
+                int rows = data.readInt();
+                int blockedSlot = data.readInt();
+                return new com.wingsofthewild.world.inventory.DragonPouchMenu(windowId, inv, rows, blockedSlot);
+            })
+    );
 }

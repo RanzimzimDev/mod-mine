@@ -717,6 +717,9 @@
       "item_definition_valid": true
     },
     "textures_inspected": [
+      "dragon_staff.png (16x16, RGBA, PNG)",
+      "dragon_bone.png (16x16, RGBA, PNG)",
+      "flame_core.png (16x16, RGBA, PNG)",
       "dragon_staff.png (16x16, RGBA, PNG)"
     ],
     "models_inspected": [
@@ -1413,6 +1416,9 @@
       "item_definition_valid": true
     },
     "textures_inspected": [
+      "flamefang_dagger.png (16x16, RGBA, PNG)",
+      "flamefang_shed_tooth.png (16x16, RGBA, PNG)",
+      "flame_core.png (16x16, RGBA, PNG)",
       "flamefang_dagger.png (16x16, RGBA, PNG)"
     ],
     "models_inspected": [
@@ -1471,6 +1477,8 @@
       "item_definition_valid": true
     },
     "textures_inspected": [
+      "dragonologist_tome.png (16x16, RGBA, PNG)",
+      "dragon_bone.png (16x16, RGBA, PNG)",
       "dragonologist_tome.png (16x16, RGBA, PNG)"
     ],
     "models_inspected": [
@@ -1929,6 +1937,7 @@
       "item_definition_valid": true
     },
     "textures_inspected": [
+      "dragon_horn.png (16x16, RGBA, PNG)",
       "dragon_horn.png (16x16, RGBA, PNG)"
     ],
     "models_inspected": [

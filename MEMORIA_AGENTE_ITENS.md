@@ -289,3 +289,21 @@ Compilação validada em `D:\Mine\build\libs\wingsofthewild-1.0.0.jar` e sincron
    - `./gradlew build` com sucesso (568 arquivos empacotados).
    - Copiado para `D:\Minecraft\.minecraft\versions\Mod\mods\wingsofthewild-1.0.0.jar`.
 
+---
+
+### ✅ Rodada 8 — Sistema de Bolsas e Alforjes Portáteis com GUI (Concluída em 2026-10-07)
+1. **Itens Portáteis Interativos (`DragonPouchItem.java`)**:
+   - `small_dragon_pouch` (Item 38): Alforje Dracônico Pequeno com 9 slots portáteis (1 linha).
+   - `large_dragon_saddlebags` (Item 39): Alforje Dracônico Grande com 27 slots portáteis (3 linhas).
+   - Persistência nativa através de `DataComponents.CONTAINER` (`ItemContainerContents`), prevenindo aninhamento recursivo e bloqueando o slot segurado durante o manuseio.
+2. **Container & Interface Visual (`DragonPouchMenu.java` & `DragonPouchScreen.java`)**:
+   - Menu dinâmico ajustando automaticamente 1 linha (9 slots) ou 3 linhas (27 slots) conforme a capacidade da bolsa.
+   - Tela com renderização adaptativa compatível com a biblioteca gráfica do Minecraft 26.3.
+3. **Registro & Build**:
+   - `ModMenuTypes.java`: `DRAGON_POUCH` registrado via IMenuTypeExtension.
+   - `ModClientScreens.java`: Tela de cliente registrada no mod event bus.
+   - Build `./gradlew build` validado e JAR copiado para `D:\Minecraft\.minecraft\versions\Mod\mods\wingsofthewild-1.0.0.jar`.
+
+- [2026-10-07 07:40]: Rodada 8 100% concluída: Sistema e GUI das Bolsas Dracônicas Portáteis (`small_dragon_pouch` e `large_dragon_saddlebags`) com persistência em DataComponents.CONTAINER e prevenção de exploits!
+
+

@@ -8,5 +8,6 @@ public class ModClientScreens {
         event.register(ModMenuTypes.DRACONIC_FOUNDRY.get(), DraconicFoundryScreen::new);
         event.register(ModMenuTypes.DRACONIC_HEARTH.get(), DraconicHearthScreen::new);
         event.register(ModMenuTypes.TACK_WORKBENCH.get(), TackWorkbenchScreen::new);
+        event.register(ModMenuTypes.DRAGON_POUCH.get(), DragonPouchScreen::new);
     }
 }

@@ -235,5 +235,10 @@
   "item.wingsofthewild.scalding_alloy_ingot": "Lingote de Liga Escaldante",
   "item.wingsofthewild.scalding_alloy_ingot.desc": "Fusão hidrotérmica combinando água abissal pressurizada e brasas.",
   "item.wingsofthewild.shadowflame_alloy_ingot": "Lingote de Chama Sombria",
-  "item.wingsofthewild.shadowflame_alloy_ingot.desc": "Fusão proibida entre a sombra do vazio e chamas dracônicas."
+  "item.wingsofthewild.shadowflame_alloy_ingot.desc": "Fusão proibida entre a sombra do vazio e chamas dracônicas.",
+  "key.categories.wingsofthewild": "Wings of the Wild",
+  "key.wingsofthewild.dragon_attack": "Disparo / Ataque do Dragão",
+  "message.wingsofthewild.dragon_grew_juvenile": "§6[Wings of the Wild]§r Seu Filhote de Flamefang cresceu para a fase §eJuvenil§r!",
+  "message.wingsofthewild.dragon_grew_adult": "§6[Wings of the Wild]§r Seu Flamefang Juvenil atingiu a maturidade como §cDragão Adulto§r!"
 }
+

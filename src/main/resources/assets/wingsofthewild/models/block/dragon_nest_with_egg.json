@@ -5,7 +5,8 @@
     "nest": "wingsofthewild:block/dragon_nest",
     "straw": "wingsofthewild:block/charred_nest_straw",
     "stone": "wingsofthewild:block/draconic_stone",
-    "particle": "wingsofthewild:block/dragon_nest"
+    "particle": "wingsofthewild:block/dragon_nest",
+    "egg": "wingsofthewild:block/flamefang_egg"
   },
   "elements": [
     {
@@ -1892,6 +1893,627 @@
             14
           ],
           "texture": "#nest"
+        }
+      }
+    },
+    {
+      "name": "dragon_egg_base",
+      "from": [
+        6,
+        1.5,
+        6
+      ],
+      "to": [
+        10,
+        3.5,
+        10
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            12,
+            8,
+            14
+          ],
+          "texture": "#egg"
+        },
+        "east": {
+          "uv": [
+            4,
+            12,
+            8,
+            14
+          ],
+          "texture": "#egg"
+        },
+        "south": {
+          "uv": [
+            4,
+            12,
+            8,
+            14
+          ],
+          "texture": "#egg"
+        },
+        "west": {
+          "uv": [
+            4,
+            12,
+            8,
+            14
+          ],
+          "texture": "#egg"
+        },
+        "up": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "down": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        }
+      }
+    },
+    {
+      "name": "dragon_egg_lower_body",
+      "from": [
+        5,
+        3.5,
+        5
+      ],
+      "to": [
+        11,
+        7.0,
+        11
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            6,
+            8,
+            9.5
+          ],
+          "texture": "#egg"
+        },
+        "east": {
+          "uv": [
+            2,
+            6,
+            8,
+            9.5
+          ],
+          "texture": "#egg"
+        },
+        "south": {
+          "uv": [
+            2,
+            6,
+            8,
+            9.5
+          ],
+          "texture": "#egg"
+        },
+        "west": {
+          "uv": [
+            2,
+            6,
+            8,
+            9.5
+          ],
+          "texture": "#egg"
+        },
+        "up": {
+          "uv": [
+            2,
+            2,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "down": {
+          "uv": [
+            2,
+            2,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        }
+      }
+    },
+    {
+      "name": "dragon_egg_mid_body",
+      "from": [
+        5.5,
+        7.0,
+        5.5
+      ],
+      "to": [
+        10.5,
+        10.0,
+        10.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            4,
+            8,
+            7
+          ],
+          "texture": "#egg"
+        },
+        "east": {
+          "uv": [
+            3,
+            4,
+            8,
+            7
+          ],
+          "texture": "#egg"
+        },
+        "south": {
+          "uv": [
+            3,
+            4,
+            8,
+            7
+          ],
+          "texture": "#egg"
+        },
+        "west": {
+          "uv": [
+            3,
+            4,
+            8,
+            7
+          ],
+          "texture": "#egg"
+        },
+        "up": {
+          "uv": [
+            3,
+            3,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "down": {
+          "uv": [
+            3,
+            3,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        }
+      }
+    },
+    {
+      "name": "dragon_egg_upper_body",
+      "from": [
+        6,
+        10.0,
+        6
+      ],
+      "to": [
+        10,
+        12.0,
+        10
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            2,
+            8,
+            4
+          ],
+          "texture": "#egg"
+        },
+        "east": {
+          "uv": [
+            4,
+            2,
+            8,
+            4
+          ],
+          "texture": "#egg"
+        },
+        "south": {
+          "uv": [
+            4,
+            2,
+            8,
+            4
+          ],
+          "texture": "#egg"
+        },
+        "west": {
+          "uv": [
+            4,
+            2,
+            8,
+            4
+          ],
+          "texture": "#egg"
+        },
+        "up": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "down": {
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        }
+      }
+    },
+    {
+      "name": "dragon_egg_tip",
+      "from": [
+        6.5,
+        12.0,
+        6.5
+      ],
+      "to": [
+        9.5,
+        13.5,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            1,
+            8,
+            2.5
+          ],
+          "texture": "#egg"
+        },
+        "east": {
+          "uv": [
+            5,
+            1,
+            8,
+            2.5
+          ],
+          "texture": "#egg"
+        },
+        "south": {
+          "uv": [
+            5,
+            1,
+            8,
+            2.5
+          ],
+          "texture": "#egg"
+        },
+        "west": {
+          "uv": [
+            5,
+            1,
+            8,
+            2.5
+          ],
+          "texture": "#egg"
+        },
+        "up": {
+          "uv": [
+            5,
+            5,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "down": {
+          "uv": [
+            5,
+            5,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        }
+      }
+    },
+    {
+      "name": "dragon_egg_ridge_n",
+      "from": [
+        7,
+        4.5,
+        4.75
+      ],
+      "to": [
+        9,
+        8.5,
+        5.25
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "east": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "south": {
+          "uv": [
+            6,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "west": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "up": {
+          "uv": [
+            6,
+            4,
+            8,
+            4.5
+          ],
+          "texture": "#egg"
+        },
+        "down": {
+          "uv": [
+            6,
+            4,
+            8,
+            4.5
+          ],
+          "texture": "#egg"
+        }
+      }
+    },
+    {
+      "name": "dragon_egg_ridge_s",
+      "from": [
+        7,
+        4.5,
+        10.75
+      ],
+      "to": [
+        9,
+        8.5,
+        11.25
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "east": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "south": {
+          "uv": [
+            6,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "west": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "up": {
+          "uv": [
+            6,
+            4,
+            8,
+            4.5
+          ],
+          "texture": "#egg"
+        },
+        "down": {
+          "uv": [
+            6,
+            4,
+            8,
+            4.5
+          ],
+          "texture": "#egg"
+        }
+      }
+    },
+    {
+      "name": "dragon_egg_ridge_w",
+      "from": [
+        4.75,
+        4.5,
+        7
+      ],
+      "to": [
+        5.25,
+        8.5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "east": {
+          "uv": [
+            6,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "south": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "west": {
+          "uv": [
+            6,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "up": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            6
+          ],
+          "texture": "#egg"
+        },
+        "down": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            6
+          ],
+          "texture": "#egg"
+        }
+      }
+    },
+    {
+      "name": "dragon_egg_ridge_e",
+      "from": [
+        10.75,
+        4.5,
+        7
+      ],
+      "to": [
+        11.25,
+        8.5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "east": {
+          "uv": [
+            6,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "south": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "west": {
+          "uv": [
+            6,
+            4,
+            8,
+            8
+          ],
+          "texture": "#egg"
+        },
+        "up": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            6
+          ],
+          "texture": "#egg"
+        },
+        "down": {
+          "uv": [
+            6,
+            4,
+            6.5,
+            6
+          ],
+          "texture": "#egg"
         }
       }
     }
