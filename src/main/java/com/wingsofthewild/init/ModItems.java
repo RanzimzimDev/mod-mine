@@ -1,6 +1,7 @@
 package com.wingsofthewild.init;
 
 import com.wingsofthewild.WingsOfTheWild;
+import com.wingsofthewild.item.DragonHandlerGlovesItem;
 import com.wingsofthewild.item.DragonHornItem;
 import com.wingsofthewild.item.DragonPouchItem;
 import com.wingsofthewild.item.DragonologistTomeItem;
@@ -243,7 +244,8 @@ public class ModItems {
             properties -> properties.humanoidArmor(ModArmorMaterials.FLAMEFANG, ArmorType.BOOTS).fireResistant());
 
     // Item 63: Luvas de Domador Reforçadas (Luvas isolantes para manusear ovos quentes)
-    public static final DeferredItem<Item> DRAGON_HANDLER_GLOVES = ITEMS.registerSimpleItem("dragon_handler_gloves",
+    public static final DeferredItem<Item> DRAGON_HANDLER_GLOVES = ITEMS.registerItem("dragon_handler_gloves",
+            DragonHandlerGlovesItem::new,
             properties -> properties.stacksTo(1).fireResistant());
 
     // Item 64: Capa do Cavaleiro de Dragão (Capa dorsal de viagem para voo)

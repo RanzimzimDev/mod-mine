@@ -129,7 +129,7 @@
   "item.wingsofthewild.flamefang_boots": "Botas de Escamas de Flamefang",
   "item.wingsofthewild.flamefang_boots.desc": "Botas imunes ao dano de blocos incandescentes (magma/fogo).",
   "item.wingsofthewild.dragon_handler_gloves": "Luvas de Domador Reforçadas",
-  "item.wingsofthewild.dragon_handler_gloves.desc": "Luvas isolantes para manusear ovos quentes sem se queimar.",
+  "item.wingsofthewild.dragon_handler_gloves.desc": "Concede resistência ao fogo enquanto empunhada na mão principal ou na secundária.",
   "item.wingsofthewild.dragon_riders_cloak": "Capa do Cavaleiro de Dragão",
   "item.wingsofthewild.dragon_riders_cloak.desc": "Capa dorsal de viagem que ondula com física realista no voo.",
   "item.wingsofthewild.dragon_horn": "Berrante de Batalha Dracônico",
@@ -241,4 +241,3 @@
   "message.wingsofthewild.dragon_grew_juvenile": "§6[Wings of the Wild]§r Seu Filhote de Flamefang cresceu para a fase §eJuvenil§r!",
   "message.wingsofthewild.dragon_grew_adult": "§6[Wings of the Wild]§r Seu Flamefang Juvenil atingiu a maturidade como §cDragão Adulto§r!"
 }
-

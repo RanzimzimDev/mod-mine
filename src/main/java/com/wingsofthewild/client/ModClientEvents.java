@@ -33,6 +33,8 @@ public class ModClientEvents {
         event.register(KEY_DRAGON_ATTACK);
     }
 
+    private static boolean wasAttackDown = false;
+
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
@@ -40,9 +42,13 @@ public class ModClientEvents {
             while (KEY_DRAGON_ATTACK.consumeClick()) {
                 ClientPacketDistributor.sendToServer(new DragonAttackPayload(1)); // Fireball
             }
-            if (mc.options.keyAttack.consumeClick()) {
+            boolean isAttackDown = mc.options.keyAttack.isDown();
+            if (isAttackDown && !wasAttackDown) {
                 ClientPacketDistributor.sendToServer(new DragonAttackPayload(0)); // Bite on ground, Fireball in air
             }
+            wasAttackDown = isAttackDown;
+        } else {
+            wasAttackDown = false;
         }
     }
 

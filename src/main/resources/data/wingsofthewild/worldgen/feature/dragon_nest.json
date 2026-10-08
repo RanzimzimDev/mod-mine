@@ -1,10 +1,10 @@
 {
   "type": "minecraft:simple_block",
   "to_place": {
-    "type": "minecraft:simple_state_provider",
+    "type": "minecraft:simple",
     "state": {
-      "Name": "wingsofthewild:dragon_nest",
-      "Properties": {
+      "id": "wingsofthewild:dragon_nest",
+      "properties": {
         "has_egg": "true"
       }
     }

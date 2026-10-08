@@ -5,7 +5,7 @@
   "targets": [
     {
       "state": {
-        "name": "wingsofthewild:chronium_ore"
+        "id": "wingsofthewild:chronium_ore"
       },
       "target": {
         "predicate_type": "minecraft:tag_match",
@@ -14,7 +14,7 @@
     },
     {
       "state": {
-        "name": "wingsofthewild:chronium_ore"
+        "id": "wingsofthewild:chronium_ore"
       },
       "target": {
         "predicate_type": "minecraft:tag_match",

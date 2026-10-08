@@ -5,7 +5,7 @@
   "targets": [
     {
       "state": {
-        "name": "wingsofthewild:terraslate_ore"
+        "id": "wingsofthewild:terraslate_ore"
       },
       "target": {
         "predicate_type": "minecraft:tag_match",
@@ -14,7 +14,7 @@
     },
     {
       "state": {
-        "name": "wingsofthewild:terraslate_ore"
+        "id": "wingsofthewild:terraslate_ore"
       },
       "target": {
         "predicate_type": "minecraft:tag_match",

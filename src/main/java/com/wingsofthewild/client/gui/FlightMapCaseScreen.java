@@ -68,7 +68,7 @@ public class FlightMapCaseScreen extends Screen {
         int left = (this.width - PANEL_WIDTH) / 2;
         int top = (this.height - PANEL_HEIGHT) / 2;
 
-        graphics.centeredText(this.font, Component.literal("§f§lEstojo de Navegação Aérea"), this.width / 2, top + 8, 0xFFFFFF);
+        graphics.centeredText(this.font, Component.literal("§f§lEstojo de Navegação Aérea"), this.width / 2, top + 8, 0xFFFFFFFF);
 
         // Coordenadas atuais do jogador
         String posStr = "§7Localização: §fX: ?, Y: ?, Z: ?";
@@ -76,10 +76,10 @@ public class FlightMapCaseScreen extends Screen {
             BlockPos pos = this.minecraft.player.blockPosition();
             posStr = "§7Coord: §eX: " + pos.getX() + "  §bY: " + pos.getY() + "  §eZ: " + pos.getZ();
         }
-        graphics.text(this.font, posStr, left + 15, top + 34, 0xFFFFFF, false);
+        graphics.text(this.font, posStr, left + 15, top + 34, 0xFFFFFFFF, false);
 
         // Altitude de cruzeiro recomendada
-        graphics.text(this.font, "§7Teto de Voo Desejado: §a" + this.altitudeTarget + " blocos", left + 15, top + 52, 0xFFFFFF, false);
+        graphics.text(this.font, "§7Teto de Voo Desejado: §a" + this.altitudeTarget + " blocos", left + 15, top + 52, 0xFFFFFFFF, false);
     }
 
     @Override

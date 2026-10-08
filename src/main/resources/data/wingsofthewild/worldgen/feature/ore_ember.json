@@ -5,7 +5,7 @@
   "targets": [
     {
       "state": {
-        "name": "wingsofthewild:ember_ore"
+        "id": "wingsofthewild:ember_ore"
       },
       "target": {
         "predicate_type": "minecraft:tag_match",
@@ -14,7 +14,7 @@
     },
     {
       "state": {
-        "name": "wingsofthewild:deepslate_ember_ore"
+        "id": "wingsofthewild:deepslate_ember_ore"
       },
       "target": {
         "predicate_type": "minecraft:tag_match",

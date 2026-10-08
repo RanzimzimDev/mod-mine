@@ -42,3 +42,6 @@ geckolib-temp.jar
 *.log
 __pycache__/
 *.py[cod]
+referencias/
+*.bak
+*.tmp

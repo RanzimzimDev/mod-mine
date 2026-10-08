@@ -5,7 +5,7 @@
   "targets": [
     {
       "state": {
-        "name": "wingsofthewild:miasma_ore"
+        "id": "wingsofthewild:miasma_ore"
       },
       "target": {
         "predicate_type": "minecraft:tag_match",
@@ -14,7 +14,7 @@
     },
     {
       "state": {
-        "name": "wingsofthewild:miasma_ore"
+        "id": "wingsofthewild:miasma_ore"
       },
       "target": {
         "predicate_type": "minecraft:tag_match",

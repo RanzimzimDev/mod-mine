@@ -89,6 +89,7 @@ public class FlamefangEntity extends TamableAnimal implements GeoEntity, PlayerR
     private int biteTicks = 0;
     private int fireballTicks = 0;
     private int fireballCooldown = 0;
+    private int ageTicks = 0;
 
     public FlamefangEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
@@ -171,6 +172,34 @@ public class FlamefangEntity extends TamableAnimal implements GeoEntity, PlayerR
 
         if (this.fireballCooldown > 0) {
             this.fireballCooldown--;
+        }
+
+        // Natural growth aging
+        if (!this.level().isClientSide()) {
+            if (this.getStage() == STAGE_HATCHLING) {
+                this.ageTicks++;
+                if (this.ageTicks >= 12000) { // 10 minutes natural time
+                    this.setStage(STAGE_JUVENILE);
+                    this.ageTicks = 0;
+                    this.playSound(SoundEvents.PLAYER_LEVELUP, 1.4F, 1.1F);
+                    if (this.level() instanceof ServerLevel sl) {
+                        sl.sendParticles(ParticleTypes.HAPPY_VILLAGER, this.getX(), this.getY() + 0.5, this.getZ(), 20, 0.5, 0.5, 0.5, 0.1);
+                        sl.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 0.5, this.getZ(), 15, 0.4, 0.4, 0.4, 0.05);
+                    }
+                }
+            } else if (this.getStage() == STAGE_JUVENILE) {
+                this.ageTicks++;
+                if (this.ageTicks >= 36000) { // 30 minutes natural time
+                    this.setStage(STAGE_ADULT);
+                    this.ageTicks = 0;
+                    this.playSound(SoundEvents.ENDER_DRAGON_GROWL, 1.2F, 1.0F);
+                    this.playSound(SoundEvents.PLAYER_LEVELUP, 1.5F, 1.0F);
+                    if (this.level() instanceof ServerLevel sl) {
+                        sl.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 1.0, this.getZ(), 30, 0.8, 0.8, 0.8, 0.1);
+                        sl.sendParticles(ParticleTypes.LAVA, this.getX(), this.getY() + 1.0, this.getZ(), 10, 0.5, 0.5, 0.5, 0.0);
+                    }
+                }
+            }
         }
     }
 
@@ -309,29 +338,45 @@ public class FlamefangEntity extends TamableAnimal implements GeoEntity, PlayerR
                 }
 
                 if (this.getStage() == STAGE_HATCHLING) {
-                    this.setGrowthProgress(this.getGrowthProgress() + 25);
-                    if (this.getGrowthProgress() >= 100) {
-                        this.setStage(STAGE_JUVENILE);
-                        this.setGrowthProgress(0);
-                        this.playSound(SoundEvents.PLAYER_LEVELUP, 1.4F, 1.1F);
-                        if (this.level() instanceof ServerLevel sl) {
-                            sl.sendParticles(ParticleTypes.HAPPY_VILLAGER, this.getX(), this.getY() + 0.5, this.getZ(), 20, 0.5, 0.5, 0.5, 0.1);
-                            sl.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 0.5, this.getZ(), 15, 0.4, 0.4, 0.4, 0.05);
+                    // Natural: 10 min (12,000 ticks). With feeding: minimum 5 min (6,000 ticks)
+                    if (this.ageTicks < 6000) {
+                        this.ageTicks = Math.min(this.ageTicks + 1200, 5999);
+                    } else {
+                        this.ageTicks = Math.min(this.ageTicks + 1200, 12000);
+                        if (this.ageTicks >= 12000) {
+                            this.setStage(STAGE_JUVENILE);
+                            this.ageTicks = 0;
+                            this.playSound(SoundEvents.PLAYER_LEVELUP, 1.4F, 1.1F);
+                            if (this.level() instanceof ServerLevel sl) {
+                                sl.sendParticles(ParticleTypes.HAPPY_VILLAGER, this.getX(), this.getY() + 0.5, this.getZ(), 20, 0.5, 0.5, 0.5, 0.1);
+                                sl.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 0.5, this.getZ(), 15, 0.4, 0.4, 0.4, 0.05);
+                            }
+                            player.sendSystemMessage(Component.translatable("message.wingsofthewild.dragon_grew_juvenile"));
                         }
-                        player.sendSystemMessage(Component.translatable("message.wingsofthewild.dragon_grew_juvenile"));
+                    }
+                    if (this.level() instanceof ServerLevel sl) {
+                        sl.sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + 0.4, this.getZ(), 5, 0.3, 0.3, 0.3, 0.05);
                     }
                 } else if (this.getStage() == STAGE_JUVENILE) {
-                    this.setGrowthProgress(this.getGrowthProgress() + 15);
-                    if (this.getGrowthProgress() >= 100) {
-                        this.setStage(STAGE_ADULT);
-                        this.setGrowthProgress(0);
-                        this.playSound(SoundEvents.ENDER_DRAGON_GROWL, 1.2F, 1.0F);
-                        this.playSound(SoundEvents.PLAYER_LEVELUP, 1.5F, 1.0F);
-                        if (this.level() instanceof ServerLevel sl) {
-                            sl.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 1.0, this.getZ(), 30, 0.8, 0.8, 0.8, 0.1);
-                            sl.sendParticles(ParticleTypes.LAVA, this.getX(), this.getY() + 1.0, this.getZ(), 10, 0.5, 0.5, 0.5, 0.0);
+                    // Natural: 30 min (36,000 ticks). With feeding: minimum 15 min (18,000 ticks)
+                    if (this.ageTicks < 18000) {
+                        this.ageTicks = Math.min(this.ageTicks + 2400, 17999);
+                    } else {
+                        this.ageTicks = Math.min(this.ageTicks + 2400, 36000);
+                        if (this.ageTicks >= 36000) {
+                            this.setStage(STAGE_ADULT);
+                            this.ageTicks = 0;
+                            this.playSound(SoundEvents.ENDER_DRAGON_GROWL, 1.2F, 1.0F);
+                            this.playSound(SoundEvents.PLAYER_LEVELUP, 1.5F, 1.0F);
+                            if (this.level() instanceof ServerLevel sl) {
+                                sl.sendParticles(ParticleTypes.FLAME, this.getX(), this.getY() + 1.0, this.getZ(), 30, 0.8, 0.8, 0.8, 0.1);
+                                sl.sendParticles(ParticleTypes.LAVA, this.getX(), this.getY() + 1.0, this.getZ(), 10, 0.5, 0.5, 0.5, 0.0);
+                            }
+                            player.sendSystemMessage(Component.translatable("message.wingsofthewild.dragon_grew_adult"));
                         }
-                        player.sendSystemMessage(Component.translatable("message.wingsofthewild.dragon_grew_adult"));
+                    }
+                    if (this.level() instanceof ServerLevel sl) {
+                        sl.sendParticles(ParticleTypes.HEART, this.getX(), this.getY() + 0.7, this.getZ(), 7, 0.4, 0.4, 0.4, 0.05);
                     }
                 } else {
                     if (this.getHealth() < this.getMaxHealth()) {
@@ -453,17 +498,20 @@ public class FlamefangEntity extends TamableAnimal implements GeoEntity, PlayerR
                 this.setGliding(false);
             }
 
-            // Glide when aiming down (> 8 degrees pitch) and moving forward
-            if (passenger.getXRot() > 8.0F && travelVector.z > 0) {
+            // Glide when aiming down (> 12 degrees pitch) and moving forward
+            if (passenger.getXRot() > 12.0F && passenger.zza > 0) {
                 this.setGliding(true);
                 Vec3 look = passenger.getLookAngle();
-                double glideBoost = 0.05D;
-                this.setDeltaMovement(this.getDeltaMovement().add(look.x * glideBoost, look.y * 0.03D, look.z * glideBoost));
+                double glideBoost = 0.03D;
+                this.setDeltaMovement(this.getDeltaMovement().add(look.x * glideBoost, look.y * 0.02D, look.z * glideBoost));
             } else {
                 this.setGliding(false);
             }
 
-            // Shift/crouch descent
+            // Smooth descent if looking down or crouching/shift
+            if (passenger.getXRot() > 25.0F) {
+                this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.04D, 0.0D));
+            }
             if (passenger.isShiftKeyDown() || passenger.isCrouching()) {
                 this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.06D, 0.0D));
             }
@@ -472,16 +520,22 @@ public class FlamefangEntity extends TamableAnimal implements GeoEntity, PlayerR
 
     @Override
     protected Vec3 getRiddenInput(Player player, Vec3 travelVector) {
-        return new Vec3(travelVector.x, 0.0D, travelVector.z);
+        // Read rider WASD input directly: xxa = Strafe (A/D), zza = Forward (W/S)
+        float sideways = player.xxa * 0.5F;
+        float forward = player.zza;
+        if (forward <= 0.0F) {
+            forward *= 0.25F; // Backing up is slow
+        }
+        return new Vec3(sideways, 0.0D, forward);
     }
 
     @Override
     protected float getRiddenSpeed(Player player) {
         float baseSpeed = (float) this.getAttributeValue(Attributes.MOVEMENT_SPEED);
         if (this.isFlying()) {
-            return this.isGliding() ? 0.75F : 0.48F;
+            return this.isGliding() ? 0.28F : 0.16F;
         }
-        return baseSpeed * 1.35F;
+        return baseSpeed * 0.85F;
     }
 
     @Override
@@ -551,6 +605,7 @@ public class FlamefangEntity extends TamableAnimal implements GeoEntity, PlayerR
         output.putBoolean("Armored", this.isArmored());
         output.putInt("DragonStage", this.getStage());
         output.putInt("GrowthProgress", this.getGrowthProgress());
+        output.putInt("AgeTicks", this.ageTicks);
     }
 
     @Override
@@ -561,6 +616,7 @@ public class FlamefangEntity extends TamableAnimal implements GeoEntity, PlayerR
         this.setArmored(input.getBooleanOr("Armored", false));
         this.setStage(input.getIntOr("DragonStage", STAGE_ADULT));
         this.setGrowthProgress(input.getIntOr("GrowthProgress", 0));
+        this.ageTicks = input.getIntOr("AgeTicks", 0);
     }
 
     @Override

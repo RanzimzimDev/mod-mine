@@ -1,23 +1,25 @@
 package com.wingsofthewild.block;
 
-import com.wingsofthewild.world.inventory.DraconicHearthMenu;
+import com.wingsofthewild.block.entity.DraconicHearthBlockEntity;
+import com.wingsofthewild.init.ModBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.Nullable;
 
-public class DraconicHearthBlock extends Block {
-    private static final Component CONTAINER_TITLE = Component.translatable("container.wingsofthewild.draconic_hearth");
+public class DraconicHearthBlock extends Block implements EntityBlock {
 
     public DraconicHearthBlock(BlockBehaviour.Properties properties) {
         super(properties);
@@ -26,22 +28,46 @@ public class DraconicHearthBlock extends Block {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (!level.isClientSide()) {
-            player.openMenu(state.getMenuProvider(level, pos));
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof MenuProvider menuProvider) {
+                player.openMenu(menuProvider);
+            }
         }
         return InteractionResult.SUCCESS;
     }
 
+    @Nullable
     @Override
     protected MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
-        return new SimpleMenuProvider(
-                (containerId, inventory, p) -> new DraconicHearthMenu(
-                        containerId,
-                        inventory,
-                        new SimpleContainer(4),
-                        new SimpleContainerData(4),
-                        ContainerLevelAccess.create(level, pos)
-                ),
-                CONTAINER_TITLE
-        );
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        return blockEntity instanceof MenuProvider menuProvider ? menuProvider : null;
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new DraconicHearthBlockEntity(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        if (level.isClientSide()) {
+            return null;
+        }
+        return blockEntityType == ModBlockEntities.DRACONIC_HEARTH.get()
+                ? (lvl, p, st, be) -> DraconicHearthBlockEntity.serverTick(lvl, p, st, (DraconicHearthBlockEntity) be)
+                : null;
+    }
+
+    @Override
+    public void destroy(LevelAccessor level, BlockPos pos, BlockState state) {
+        if (level instanceof Level lvl && !lvl.isClientSide()) {
+            BlockEntity blockEntity = lvl.getBlockEntity(pos);
+            if (blockEntity instanceof DraconicHearthBlockEntity hearthEntity) {
+                Containers.dropContents(lvl, pos, hearthEntity);
+            }
+        }
+        super.destroy(level, pos, state);
     }
 }

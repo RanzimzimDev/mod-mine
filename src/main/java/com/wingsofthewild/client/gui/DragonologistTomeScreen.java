@@ -170,15 +170,15 @@ public class DragonologistTomeScreen extends Screen {
 
             // Indicador de página (ex: "1 de 5")
             String pageIndicator = (this.currentPage + 1) + " / " + this.pages.size();
-            graphics.text(this.font, pageIndicator, x + 138 - this.font.width(pageIndicator), y + 16, 0x888888, false);
+            graphics.text(this.font, pageIndicator, x + 138 - this.font.width(pageIndicator), y + 16, 0xFF888888, false);
 
             // Título do capítulo
-            graphics.text(this.font, page.chapter, x + 36, y + 30, 0x000000, false);
+            graphics.text(this.font, page.chapter, x + 36, y + 30, 0xFF000000, false);
 
             // Linhas de texto
             int lineY = y + 46;
             for (String line : page.lines) {
-                graphics.text(this.font, line, x + 36, lineY, 0x333333, false);
+                graphics.text(this.font, line, x + 36, lineY, 0xFF333333, false);
                 lineY += 10;
             }
         }
